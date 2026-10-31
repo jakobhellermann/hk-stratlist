@@ -1,0 +1,52 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { byTag, tagAliases, tagHref } from "../lib/data.js";
+
+const tags = [...byTag].map(([tag, posts]) => ({ tag, count: posts.length, aliases: tagAliases.get(tag) ?? [] }));
+tags.sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
+---
+
+<Layout title="Tags">
+  <h1>Tags <span class="count">{tags.length}</span></h1>
+  <div class="tag-controls">
+    <input type="search" id="tag-search" placeholder="search tags…" autocomplete="off" />
+    <label><input type="checkbox" id="tag-sort-alpha" /> sort by name</label>
+  </div>
+  <ul class="tag-list" id="tag-list">
+    {tags.map(({ tag, count, aliases }) => (
+      <li data-tag={tag} data-search={[tag, ...aliases].join("\n")}>
+        <a href={tagHref(tag)}>{tag}</a> <span class="count">{count}</span>
+      </li>
+    ))}
+  </ul>
+  <script>
+    const SORT_KEY = "tags-sort-alpha";
+
+    function init() {
+      const search = document.getElementById("tag-search");
+      const alpha = document.getElementById("tag-sort-alpha");
+      const list = document.getElementById("tag-list");
+      if (!search || search.dataset.ready) return;
+      search.dataset.ready = "";
+      const items = [...list.children];
+      const byCount = [...items];
+      const byName = items.toSorted((a, b) => a.dataset.tag.localeCompare(b.dataset.tag));
+      alpha.checked = localStorage.getItem(SORT_KEY) === "true";
+
+      function update() {
+        const q = search.value.trim().toLowerCase();
+        for (const li of items) li.hidden = q !== "" && !li.dataset.search.includes(q);
+        list.replaceChildren(...(alpha.checked ? byName : byCount));
+      }
+      search.addEventListener("input", update);
+      alpha.addEventListener("change", () => {
+        localStorage.setItem(SORT_KEY, String(alpha.checked));
+        update();
+      });
+      update();
+      list.dataset.ready = "";
+    }
+    document.addEventListener("astro:after-swap", init);
+    init();
+  </script>
+</Layout>

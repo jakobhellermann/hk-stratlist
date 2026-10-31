@@ -201,3 +201,40 @@ body.wide main {
 .map:not([data-ready]) {
   visibility: hidden;
 }
+.tags a {
+  color: inherit;
+}
+.tags a:hover {
+  color: var(--accent-hover);
+}
+.tag-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.tag-controls input[type="search"] {
+  flex: 1;
+  min-width: 12rem;
+  font: inherit;
+  padding: 0.3rem 0.6rem;
+  background: var(--chip);
+  color: var(--fg);
+  border: 1px solid var(--chip);
+  border-radius: 6px;
+}
+.tag-list {
+  list-style: none;
+  padding: 0;
+  columns: 16rem;
+  column-gap: 2rem;
+}
+.tag-list li {
+  break-inside: avoid;
+  overflow-wrap: anywhere;
+}
+/* Hidden until the saved sort order is applied. */
+.tag-list:not([data-ready]) {
+  visibility: hidden;
+}

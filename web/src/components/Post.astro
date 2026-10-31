@@ -1,6 +1,6 @@
 ---
 import Attachment from "./Attachment.astro";
-import { roomHref } from "../lib/data.js";
+import { roomHref, tagHref } from "../lib/data.js";
 import { renderMarkdown } from "../lib/markdown.js";
 
 const { post, currentRoom } = Astro.props;
@@ -15,7 +15,7 @@ const otherRooms = post.rooms.filter((r) => r !== currentRoom);
   {(otherRooms.length > 0 || post.tags.length > 0) && (
     <ul class="tags">
       {otherRooms.map((r) => <li class="room"><a href={roomHref(r)}>{r}</a></li>)}
-      {post.tags.map((t) => <li>{t}</li>)}
+      {post.tags.map((t) => <li><a href={tagHref(t)}>{t}</a></li>)}
     </ul>
   )}
   {post.prose && <div class="prose" set:html={renderMarkdown(post.prose)} />}
