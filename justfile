@@ -1,7 +1,7 @@
 set dotenv-load
 
 channel := "1365521515356885032"
-strats := "export/strats.json"
+strats := "data/export/strats.json"
 
 # fetch messages newer than the last one in the export, then regenerate data
 update: && data
@@ -51,6 +51,11 @@ refresh:
             // error("not refreshed: \(.url)")))' "$data" > "$tmp/data.json"
     mv "$tmp/data.json" "$data"
     echo "refreshed $(jq length "$tmp/refreshed.json") attachment links"
+
+# push the data branch and rebuild the site
+publish:
+    jj -R data git push -b data
+    gh workflow run pages.yml
 
 # dev server
 dev:

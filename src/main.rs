@@ -65,7 +65,7 @@ struct Strats<'a> {
     posts: Vec<Post<'a>>,
 }
 
-const STRATS_PATH: &str = "export/strats.json";
+const STRATS_PATH: &str = "data/export/strats.json";
 const MAP_DATA_PATH: &str = "/home/jakob/dev/hkss/other/maptools/map-data.json";
 const SCENE_SIZES_PATH: &str = "/home/jakob/dev/hkss/mods/MapWarp/data/mapwarp_scene_sizes.json";
 const OUT_DIR: &str = "data";

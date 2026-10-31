@@ -1,5 +1,6 @@
 /target
-/data/public/media
+# the data branch, checked out as a separate workspace
+/data
 /web/node_modules
 /web/dist
 /web/.astro
