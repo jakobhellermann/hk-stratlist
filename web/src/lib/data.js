@@ -7,6 +7,9 @@ export const UNSORTED = "unsorted";
 /** When the messages were last fetched from Discord. */
 export const updated = data.updated;
 
+/** Author user id -> display name. */
+export const authors = new Map(Object.entries(data.authors));
+
 /** Room name -> area. */
 export const areas = new Map(mapRooms.map((room) => [room.name, room.area]));
 

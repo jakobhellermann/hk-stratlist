@@ -46,6 +46,7 @@ struct Post<'a> {
     id: &'a str,
     /// Permalink to the message in Discord.
     link: String,
+    /// Author's user id, see [`Strats::authors`].
     author: &'a str,
     date: &'a str,
     /// Room (scene) names.
@@ -60,6 +61,8 @@ struct Post<'a> {
 struct Strats<'a> {
     /// When the messages were last fetched from Discord.
     updated: &'a str,
+    /// Author user id -> nickname in their newest message, so renames apply to older posts too.
+    authors: BTreeMap<&'a str, &'a str>,
     /// Canonical tag -> variants normalized into it.
     aliases: BTreeMap<String, Vec<String>>,
     posts: Vec<Post<'a>>,
@@ -88,6 +91,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     .collect();
     let canonical = map::lookup(entries.iter().map(|e| e.name.clone()), &loadable);
     let (rooms, orphans) = map::group(entries, &loadable);
+
+    // Messages are in chronological order, so later nicknames win.
+    let author_names: HashMap<&str, &str> = messages
+        .iter()
+        .map(|m| (m.author.id.as_str(), m.author.nickname.as_str()))
+        .collect();
 
     let tagged: Vec<(&Message, parser::ParsedPost)> = messages
         .iter()
@@ -136,7 +145,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 "https://discord.com/channels/{}/{}/{}",
                 export.guild.id, export.channel.id, msg.id
             ),
-            author: &msg.author.nickname,
+            author: &msg.author.id,
             date: &msg.timestamp,
             rooms: post_rooms,
             tags: post_tags,
@@ -207,6 +216,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let strats = Strats {
         updated: &export.exported_at,
+        authors: posts
+            .iter()
+            .map(|p| (p.author, author_names[p.author]))
+            .collect(),
         aliases,
         posts,
     };

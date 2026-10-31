@@ -1,6 +1,6 @@
 ---
 import Attachment from "./Attachment.astro";
-import { roomHref, tagHref } from "../lib/data.js";
+import { authors, roomHref, tagHref } from "../lib/data.js";
 import { renderMarkdown } from "../lib/markdown.js";
 
 const { post, currentRoom } = Astro.props;
@@ -9,7 +9,7 @@ const otherRooms = post.rooms.filter((r) => r !== currentRoom);
 
 <article class="post">
   <div class="meta">
-    <span class="author">{post.author}</span>
+    <span class="author">{authors.get(post.author)}</span>
     <a href={post.link} target="_blank" title="Open in Discord"><time datetime={post.date}>{post.date.slice(0, 10)}</time></a>
   </div>
   {(otherRooms.length > 0 || post.tags.length > 0) && (
