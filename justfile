@@ -1,0 +1,64 @@
+set dotenv-load
+
+channel := "1365521515356885032"
+strats := "export/strats.json"
+
+# fetch messages newer than the last one in the export, then regenerate data
+update: && data
+    #!/usr/bin/env bash
+    set -euo pipefail
+    # the exporter reads DISCORD_TOKEN from the environment
+    last=$(jq -r '.messages | max_by(.id | [length, .]) | .id' {{strats}})
+    tmp=$(mktemp -d)
+    trap 'rm -rf "$tmp"' EXIT
+    discord-chat-exporter-cli export -c {{channel}} -f Json --after "$last" -o "$tmp/new.json"
+    # merge by message id, newer export wins; ids are snowflakes beyond float precision, so compare as (length, string)
+    jq -s '.[0] + {
+        messages: ((.[0].messages + .[1].messages) | group_by(.id) | map(last) | sort_by(.id | [length, .])),
+        exportedAt: .[1].exportedAt,
+      } | .messageCount = (.messages | length)' {{strats}} "$tmp/new.json" > "$tmp/merged.json"
+    echo "added $(jq '.messages | length' "$tmp/new.json") messages after $last"
+    mv "$tmp/merged.json" {{strats}}
+
+# re-export the whole channel
+export-all: && data
+    discord-chat-exporter-cli export -c {{channel}} -f Json -o {{strats}}
+
+# strats.json, map.json and media previews
+data:
+    cargo run --release
+
+# re-sign all attachment links in data/strats.json (they expire after ~24h); needs DISCORD_BOT_TOKEN
+refresh:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    data=data/strats.json
+    tmp=$(mktemp -d)
+    trap 'rm -rf "$tmp"' EXIT
+    echo '[]' > "$tmp/refreshed.json"
+    jq -c '[.posts[].attachments[].url | sub("\\?.*"; "")] | unique | [range(0; length; 50) as $i | .[$i:$i + 50]][]' "$data" |
+    while read -r batch; do
+        curl -sS --fail-with-body -X POST https://discord.com/api/v10/attachments/refresh-urls \
+            -H "Authorization: Bot $DISCORD_BOT_TOKEN" -H "Content-Type: application/json" \
+            -H "User-Agent: DiscordBot (hk-stratlist, 0.1)" \
+            --data "{\"attachment_urls\": $batch}" > "$tmp/batch.json"
+        jq -s '.[0] + .[1].refreshed_urls' "$tmp/refreshed.json" "$tmp/batch.json" > "$tmp/merged.json"
+        mv "$tmp/merged.json" "$tmp/refreshed.json"
+    done
+    jq --slurpfile r "$tmp/refreshed.json" '
+        ($r[0] | map({key: (.original | sub("\\?.*"; "")), value: .refreshed}) | from_entries) as $fresh
+        | .posts[].attachments[] |= (.url = ($fresh[.url | sub("\\?.*"; "")]
+            // error("not refreshed: \(.url)")))' "$data" > "$tmp/data.json"
+    mv "$tmp/data.json" "$data"
+    echo "refreshed $(jq length "$tmp/refreshed.json") attachment links"
+
+# dev server
+dev:
+    cd web && pnpm dev
+
+# final export
+build: data
+    cd web && pnpm build
+
+preview: build
+    cd web && pnpm preview
