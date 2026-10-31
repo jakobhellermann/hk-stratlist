@@ -1,0 +1,18 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Post from "../../components/Post.astro";
+import { UNSORTED, areas, byRoom, roomTitle } from "../../lib/data.js";
+
+export function getStaticPaths() {
+  return [...byRoom.keys()].map((room) => ({ params: { room } }));
+}
+
+const { room } = Astro.params;
+const posts = byRoom.get(room);
+const heading = room === UNSORTED ? roomTitle(room) : `${room} · ${areas.get(room)}`;
+---
+
+<Layout title={roomTitle(room)}>
+  <h1>{heading}</h1>
+  {posts.map((post) => <Post post={post} currentRoom={room} />)}
+</Layout>

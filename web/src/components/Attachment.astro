@@ -1,0 +1,31 @@
+---
+const { attachment: a } = Astro.props;
+
+// Fits the media into MAX_W x MAX_H (rem) by its known aspect ratio, so its box never changes size while loading.
+// The width sits on the figure, since a percentage width on the media counts as 0 while the figure sizes to content.
+const MAX_W = 32;
+const MAX_H = 20;
+const figureStyle = a.width && `width: min(100%, ${Math.min(MAX_W, (MAX_H * a.width) / a.height)}rem)`;
+const style = a.width && `aspect-ratio: ${a.width} / ${a.height}`;
+---
+
+<figure style={figureStyle}>
+  {a.kind === "video" && (
+    <video
+      src={a.url}
+      poster={`/${a.preview}`}
+      width={a.width}
+      height={a.height}
+      style={style}
+      data-fps={a.fps}
+      controls
+      preload="none"
+    />
+  )}
+  {a.kind === "image" && (
+    <a href={a.url}>
+      <img src={`/${a.preview}`} width={a.width} height={a.height} style={style} alt={a.name} loading="lazy" decoding="async" />
+    </a>
+  )}
+  <figcaption><a href={a.url}>{a.name}</a></figcaption>
+</figure>

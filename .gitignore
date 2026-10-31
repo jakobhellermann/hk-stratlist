@@ -1,2 +1,5 @@
 /target
 /data/public/media
+/web/node_modules
+/web/dist
+/web/.astro

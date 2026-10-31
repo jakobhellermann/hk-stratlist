@@ -1,0 +1,27 @@
+---
+import { ClientRouter } from "astro:transitions";
+import "../styles/global.css";
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" transition:animate="none">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title ? `${title} · Silk Strats` : "Silk Strats"}</title>
+    <ClientRouter />
+  </head>
+  <body>
+    <header>
+      <a href="/">Silk Strats</a>
+      <nav><a href="/">List</a></nav>
+    </header>
+    <main><slot /></main>
+    <script>
+      import "../scripts/player.js";
+      import "../scripts/spoiler.js";
+    </script>
+  </body>
+</html>

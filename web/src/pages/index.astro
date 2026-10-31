@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { UNSORTED, areas, byRoom, roomHref, roomTitle } from "../lib/data.js";
+
+const collator = new Intl.Collator(undefined, { numeric: true });
+const roomsByArea = new Map();
+for (const room of byRoom.keys()) {
+  if (room === UNSORTED) continue;
+  const area = areas.get(room);
+  if (!roomsByArea.has(area)) roomsByArea.set(area, []);
+  roomsByArea.get(area).push(room);
+}
+const sortedAreas = [...roomsByArea.keys()].sort(collator.compare);
+---
+
+<Layout>
+  {sortedAreas.map((area) => (
+    <section class="area">
+      <h2>{area}</h2>
+      <ul class="rooms">
+        {roomsByArea.get(area).sort(collator.compare).map((room) => (
+          <li><a href={roomHref(room)}>{room}</a> <span class="count">{byRoom.get(room).length}</span></li>
+        ))}
+      </ul>
+    </section>
+  ))}
+  <section class="area">
+    <h2><a href={roomHref(UNSORTED)}>{roomTitle(UNSORTED)}</a> <span class="count">{byRoom.get(UNSORTED)?.length ?? 0}</span></h2>
+  </section>
+</Layout>
