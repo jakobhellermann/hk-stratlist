@@ -2,7 +2,7 @@
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 
-const { title } = Astro.props;
+const { title, wide = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -13,10 +13,10 @@ const { title } = Astro.props;
     <title>{title ? `${title} · Silk Strats` : "Silk Strats"}</title>
     <ClientRouter />
   </head>
-  <body>
+  <body class:list={{ wide }}>
     <header>
       <a href="/">Silk Strats</a>
-      <nav><a href="/">List</a></nav>
+      <nav><a href="/">List</a> <a href="/map/">Map</a></nav>
     </header>
     <main><slot /></main>
     <script>
