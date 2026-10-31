@@ -4,6 +4,7 @@ use std::path::Path;
 use serde::{Deserialize, Serialize};
 
 mod map;
+mod media;
 mod parser;
 use parser::{is_roomlike, parse_content};
 
@@ -27,13 +28,8 @@ struct Message {
     timestamp_edited: Option<String>,
     author: User,
     content: String,
-    attachments: Vec<Attachment>,
+    attachments: Vec<media::Source>,
     mentions: Vec<User>,
-}
-
-#[derive(Deserialize)]
-struct Attachment {
-    url: String,
 }
 
 #[derive(Deserialize)]
@@ -57,7 +53,7 @@ struct Post<'a> {
     /// Tags that are not known rooms.
     tags: Vec<String>,
     prose: Option<String>,
-    attachments: Vec<&'a str>,
+    attachments: Vec<media::Attachment<'a>>,
 }
 
 #[derive(Serialize)]
@@ -101,6 +97,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         })
         .collect();
 
+    let out_dir = Path::new(&out_dir);
+    let mut media_cache = media::Cache::open(&out_dir.join("media.json"), &out_dir.join("public"))?;
+    if let Err(errors) = media_cache.fill(tagged.iter().flat_map(|(m, _)| &m.attachments).collect())
+    {
+        for e in &errors {
+            eprintln!("preview failed: {e}");
+        }
+        return Err(format!("{} previews failed", errors.len()).into());
+    }
+
     let total = messages.len();
     let mut tag_counts: BTreeMap<String, usize> = BTreeMap::new();
     let mut posts = Vec::new();
@@ -129,7 +135,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             rooms: post_rooms,
             tags: post_tags,
             prose: parsed.prose,
-            attachments: msg.attachments.iter().map(|a| a.url.as_str()).collect(),
+            attachments: msg
+                .attachments
+                .iter()
+                .map(|a| media_cache.attachment(a))
+                .collect(),
         });
     }
 
@@ -174,8 +184,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             .collect(),
         posts,
     };
-    let out_dir = Path::new(&out_dir);
-    std::fs::create_dir_all(out_dir)?;
     std::fs::write(
         out_dir.join("strats.json"),
         serde_json::to_string_pretty(&strats)?,
