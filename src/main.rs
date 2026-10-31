@@ -13,6 +13,8 @@ use parser::{is_roomlike, parse_content};
 struct Export {
     guild: Id,
     channel: Id,
+    #[serde(rename = "exportedAt")]
+    exported_at: String,
     messages: Vec<Message>,
 }
 
@@ -56,6 +58,8 @@ struct Post<'a> {
 
 #[derive(Serialize)]
 struct Strats<'a> {
+    /// When the messages were last fetched from Discord.
+    updated: &'a str,
     /// Room name -> area.
     areas: BTreeMap<&'a str, &'a str>,
     /// Canonical tag -> variants normalized into it.
@@ -204,6 +208,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     let strats = Strats {
+        updated: &export.exported_at,
         areas: rooms
             .iter()
             .map(|r| (r.name.as_str(), r.area.as_str()))

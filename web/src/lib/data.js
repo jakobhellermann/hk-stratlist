@@ -3,6 +3,9 @@ import { url } from "./url.js";
 
 export const UNSORTED = "unsorted";
 
+/** When the messages were last fetched from Discord. */
+export const updated = data.updated;
+
 /** Room name -> area. */
 export const areas = new Map(Object.entries(data.areas));
 
