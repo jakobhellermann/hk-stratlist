@@ -10,8 +10,7 @@ const otherRooms = post.rooms.filter((r) => r !== currentRoom);
 <article class="post">
   <div class="meta">
     <span class="author">{post.author}</span>
-    <a href={post.link} title="Open in Discord"><time datetime={post.date}>{post.date.slice(0, 10)}</time></a>
-    {post.edited && <span title={`edited ${post.edited.slice(0, 10)}`}>(edited)</span>}
+    <a href={post.link} target="_blank" title="Open in Discord"><time datetime={post.date}>{post.date.slice(0, 10)}</time></a>
   </div>
   {(otherRooms.length > 0 || post.tags.length > 0) && (
     <ul class="tags">

@@ -37,6 +37,14 @@ function wrapped(name, delimiter, tag) {
   };
 }
 
+const DISCORD_HOSTS = [
+  "discord.com",
+  "discordapp.com",
+  "cdn.discordapp.com",
+  "media.discordapp.net",
+];
+const isDiscord = (href) => URL.canParse(href) && DISCORD_HOSTS.includes(new URL(href).hostname);
+
 const marked = new Marked({
   gfm: true,
   breaks: true,
@@ -48,6 +56,11 @@ const marked = new Marked({
   renderer: {
     // Posts are user content: raw HTML is shown as text.
     html: ({ text }) => escapeHtml(text),
+    link({ href, title, tokens }) {
+      const target = isDiscord(href) ? ' target="_blank"' : "";
+      const titleAttr = title ? ` title="${escapeHtml(title)}"` : "";
+      return `<a href="${escapeHtml(href)}"${titleAttr}${target}>${this.parser.parseInline(tokens)}</a>`;
+    },
   },
 });
 

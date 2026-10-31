@@ -26,7 +26,6 @@ struct Id {
 struct Message {
     id: String,
     timestamp: String,
-    timestamp_edited: Option<String>,
     author: User,
     content: String,
     attachments: Vec<media::Source>,
@@ -47,8 +46,6 @@ struct Post<'a> {
     link: String,
     author: &'a str,
     date: &'a str,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    edited: Option<&'a str>,
     /// Room (scene) names.
     rooms: Vec<&'a str>,
     /// Tags that are not known rooms.
@@ -139,7 +136,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             ),
             author: &msg.author.nickname,
             date: &msg.timestamp,
-            edited: msg.timestamp_edited.as_deref(),
             rooms: post_rooms,
             tags: post_tags,
             prose: parsed

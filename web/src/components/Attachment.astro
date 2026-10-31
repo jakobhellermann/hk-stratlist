@@ -23,9 +23,9 @@ const style = a.width && `aspect-ratio: ${a.width} / ${a.height}`;
     />
   )}
   {a.kind === "image" && (
-    <a href={a.url}>
+    <a href={a.url} target="_blank">
       <img src={`/${a.preview}`} width={a.width} height={a.height} style={style} alt={a.name} loading="lazy" decoding="async" />
     </a>
   )}
-  <figcaption><a href={a.url}>{a.name}</a></figcaption>
+  <figcaption><a href={a.url} target="_blank">{a.name}</a></figcaption>
 </figure>
