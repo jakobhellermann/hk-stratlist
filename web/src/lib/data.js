@@ -1,4 +1,5 @@
 import data from "../../../data/strats.json";
+import { url } from "./url.js";
 
 export const UNSORTED = "unsorted";
 
@@ -14,7 +15,7 @@ for (const post of data.posts.toSorted((a, b) => Date.parse(b.date) - Date.parse
   }
 }
 
-export const roomHref = (room) => `/room/${encodeURIComponent(room)}/`;
+export const roomHref = (room) => url(`room/${encodeURIComponent(room)}/`);
 export const roomTitle = (room) => (room === UNSORTED ? "no room" : room);
 
 /** Non-room tag -> posts, newest first. */
@@ -47,7 +48,7 @@ export const tagSlugs = new Map();
   }
 }
 
-export const tagHref = (tag) => `/tag/${tagSlugs.get(tag)}/`;
+export const tagHref = (tag) => url(`tag/${tagSlugs.get(tag)}/`);
 
 /** Canonical tag -> variants normalized into it. */
 export const tagAliases = new Map(Object.entries(data.aliases));

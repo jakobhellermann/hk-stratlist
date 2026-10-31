@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
+import { url } from "../lib/url.js";
 
 const { title, wide = false } = Astro.props;
 ---
@@ -15,8 +16,8 @@ const { title, wide = false } = Astro.props;
   </head>
   <body class:list={{ wide }}>
     <header>
-      <a href="/">Silk Strats</a>
-      <nav><a href="/">List</a> <a href="/map/">Map</a> <a href="/tags/">Tags</a></nav>
+      <a href={url("")}>Silk Strats</a>
+      <nav><a href={url("")}>List</a> <a href={url("map/")}>Map</a> <a href={url("tags/")}>Tags</a></nav>
     </header>
     <main><slot /></main>
     <script>
