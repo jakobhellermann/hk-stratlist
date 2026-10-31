@@ -10,11 +10,18 @@
 //! * Prose is everything that is *not* a tag. It is usually separated by a
 //!   newline, but can also follow the last tag inline on the first line — in
 //!   that case we use the length heuristic: a tag is short (<= 4 words),
-//!   prose is longer. So a final first-line segment of more than 4 words is
-//!   split into `first word = tag, rest = prose`.
+//!   prose is longer. If the line ends in such a long segment, the first long
+//!   segment ends the tags: its first word is a tag, the rest of the line
+//!   (including any later `#`) is prose. Long segments followed by short ones
+//!   stay whole tags (`#mount fay first room no claw #low%`).
+//! * A `,` ends a tag; the rest of its segment is prose (`#100%, notes`).
+//! * Trailing `-` is a separator, not part of the tag (`#100%-#belltown_08`).
+//! * A channel/thread mention (`<#id>`) ends the tags; it and the rest of the line are prose.
+//! * Markdown markers and quotes around a tag are dropped (`#any% **#Trobbio**`,
+//!   `#"Bell beast #taunt"`).
 //!
-//! Everything is lowercased and a small synonym map collapses common
-//! spellings (`te` / `true-ending` -> `true ending`, `hundo` / `100` -> `100%`, ...).
+//! Tags are only lowercased here; rooms are matched before other tags get
+//! normalized, see [`crate::normalize`].
 
 /// Maximum number of words a `#`-segment may have to still count as a single
 /// tag. A longer final segment is treated as `tag + inline prose`.
@@ -42,49 +49,75 @@ pub fn parse_content(content: &str) -> Option<ParsedPost> {
         None => (trimmed, ""),
     };
 
-    let segments: Vec<&str> = first_line
+    let (first_line, after_mention) = match first_line.find("<#") {
+        Some(i) => (&first_line[..i], first_line[i..].trim()),
+        None => (first_line, ""),
+    };
+
+    // Each segment with its byte offset in `first_line`.
+    let mut offset = 0;
+    let segments: Vec<(usize, &str)> = first_line
         .split('#')
-        .map(str::trim)
-        .filter(|s| !s.is_empty())
+        .map(|seg| {
+            let start = offset;
+            offset += seg.len() + 1;
+            (start, seg)
+        })
+        .filter(|(_, seg)| !seg.trim().is_empty())
         .collect();
 
+    let is_long = |seg: &str| seg.split_whitespace().count() > MAX_TAG_WORDS;
+    let ends_in_prose = segments.last().is_some_and(|(_, seg)| is_long(seg));
+
     let mut tags: Vec<String> = Vec::new();
-    let mut inline_prose: Option<String> = None;
+    let mut inline_prose: Vec<&str> = Vec::new();
 
-    for (i, seg) in segments.iter().enumerate() {
-        let is_last = i + 1 == segments.len();
-        let word_count = seg.split_whitespace().count();
+    for (start, seg) in segments {
+        let seg_trimmed = seg.trim();
 
-        if is_last && word_count > MAX_TAG_WORDS {
-            // Final segment is "tag + inline prose": first word is the tag.
-            let mut words = seg.split_whitespace();
-            let tag = words.next().expect("word_count > 0");
-            tags.push(normalize_tag(tag));
-            inline_prose = Some(words.collect::<Vec<_>>().join(" "));
-        } else {
-            tags.push(normalize_tag(seg));
+        if ends_in_prose && is_long(seg_trimmed) {
+            let (tag, _) = seg_trimmed
+                .split_once(char::is_whitespace)
+                .expect("more than MAX_TAG_WORDS words");
+            tags.push(trim_separators(tag).to_lowercase());
+            let prose_start = start + (seg.len() - seg.trim_start().len()) + tag.len();
+            inline_prose.push(first_line[prose_start..].trim());
+            break;
+        }
+
+        let (tag, after_comma) = match seg_trimmed.split_once(',') {
+            Some((tag, rest)) => (tag, rest.trim()),
+            None => (seg_trimmed, ""),
+        };
+        let tag = trim_separators(tag);
+        if !tag.is_empty() {
+            tags.push(tag.to_lowercase());
+        }
+        if !after_comma.is_empty() {
+            inline_prose.push(after_comma);
         }
     }
 
-    let prose = match (inline_prose, rest.is_empty()) {
-        (Some(p), true) => Some(p),
-        (Some(p), false) => Some(format!("{p}\n{rest}")),
-        (None, true) => None,
-        (None, false) => Some(rest.to_string()),
+    if !after_mention.is_empty() {
+        inline_prose.push(after_mention);
+    }
+    let inline_prose = inline_prose.join(" ");
+    let prose = match (inline_prose.is_empty(), rest.is_empty()) {
+        (false, true) => Some(inline_prose),
+        (false, false) => Some(format!("{inline_prose}\n{rest}")),
+        (true, true) => None,
+        (true, false) => Some(rest.to_string()),
     };
 
     Some(ParsedPost { tags, prose })
 }
 
-/// Lowercase a tag and collapse known synonyms to a canonical spelling.
-pub fn normalize_tag(raw: &str) -> String {
-    let lower = raw.trim().to_lowercase();
-    match lower.as_str() {
-        "te" | "true" | "true-ending" | "true ending" => "true ending".to_string(),
-        "100" | "hundo" | "100%" => "100%".to_string(),
-        "any" | "any%" => "any%".to_string(),
-        _ => lower,
-    }
+fn trim_separators(tag: &str) -> &str {
+    const WRAPPERS: [char; 7] = ['*', '~', '|', '`', '"', '“', '”'];
+    tag.trim_matches(|c: char| WRAPPERS.contains(&c) || c.is_whitespace())
+        .trim_end_matches(|c: char| {
+            c == '-' || c == ',' || WRAPPERS.contains(&c) || c.is_whitespace()
+        })
 }
 
 /// Whether a (lowercased) tag looks like a room code: alphabetic segment(s)
@@ -177,16 +210,8 @@ mod tests {
     }
 
     #[test]
-    fn synonyms_are_normalized() {
-        assert_eq!(
-            tags("#tut_02 #any #te #100"),
-            vec!["tut_02", "any%", "true ending", "100%"]
-        );
-        assert_eq!(
-            tags("#Cog_08 #Any% #TE"),
-            vec!["cog_08", "any%", "true ending"]
-        );
-        assert_eq!(tags("#true-ending #hundo"), vec!["true ending", "100%"]);
+    fn tags_are_lowercased_but_not_normalized() {
+        assert_eq!(tags("#Cog_08 #Any% #TE"), vec!["cog_08", "any%", "te"]);
     }
 
     #[test]
@@ -195,7 +220,7 @@ mod tests {
         let parsed = parse_content("#song_07 #jubilana #true ending #te\n\nsynthetic route notes that run well past four words").unwrap();
         assert_eq!(
             parsed.tags,
-            vec!["song_07", "jubilana", "true ending", "true ending"]
+            vec!["song_07", "jubilana", "true ending", "te"]
         );
         assert_eq!(
             parsed.prose.as_deref(),
@@ -236,6 +261,103 @@ mod tests {
         let parsed = parse_content("#a b c d e").unwrap();
         assert_eq!(parsed.tags, vec!["a"]);
         assert_eq!(parsed.prose.as_deref(), Some("b c d e"));
+    }
+
+    #[test]
+    fn comma_ends_tag_and_starts_prose() {
+        // synthetic prose, not copied from real posts
+        let parsed = parse_content("#cog_08 #100%, made up note about the route").unwrap();
+        assert_eq!(parsed.tags, vec!["cog_08", "100%"]);
+        assert_eq!(
+            parsed.prose.as_deref(),
+            Some("made up note about the route")
+        );
+    }
+
+    #[test]
+    fn comma_prose_combined_with_newline_prose() {
+        let parsed = parse_content("#cog_08 #any%, short note\nsecond line").unwrap();
+        assert_eq!(parsed.tags, vec!["cog_08", "any%"]);
+        assert_eq!(parsed.prose.as_deref(), Some("short note\nsecond line"));
+    }
+
+    #[test]
+    fn long_final_segment_splits_before_comma() {
+        // the length heuristic sees the whole segment, so the comma stays inside the prose
+        let parsed =
+            parse_content("#hang_03 made up words here, and more after the comma").unwrap();
+        assert_eq!(parsed.tags, vec!["hang_03"]);
+        assert_eq!(
+            parsed.prose.as_deref(),
+            Some("made up words here, and more after the comma")
+        );
+    }
+
+    #[test]
+    fn trailing_comma_without_prose() {
+        let parsed = parse_content("#hang_03,").unwrap();
+        assert_eq!(parsed.tags, vec!["hang_03"]);
+        assert_eq!(parsed.prose, None);
+    }
+
+    #[test]
+    fn dash_between_tags_is_a_separator() {
+        assert_eq!(
+            tags("#100%-#Father of the Flame-#Belltown_08"),
+            vec!["100%", "father of the flame", "belltown_08"]
+        );
+        // inner dashes stay
+        assert_eq!(
+            tags("#pre-vault #true-ending"),
+            vec!["pre-vault", "true-ending"]
+        );
+    }
+
+    #[test]
+    fn markdown_markers_around_tags_are_dropped() {
+        assert_eq!(
+            tags("#cog_08 #any% **#Lace**"),
+            vec!["cog_08", "any%", "lace"]
+        );
+        assert_eq!(tags("#~~old route~~ #`code`"), vec!["old route", "code"]);
+    }
+
+    #[test]
+    fn quotes_around_tags_are_dropped() {
+        assert_eq!(
+            tags("#\"Some boss #cog_08 #2 cycle\""),
+            vec!["some boss", "cog_08", "2 cycle"]
+        );
+        assert_eq!(tags("#“curly”"), vec!["curly"]);
+    }
+
+    #[test]
+    fn first_long_segment_ends_tags() {
+        // synthetic prose, not copied from real posts
+        let parsed = parse_content(
+            "#cog_08 #hang_03 made up text about the room in #cog_09. More words follow here",
+        )
+        .unwrap();
+        assert_eq!(parsed.tags, vec!["cog_08", "hang_03"]);
+        assert_eq!(
+            parsed.prose.as_deref(),
+            Some("made up text about the room in #cog_09. More words follow here")
+        );
+    }
+
+    #[test]
+    fn long_segment_followed_by_short_tags_stays_a_tag() {
+        assert_eq!(
+            tags("#one two three four five #short #tags"),
+            vec!["one two three four five", "short", "tags"]
+        );
+    }
+
+    #[test]
+    fn channel_mention_ends_tags() {
+        let parsed = parse_content("#cog_08 <#123> #not a tag\nmore").unwrap();
+        assert_eq!(parsed.tags, vec!["cog_08"]);
+        assert_eq!(parsed.prose.as_deref(), Some("<#123> #not a tag\nmore"));
     }
 
     #[test]

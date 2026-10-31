@@ -5,6 +5,7 @@ use serde::{Deserialize, Serialize};
 
 mod map;
 mod media;
+mod normalize;
 mod parser;
 use parser::{is_roomlike, parse_content};
 
@@ -60,6 +61,8 @@ struct Post<'a> {
 struct Strats<'a> {
     /// Room name -> area.
     areas: BTreeMap<&'a str, &'a str>,
+    /// Canonical tag -> variants normalized into it.
+    aliases: BTreeMap<String, Vec<String>>,
     posts: Vec<Post<'a>>,
 }
 
@@ -108,19 +111,24 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     let total = messages.len();
-    let mut tag_counts: BTreeMap<String, usize> = BTreeMap::new();
     let mut posts = Vec::new();
 
     for (msg, parsed) in tagged {
         let mut post_rooms = Vec::new();
         let mut post_tags = Vec::new();
         for tag in parsed.tags {
-            *tag_counts.entry(tag.clone()).or_default() += 1;
-            match canonical.get(&tag).map(String::as_str) {
+            let room = canonical
+                .get(&tag)
+                .or_else(|| canonical.get(&normalize::room_spelling(&tag)));
+            match room.map(String::as_str) {
                 Some(room) if !post_rooms.contains(&room) => post_rooms.push(room),
                 Some(_) => {}
-                None if !post_tags.contains(&tag) => post_tags.push(tag),
-                None => {}
+                None => {
+                    let tag = normalize::normalize_tag(&tag);
+                    if !post_tags.contains(&tag) {
+                        post_tags.push(tag);
+                    }
+                }
             }
         }
         posts.push(Post {
@@ -134,7 +142,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             edited: msg.timestamp_edited.as_deref(),
             rooms: post_rooms,
             tags: post_tags,
-            prose: parsed.prose,
+            prose: parsed
+                .prose
+                .map(|p| link_channel_mentions(&p, &export.guild.id)),
             attachments: msg
                 .attachments
                 .iter()
@@ -143,13 +153,41 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         });
     }
 
-    let roomlike: Vec<(&String, &usize)> =
-        tag_counts.iter().filter(|(t, _)| is_roomlike(t)).collect();
-    let unmatched: Vec<(&String, &usize)> = roomlike
+    let space_variants =
+        normalize::space_variants(posts.iter().flat_map(|p| p.tags.iter().map(String::as_str)));
+    for post in &mut posts {
+        let mut tags: Vec<String> = Vec::new();
+        for tag in post.tags.drain(..) {
+            let tag = space_variants.get(&tag).cloned().unwrap_or(tag);
+            if !tags.contains(&tag) {
+                tags.push(tag);
+            }
+        }
+        post.tags = tags;
+    }
+    let mut aliases: BTreeMap<String, Vec<String>> = BTreeMap::new();
+    for (canonical, variants) in normalize::SYNONYMS {
+        let entry = aliases.entry(canonical.to_string()).or_default();
+        entry.extend(variants.iter().map(|v| v.to_string()));
+    }
+    for (variant, canonical) in &space_variants {
+        aliases
+            .entry(canonical.clone())
+            .or_default()
+            .push(variant.clone());
+    }
+
+    let mut tag_counts: BTreeMap<&str, usize> = BTreeMap::new();
+    for tag in posts.iter().flat_map(|p| &p.tags) {
+        *tag_counts.entry(tag).or_default() += 1;
+    }
+    // Rooms are matched before tags are kept, so room-like tags are unknown rooms.
+    let mut unmatched: Vec<(&str, usize)> = tag_counts
         .iter()
-        .filter(|(t, _)| !canonical.contains_key(t.as_str()))
-        .copied()
+        .filter(|(t, _)| is_roomlike(t))
+        .map(|(t, c)| (*t, *c))
         .collect();
+    unmatched.sort_by(|a, b| b.1.cmp(&a.1).then(a.0.cmp(b.0)));
 
     println!("messages total:        {total}");
     println!("messages with tags:    {}", posts.len());
@@ -158,17 +196,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         posts.iter().filter(|p| p.rooms.is_empty()).count()
     );
     println!("distinct tags:         {}", tag_counts.len());
-    println!("distinct roomlike:     {}", roomlike.len());
-    println!(
-        "  matched in map-data: {}",
-        roomlike.len() - unmatched.len()
-    );
-    println!("  NOT in map-data:     {}", unmatched.len());
 
-    println!("\nunmatched roomlike tags (raw, for manual fixing):");
-    let mut unmatched_sorted = unmatched.clone();
-    unmatched_sorted.sort_by(|a, b| b.1.cmp(a.1).then(a.0.cmp(b.0)));
-    for (tag, count) in &unmatched_sorted {
+    println!("\nroom-like tags that are not a known room:");
+    for (tag, count) in &unmatched {
         println!("  {tag:24} {count}");
     }
 
@@ -182,6 +212,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             .iter()
             .map(|r| (r.name.as_str(), r.area.as_str()))
             .collect(),
+        aliases,
         posts,
     };
     std::fs::write(
@@ -204,6 +235,28 @@ fn resolve_mentions(msg: &Message) -> String {
                 .replace(&format!("<@{}>", user.id), &name)
                 .replace(&format!("<@!{}>", user.id), &name)
         })
+}
+
+/// Replaces channel/thread mentions `<#id>` with a link to that channel.
+fn link_channel_mentions(text: &str, guild: &str) -> String {
+    let mut out = String::with_capacity(text.len());
+    let mut rest = text;
+    while let Some(start) = rest.find("<#") {
+        out.push_str(&rest[..start]);
+        let tail = &rest[start + 2..];
+        match tail.split_once('>') {
+            Some((id, after)) if !id.is_empty() && id.chars().all(|c| c.is_ascii_digit()) => {
+                out.push_str(&format!("https://discord.com/channels/{guild}/{id}"));
+                rest = after;
+            }
+            _ => {
+                out.push_str("<#");
+                rest = tail;
+            }
+        }
+    }
+    out.push_str(rest);
+    out
 }
 
 /// Replaces custom emoji markup `<:name:id>` / `<a:name:id>` with `:name:`.
@@ -252,6 +305,14 @@ mod tests {
         assert_eq!(
             replace_custom_emoji("nice <:grubnote:123> and <a:spin:456>!"),
             "nice :grubnote: and :spin:!"
+        );
+    }
+
+    #[test]
+    fn channel_mentions_become_links() {
+        assert_eq!(
+            link_channel_mentions("see <#42> and <#x>", "7"),
+            "see https://discord.com/channels/7/42 and <#x>"
         );
     }
 
