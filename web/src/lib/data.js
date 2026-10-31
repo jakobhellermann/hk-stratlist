@@ -1,4 +1,5 @@
 import data from "../../../data/strats.json";
+import mapRooms from "../../../data/map.json";
 import { url } from "./url.js";
 
 export const UNSORTED = "unsorted";
@@ -7,7 +8,7 @@ export const UNSORTED = "unsorted";
 export const updated = data.updated;
 
 /** Room name -> area. */
-export const areas = new Map(Object.entries(data.areas));
+export const areas = new Map(mapRooms.map((room) => [room.name, room.area]));
 
 /** Room name (or `UNSORTED`) -> posts, newest first. */
 export const byRoom = new Map();

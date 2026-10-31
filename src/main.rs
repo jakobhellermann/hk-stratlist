@@ -60,8 +60,6 @@ struct Post<'a> {
 struct Strats<'a> {
     /// When the messages were last fetched from Discord.
     updated: &'a str,
-    /// Room name -> area.
-    areas: BTreeMap<&'a str, &'a str>,
     /// Canonical tag -> variants normalized into it.
     aliases: BTreeMap<String, Vec<String>>,
     posts: Vec<Post<'a>>,
@@ -209,10 +207,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let strats = Strats {
         updated: &export.exported_at,
-        areas: rooms
-            .iter()
-            .map(|r| (r.name.as_str(), r.area.as_str()))
-            .collect(),
         aliases,
         posts,
     };
