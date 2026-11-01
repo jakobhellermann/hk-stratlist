@@ -7,12 +7,17 @@ use crate::parser::is_roomlike;
 
 /// Canonical tag -> variants that mean the same thing (lowercase, `_` already turned into spaces).
 pub const SYNONYMS: &[(&str, &[&str])] = &[
-    ("100% all bosses", &["all bosses", "allbosses", "100ab"]),
+    ("100% all bosses", &["100ab"]),
     ("100%", &["100", "hundo", "100-percent"]),
     ("2 spool fragments", &["2sf"]),
     ("4 mask shards", &["4ms"]),
+    ("all bosses", &["allbosses"]),
     ("any%", &["any"]),
     ("awoo%", &["awoo"]),
+    (
+        "bell route",
+        &["bells route", "bells", "bell", "bell route any%"],
+    ),
     ("fourth chorus", &["4c", "4cs", "fourth", "fourthchorus"]),
     ("hha", &["hhg"]),
     ("lace 1", &["lace_1"]),
