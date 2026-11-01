@@ -188,8 +188,6 @@
       "100-percent"
     ],
     "100% all bosses": [
-      "all bosses",
-      "allbosses",
       "100ab"
     ],
     "2 spool fragments": [
@@ -203,6 +201,9 @@
     ],
     "act 3": [
       "act3"
+    ],
+    "all bosses": [
+      "allbosses"
     ],
     "any%": [
       "any"
@@ -220,10 +221,11 @@
       "bellbeast"
     ],
     "bell route": [
+      "bells route",
+      "bells",
+      "bell",
+      "bell route any%",
       "bellroute"
-    ],
-    "bells route": [
-      "bellsroute"
     ],
     "big flea": [
       "bigflea"
@@ -2817,7 +2819,7 @@
       ],
       "tags": [
         "blasted steps",
-        "bells",
+        "bell route",
         "any%"
       ],
       "prose": "Absolute banger of a room, this skip saves like 12-13 seconds over going to the right side. You can use an enemy to pogo but this is much faster and less rng, but very difficult",
@@ -3389,7 +3391,7 @@
         "Song_12"
       ],
       "tags": [
-        "bells route"
+        "bellsroute"
       ],
       "prose": "was a bit hard to get that quick grab up at the top",
       "attachments": [
@@ -3510,7 +3512,6 @@
         "craw skip",
         "stsskip",
         "cultistskip",
-        "bell",
         "bell route",
         "any%",
         "mantispogo"
@@ -3769,7 +3770,6 @@
       "tags": [
         "craw skip",
         "crawpogo",
-        "bell",
         "bell route",
         "any%"
       ],
@@ -4273,7 +4273,7 @@
       ],
       "tags": [
         "blasted steps",
-        "bell route any%",
+        "bell route",
         "nicolas cage"
       ],
       "prose": "Hitting the cage down then walljumping off of it saves about 0.7 to going around",
@@ -4426,7 +4426,7 @@
       ],
       "tags": [
         "nmg",
-        "bells route"
+        "bell route"
       ],
       "prose": "fastest movement in this room for bells route, i did w/o the lace encounter to save time but the movement at the start works with the extra enemies too\nthe jump at 0:06 saves about 0.5 to the other route to the room and its fairly easy w/ the updash, overall the room is easier this way imo\nat 0:07 you could figure out some magic to get through the glass faster, i tested updashing on the lower platform then upslashing and dashing but its seems to be .1 slower. prolly smth like updash->upslash->dash once you cling to the wall under the glass is optimal\nagain this all might be known i just couldnt find anything searching for song_05",
       "attachments": [
@@ -4477,7 +4477,7 @@
       ],
       "tags": [
         "craw skip",
-        "bells route"
+        "bellsroute"
       ],
       "prose": "Craw Skip Double Pogo Setup\n\nThe setup consists of positioning yourself more or less as shown in the image. Then, as soon as the craw on the left attacks, do a full jump followed by two neutral slashes or wait for the craw to flap to the left as a visual cue, then dash to the right + walk a little to the right to pass under the craws and finally do a pogo on each of the craws.\n\nThis should work with any attack pattern from the craw on the left. I mean, there are times when it attacks too early or too late, and this setup covers those patterns. At least for me, it has been consistent.\nhttps://www.youtube.com/watch?v=oJMPhosdntY",
       "attachments": [
@@ -4501,7 +4501,7 @@
       ],
       "tags": [
         "craw skip",
-        "bells route"
+        "bellsroute"
       ],
       "prose": "Craw Skip reset/backup Setup\n\nI also have a setup whenever I fail first try and need reset.",
       "attachments": [
@@ -4601,7 +4601,7 @@
       ],
       "tags": [
         "blasted steps",
-        "bells",
+        "bell route",
         "any%"
       ],
       "prose": "With heal, you can do this consistently\ncredit goes to nebula btw for finding it originally",
@@ -4652,7 +4652,7 @@
       ],
       "tags": [
         "craw skip",
-        "bells route"
+        "bellsroute"
       ],
       "prose": "With heal, you can do this skip consistently:grubnote:",
       "attachments": [
@@ -5022,7 +5022,6 @@
         "craw skip",
         "stsskip",
         "cultistskip",
-        "bell",
         "bell route",
         "any%"
       ],
@@ -5398,7 +5397,7 @@
         "Bone_05"
       ],
       "tags": [
-        "bell"
+        "bell route"
       ],
       "prose": "Beast Quick Kill Tutorial\nI see a lot of people, including top players, still doing some iffy stuff here, so I threw together this vid of how I personally approach this fight, with a few attempts (both failed and not), hope it helps some people to have visual and auditory references. Not perfect, definitely some wording mistakes, but yeah https://youtu.be/XvW9V-cfc2s",
       "attachments": []
@@ -5883,7 +5882,7 @@
       "tags": [
         "judgement",
         "any%",
-        "bells route"
+        "bell route"
       ],
       "prose": "yet \"another\" way of doing 2nd skip, so apparently you dont need to cloak twice, i'm having a lot of trouble with this skip and out of the methods this one is the most consistent for me, maybe it helps someone else too. But i just use the ledge grab setup and buffer jump, cloak past the chains, dash when you clear the cage and be ready to walljump as soon as you touch the wall, right is held all the time",
       "attachments": [
@@ -6953,7 +6952,7 @@
       ],
       "tags": [
         "any%",
-        "bells",
+        "bell route",
         "second blasted steps skip"
       ],
       "prose": "I re-worked Scotty's version of this skip to avoid having to do the precise jump off the platform. I haven't played around with it a ton yet, but I think it has potential. Here's the steps I follow to do this:\n\n- When jumping to the platform below the flying enemy, float underneath its aggro range to avoid waking it up.\n- Dash into the wall and walljump, holding right until you're just past the background flag.\n- Dash left and immediately hold right so that you begin a sprint turnaround the moment you land. You want to be fairly far right on the platform so you're close enough to cause the flying enemy to away, to the right.\n- Sprint jump a moment after landing, aiming to jump over the flying enemy.\n- If you clear the flying enemy, turn around and pogo it. You should pogo the top of its hitbox, not the side. If you jump into the enemy and get hit, you can still pogo it and make it to the right side. You can also make this step easier by hitting cloak just a moment before doing the pogo to help yourself line it up, but I'm not sure how consistent that is. \n- You can use the chain as a visual cue for timing your dash -> cloak repress in the air. I like to dash and repress cloak just before it.",
@@ -7005,7 +7004,7 @@
         "any%",
         "cloakless",
         "flea",
-        "bells"
+        "bell route"
       ],
       "prose": "discord search has been wonky for me so someone may have already posted a setup for this enemy pogo to get thru coral_12 quickly, but this is what I've been doing. the enemy position can be a little inconsistent, but you can play this a lot like the beastfly pogo and use some jumps/patience to make sure it's in the right spot. in particular, the jump-dash back on the platform you're baiting the enemy towards is important, and it's more consistent if you do just a little more than a short hop\n\nnote that if bind dash refresh gets voted legal you can just do the coral_03 skip that ppl did in judgement runs instead of having to do this room at all",
       "attachments": [
@@ -12258,7 +12257,7 @@
       "rooms": [],
       "tags": [
         "last judge",
-        "bells"
+        "bell route"
       ],
       "prose": "this is probably known, but i figured it'd be good to put here. this is how far you can stand from the bell door to needolin it",
       "attachments": [
@@ -12308,7 +12307,7 @@
       ],
       "tags": [
         "bs2",
-        "bells",
+        "bell route",
         "judgment"
       ],
       "prose": "bs2 is easier if you move forward a little\nthanks for attending my ted talk",
@@ -13589,7 +13588,7 @@
       "tags": [
         "flower skip",
         "gamble save",
-        "bells"
+        "bell route"
       ],
       "prose": "you can do this version of the skip if you are short on silk or you realize that the flower is very low since this should be faster anyways cause you avoid the freeze frames that happens when your heal gets canceled",
       "attachments": [
@@ -14482,7 +14481,7 @@
         "flea route",
         "true ending",
         "100%",
-        "100% all bosses",
+        "all bosses",
         "ab"
       ],
       "prose": "Some strats for the Skarrgard at the entrance to Hunter's March (assuming you have Silkspear and nothing else)\n\nThe Skarrgard has 150 hp, so it's optimal to start the fight with at least 5/9 silk, though more than 5 doesn't hurt, and up to 7 can help. You can get 6 silk really easily/nearly optimally from the enemies on the way to the Skarrgard from Bell Beast (including 1 from the Silk Heart)\n\nThe Skarrgard has 3 possible moves - a swing, a jump, and a burrow. You can tell that the Skarrgard is going to swing when it draws back it's weapon, and you can pogo the Skarrgard between the two individual swings to get in an attack. The timing is fairly tight but very consistent after some practice (see attachment 1). For the jump and burrow, the visual indicator is the same - a slight crouch. However, there is an _audio_ indicator - if the Skarrgard growls before the attack, it will always be a jump. You should stay still if it is burrowing, and start moving towards the Skarrgard as soon as you _see_ that it is jumping, to avoid getting hit. It's very easy to get hit if you don't react quite quickly. It's nice to get into the habit of upslashing just before either of those attacks, both because niche timings can make it so that a regular slash will only hit the Skarrgard if it burrows and not if it jumps, and because the knockback from a regular slash makes it easier to get hit on a jump. Very rarely, the timings make it so that you have to do a minihop before the upslash to hit the Skarrgard on either attack. Attachments 2 and 3 are examples of what a jump and burrow should each look like.",
@@ -15021,7 +15020,7 @@
         "true ening",
         "true ending",
         "100%",
-        "100% all bosses",
+        "all bosses",
         "ab"
       ],
       "prose": "Here's some stuff past me didn't figure out:\n\n- The opening I had in the previous post was a bit scuffed and awkward. Attachment 1 is a slightly faster and more consistent version of it. As long as your jump is after the second twig and last pogo is after the rightmost edge of the rightmost bush, it should hit the Skarrgard. Due to random inconsistency during pogo dashes, you may be much higher or lower than I was in attachment 1, but nearly anything works. All of the attachments use this opening, so this variation can be seen between them.\n\n- You can actually hit the Skarrgard an extra time during it's swing. This lets you kill it super fast if you get the perfect rng of 3 swings in a row (attachment 2).\n\n- The only reason for an upslash before a jump or burrow is to avoid the knockback of a regular slash - don't bother upslashing on burrows. If you find it hard to avoid getting hit by walking under jumps, you can just not slash before a jump and focus on the movement, or you can do a slightly tricky parry (attachment 3). It's really hard (but possible!) to actually hit the Skarrgard with the parry, so try to focus on perfecting the timing before that.\n\nOther than all that's it's straightforward. If you're just trying to survive, try to work on perfecting your responses to attacks and then recognising them in the context of the fight. If you're trying to go as fast as possible, you can work on adding the harder strats",
@@ -15136,7 +15135,7 @@
       "rooms": [],
       "tags": [
         "any%",
-        "bells",
+        "bell route",
         "judgement",
         "last judge"
       ],
@@ -15770,7 +15769,7 @@
         "fourthchorusquickkill",
         "quick kill",
         "ab",
-        "100% all bosses",
+        "all bosses",
         "aa1b",
         "aa2b"
       ],
@@ -16075,7 +16074,7 @@
         "Song_11"
       ],
       "tags": [
-        "bells",
+        "bell route",
         "citadel",
         "pogo"
       ],
@@ -16259,6 +16258,7 @@
         "Bone_East_08"
       ],
       "tags": [
+        "all bosses",
         "100% all bosses",
         "ag",
         "glitched",
@@ -17589,7 +17589,7 @@
       ],
       "tags": [
         "raging conchfly",
-        "100% all bosses",
+        "all bosses",
         "aa2b",
         "100%"
       ],
@@ -17615,7 +17615,7 @@
       "tags": [
         "pinstress",
         "100%",
-        "100% all bosses",
+        "all bosses",
         "1.029909+"
       ],
       "prose": "silk soar up to pinstress",
@@ -17639,7 +17639,7 @@
       "rooms": [],
       "tags": [
         "father of the flame",
-        "100% all bosses"
+        "all bosses"
       ],
       "prose": "There's a tech I saw in jarlyk's low te awoo run where he'd cancel the endlag of this pogo with a float to regain height. It's possible outsude of TAS but it's really difficult to be consistent with it, except for some reason in father of the flame. I think there's like some micro hitstun that makes the pogo hammer extremely consistent. Here's a clip; it has circlet and a higher level needle, but the core idea should remain the same.\n\nhttps://www.reddit.com/r/Silksong/comments/1qh5zci/father_of_the_flame_but_i_cant_think_of_a/\n\nAlso sorry its on reddit, I switeched OS's and I haven't set up a lof of stuff, so I'm using an older clip.",
       "attachments": []
@@ -17653,7 +17653,7 @@
         "Bellway_08"
       ],
       "tags": [
-        "100% all bosses",
+        "all bosses",
         "100%"
       ],
       "prose": "idk if this could be useful anywhere or if calling bell beast is faster in act 2 bcs of beastlings not appearing but figured id post this here anyways",
@@ -18991,7 +18991,7 @@
       "rooms": [],
       "tags": [
         "steps_0x",
-        "bells",
+        "bell route",
         "bs2",
         "beer"
       ],
@@ -19158,7 +19158,7 @@
         "Clover_10"
       ],
       "tags": [
-        "100% all bosses"
+        "all bosses"
       ],
       "prose": "Scripted phase 1 of Clover dancers, although I'm sure better lines can be found this is what I've come up with. Quite hard so if people want to try and improve it that'd be cool. I'll get a few more scripted phase ones and post in the thread since there's a few ways to do this.",
       "attachments": [
@@ -19229,7 +19229,7 @@
         "Coral_23"
       ],
       "tags": [
-        "100% all bosses",
+        "all bosses",
         "watcher at the edge",
         "flea brew"
       ],
@@ -19906,7 +19906,7 @@
         "deep docks arena",
         "true ending",
         "100%",
-        "100% all bosses"
+        "all bosses"
       ],
       "prose": "Faster final wave kill, do the 2nd clip if the shield guy spawns significantly faster than the bell guy.",
       "attachments": [
@@ -20303,7 +20303,7 @@
       "tags": [
         "true ending",
         "100%",
-        "100% all bosses"
+        "all bosses"
       ],
       "prose": "I was testing some thorn jumps and came up with some ideas for this room. The thorn jumps itself are really easy to do, all you need is to buffer your jump and they are fully consistent. \n\nFirst clip is with hitboxes on, you can see how small hitboxes are, that's why Hornet is not dying. First jump is really easy to do — all you need is to dash immediately of the bounce and then buffer you jump.\n\nSecond jump is harder, because you need to line up yourself and then buffer you jump. Visual cue is really obvious the place is right under the second ring pole. I also like to float just after the clawline since then buffering is exactly the timing of repressing the float (at least for me), but probably it's not optimal.\n\nI did this room with 12.25 (second clip) despite not being a speedrunner (the comsob is 12.23 but roomsob is at most 11.86). Maybe somebody can improve it, I dunno. Also you don't need to use both of them, I think the first half has much more potential than the second.\n\nFinally, you might want to learn these strats regardless, since they can save your run if you failed any other strat — all you need is to fall into correct part of thorns to jump off them (clips 3 and 4)",
       "attachments": [
@@ -21084,7 +21084,7 @@
         "sawtooth",
         "100%",
         "aa2b",
-        "100% all bosses"
+        "all bosses"
       ],
       "prose": "3 things here, 14.25 with sawtooth\n\n-Much more optimized full room using Gaia's silkless start, although I really hate the ceiling orb pogo with sawtooth, but yeah it's definitely faster optimally especially for sawtoothless\n\n-Doing the last orb like this is significantly faster for sawtooth and finally lets sawtooth match sawtoothless endings. If you take away anything from this, **do this version of the ending if you have sawtooth**\n\n-The upslash on the guy is rng but can be backed up, not 100% sure if it's strictly better than silk gathering on avg but I think it should be. Strat suggested by plew_plew",
       "attachments": [
