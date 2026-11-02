@@ -2,7 +2,7 @@
 name = "map-export"
 version = "0.1.0"
 edition = "2024"
-description = "Exports the Silksong world map (room layout, loadable scenes, room sprites) from the game files."
+description = "Exports the world maps (room layout, loadable scenes, room sprites) from the game files."
 
 [dependencies]
 anyhow = "1.0"

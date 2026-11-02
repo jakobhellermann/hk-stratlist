@@ -41,7 +41,7 @@ export-all game: && (data game)
 
 # room layout, loadable scenes and map sprites from the installed game (pass its directory if not the default Steam one)
 map game *game_dir:
-    cargo run --release -p map-export -- {{game}} {{game_dir}}
+    cargo run --release -p map-export --bin {{game}} -- {{game_dir}}
 
 # strats.json, map.json and media previews
 data game:

@@ -1,18 +1,18 @@
-//! Exports the Silksong world map from the game files into the game's data directory:
+//! Exports a game's world map from the game files into the game's data directory:
 //!
-//! - `game/map-entries.json`: one entry per map sprite (`GameMapScene`), with its world box, color,
-//!   physics outline and sprite id
+//! - `game/map-entries.json`: one entry per map sprite, with its world box, color, physics outline
+//!   and sprite id
 //! - `game/scenes.json`: names of all loadable scenes
 //! - `map/<sprite id>-<rrggbb>.webp` in the public dir: each sprite tinted with its room color, over
 //!   its full rect
 //!
-//! Usage: map-export <GAME> [GAME_DIR]
+//! Each game has its own binary, which finds the map rooms and loadable scenes in its game files.
 
 use std::collections::{BTreeMap, BTreeSet, HashMap};
 use std::io::BufWriter;
 use std::path::{Path, PathBuf};
 
-use anyhow::{Context, Result, bail, ensure};
+use anyhow::{Context, Result, bail};
 use games::Game;
 use image::codecs::webp::WebPEncoder;
 use image::{ImageEncoder, RgbaImage};
@@ -21,6 +21,7 @@ use rabex::objects::{ClassId, ClassIdType, TypedPPtr};
 use rabex::tpk::TpkTypeTreeBlob;
 use rabex::typetree::typetree_cache::sync::TypeTreeCache;
 use rabex_env::Environment;
+use rabex_env::handle::SerializedFileHandle;
 use rabex_env::resolver::GameFiles;
 use rabex_env::unity::types::{GameObject, Transform};
 use rabex_texture::Texture2D;
@@ -28,16 +29,24 @@ use rabex_texture::sprite::{Sprite, SpriteAtlas, render_sprite};
 use rayon::prelude::*;
 use serde::{Deserialize, Serialize};
 
-const MAP_BUNDLE: &str = "maps_assets_all.bundle";
-const SCENE_BUNDLE_DIR: &str = "scenes_scenes_scenes";
 const STEAM_COMMON_DIR: &str = ".local/share/Steam/steamapps/common";
 
-#[derive(Deserialize)]
-#[allow(non_snake_case)]
-struct GameMapScene {
-    m_GameObject: TypedPPtr<GameObject>,
-    /// The detailed drawing shown once a room is explored; the SpriteRenderer holds the rough outline.
-    fullSprite: TypedPPtr<Sprite>,
+/// Loads the game's config and its game files, from the directory given as the first argument or
+/// else its Steam install.
+pub fn open(slug: &str) -> Result<(Game, Environment)> {
+    let game = Game::load(slug)?;
+    let game_dir = match std::env::args().nth(1) {
+        Some(dir) => PathBuf::from(dir),
+        None => PathBuf::from(std::env::var("HOME").context("HOME not set")?)
+            .join(STEAM_COMMON_DIR)
+            .join(&game.steam_dir),
+    };
+    let env = Environment::new(
+        GameFiles::probe(&game_dir)
+            .with_context(|| format!("game files in {}", game_dir.display()))?,
+        TypeTreeCache::new(TpkTypeTreeBlob::embedded()),
+    );
+    Ok((game, env))
 }
 
 #[derive(Deserialize)]
@@ -95,79 +104,64 @@ fn sprite_file(name: &str, color: Color) -> String {
     format!("{name}-{r:02x}{g:02x}{b:02x}.webp")
 }
 
-fn main() -> Result<()> {
-    let mut args = std::env::args().skip(1);
-    let game = Game::load(&args.next().context("usage: map-export <game> [game dir]")?)?;
-    let data_dir = game.data_dir();
-    let game_dir = match args.next() {
-        Some(dir) => PathBuf::from(dir),
-        None => PathBuf::from(std::env::var("HOME").context("HOME not set")?)
-            .join(STEAM_COMMON_DIR)
-            .join(&game.steam_dir),
-    };
-
-    let env = Environment::new(
-        GameFiles::probe(&game_dir)
-            .with_context(|| format!("game files in {}", game_dir.display()))?,
-        TypeTreeCache::new(TpkTypeTreeBlob::embedded()),
-    );
-
-    let scenes = loadable_scenes(&env)?;
-    let (entries, sprites) = map_entries(&env)?;
-
-    let game_dir_out = data_dir.join("game");
-    std::fs::create_dir_all(&game_dir_out)?;
-    write_json(&game_dir_out.join("scenes.json"), &scenes)?;
-    write_json(&game_dir_out.join("map-entries.json"), &entries)?;
-    write_sprites(&game.public_dir().join("map"), &sprites)?;
-
-    println!(
-        "{} scenes, {} map entries, {} sprites -> {}",
-        scenes.len(),
-        entries.len(),
-        sprites.len(),
-        data_dir.display()
-    );
-    Ok(())
+/// Collects map entries and their tinted sprites from the rooms of one serialized file.
+pub struct MapBuilder<'a> {
+    file: SerializedFileHandle<'a>,
+    transforms: HashMap<PathId, Transform>,
+    transform_of: HashMap<PathId, PathId>,
+    renderers: HashMap<PathId, SpriteRenderer>,
+    textures: TextureCache,
+    entries: Vec<Entry>,
+    /// Tinted sprite images, by file name.
+    sprites: BTreeMap<String, RgbaImage>,
+    sprite_owners: HashMap<String, PathId>,
+    skipped: Vec<String>,
 }
 
-fn loadable_scenes(env: &Environment) -> Result<BTreeSet<String>> {
-    let scenes: BTreeSet<String> = env
-        .addressables_bundles()?
-        .iter()
-        .filter(|bundle| bundle.parent() == Some(Path::new(SCENE_BUNDLE_DIR)))
-        .filter_map(|bundle| Some(bundle.file_stem()?.to_str()?.to_owned()))
-        .collect();
-    ensure!(!scenes.is_empty(), "no scene bundles in {SCENE_BUNDLE_DIR}");
-    Ok(scenes)
-}
-
-/// Map entries and the tinted sprite images, by file name.
-fn map_entries(env: &Environment) -> Result<(Vec<Entry>, BTreeMap<String, RgbaImage>)> {
-    let maps = env.load_addressables_bundle_content(MAP_BUNDLE)?;
-
-    let mut transforms: HashMap<PathId, Transform> = HashMap::new();
-    let mut transform_of: HashMap<PathId, PathId> = HashMap::new();
-    for handle in maps.transforms() {
-        let transform = handle.read()?;
-        transform_of.insert(transform.m_GameObject.m_PathID, handle.path_id());
-        transforms.insert(handle.path_id(), transform);
+impl<'a> MapBuilder<'a> {
+    pub fn new(file: SerializedFileHandle<'a>) -> Result<Self> {
+        let mut transforms = HashMap::new();
+        let mut transform_of = HashMap::new();
+        for handle in file.transforms() {
+            let transform = handle.read()?;
+            transform_of.insert(transform.m_GameObject.m_PathID, handle.path_id());
+            transforms.insert(handle.path_id(), transform);
+        }
+        let mut renderers = HashMap::new();
+        for handle in file.objects_of::<SpriteRenderer>() {
+            let renderer = handle.read()?;
+            renderers.insert(renderer.m_GameObject.m_PathID, renderer);
+        }
+        Ok(Self {
+            file,
+            transforms,
+            transform_of,
+            renderers,
+            textures: TextureCache::default(),
+            entries: Vec::new(),
+            sprites: BTreeMap::new(),
+            sprite_owners: HashMap::new(),
+            skipped: Vec::new(),
+        })
     }
-    let mut renderers: HashMap<PathId, SpriteRenderer> = HashMap::new();
-    for handle in maps.objects_of::<SpriteRenderer>() {
-        let renderer = handle.read()?;
-        renderers.insert(renderer.m_GameObject.m_PathID, renderer);
+
+    pub fn file(&self) -> &SerializedFileHandle<'a> {
+        &self.file
     }
 
-    let mut textures = TextureCache::default();
-    let mut entries = Vec::new();
-    let mut sprites: BTreeMap<String, RgbaImage> = BTreeMap::new();
-    let mut sprite_owners: HashMap<String, PathId> = HashMap::new();
-    let mut skipped = Vec::new();
+    /// Hierarchy path of a GameObject, `<map>/<area>/<room>`.
+    pub fn path(&self, game_object: TypedPPtr<GameObject>) -> Result<String> {
+        self.file.deref(game_object)?.path()
+    }
 
-    for handle in maps.scripts::<GameMapScene>("GameMapScene")? {
-        let scene = handle.read()?;
-        let path = maps.deref(scene.m_GameObject)?.path()?;
+    /// Adds the map entry of a room. Its drawing is `full_sprite` (shown once the room is explored)
+    /// if there is one, else the rough outline of its SpriteRenderer.
+    pub fn add_room(
+        &mut self,
+        game_object: TypedPPtr<GameObject>,
+        full_sprite: Option<TypedPPtr<Sprite>>,
+    ) -> Result<()> {
+        let path = self.path(game_object)?;
         let parts: Vec<&str> = path.split('/').collect();
         let name = parts
             .last()
@@ -175,15 +169,16 @@ fn map_entries(env: &Environment) -> Result<(Vec<Entry>, BTreeMap<String, RgbaIm
             .to_string();
         let area = parts.get(1).copied().unwrap_or_default().to_string();
 
-        let go = scene.m_GameObject.m_PathID;
-        let transform = *transform_of
+        let go = game_object.m_PathID;
+        let transform = *self
+            .transform_of
             .get(&go)
             .with_context(|| format!("{path} has no Transform"))?;
-        let ((wx, wy), (sx, sy)) = world_transform(&transforms, transform)?;
+        let ((wx, wy), (sx, sy)) = world_transform(&self.transforms, transform)?;
 
-        let Some(renderer) = renderers.get(&go) else {
-            skipped.push(format!("{name}: no SpriteRenderer"));
-            continue;
+        let Some(renderer) = self.renderers.get(&go) else {
+            self.skipped.push(format!("{name}: no SpriteRenderer"));
+            return Ok(());
         };
         // Tinting and the file name use the stored (rounded) color.
         let c = renderer.m_Color;
@@ -195,12 +190,13 @@ fn map_entries(env: &Environment) -> Result<(Vec<Entry>, BTreeMap<String, RgbaIm
             a: color[3] as f32,
         };
 
-        let sprite_ptr = [scene.fullSprite, renderer.m_Sprite]
+        let sprite_ptr = full_sprite
             .into_iter()
+            .chain([renderer.m_Sprite])
             .find(|ptr| ptr.m_PathID != 0);
         let Some(sprite_ptr) = sprite_ptr else {
             // No map sprite at all: the room still has a map position, but no size or shape.
-            entries.push(Entry {
+            self.entries.push(Entry {
                 name,
                 area,
                 x: round(wx, 3),
@@ -212,9 +208,10 @@ fn map_entries(env: &Environment) -> Result<(Vec<Entry>, BTreeMap<String, RgbaIm
                 scale: None,
                 shape: None,
             });
-            continue;
+            return Ok(());
         };
-        let sprite_handle = maps
+        let sprite_handle = self
+            .file
             .deref(sprite_ptr)
             .with_context(|| format!("sprite of {path}"))?;
         let sprite = sprite_handle.read()?;
@@ -236,7 +233,7 @@ fn map_entries(env: &Environment) -> Result<(Vec<Entry>, BTreeMap<String, RgbaIm
             .collect();
 
         let file = sprite_file(&sprite.m_Name, c);
-        match sprite_owners.insert(file.clone(), sprite_ptr.m_PathID) {
+        match self.sprite_owners.insert(file.clone(), sprite_ptr.m_PathID) {
             Some(owner) if owner != sprite_ptr.m_PathID => {
                 bail!(
                     "sprites {owner} and {} both map to {file}",
@@ -245,7 +242,7 @@ fn map_entries(env: &Environment) -> Result<(Vec<Entry>, BTreeMap<String, RgbaIm
             }
             _ => {}
         }
-        if !sprites.contains_key(&file) {
+        if !self.sprites.contains_key(&file) {
             let atlas: Option<SpriteAtlas> = match sprite.is_atlas_packed() {
                 true => Some(sprite_handle.file.deref_read(sprite.m_SpriteAtlas)?),
                 false => None,
@@ -253,14 +250,14 @@ fn map_entries(env: &Environment) -> Result<(Vec<Entry>, BTreeMap<String, RgbaIm
             let rd = sprite
                 .render_data(atlas.as_ref())
                 .with_context(|| format!("sprite of {path}"))?;
-            let texture = textures.get(&sprite_handle.file, rd.texture)?;
+            let texture = self.textures.get(&sprite_handle.file, rd.texture)?;
             let mut image =
                 render_sprite(&sprite, rd, texture).with_context(|| format!("sprite of {path}"))?;
             tint(&mut image, c);
-            sprites.insert(file.clone(), image);
+            self.sprites.insert(file.clone(), image);
         }
 
-        entries.push(Entry {
+        self.entries.push(Entry {
             name,
             area,
             x: round(wx - pivot_x * w, 3),
@@ -272,15 +269,32 @@ fn map_entries(env: &Environment) -> Result<(Vec<Entry>, BTreeMap<String, RgbaIm
             scale: Some([round(sx, 4), round(sy, 4)]),
             shape: (!shape.is_empty()).then_some(shape),
         });
+        Ok(())
     }
 
-    if !skipped.is_empty() {
-        eprintln!("skipped {} map entries:", skipped.len());
-        for reason in &skipped {
-            eprintln!("  {reason}");
+    /// Writes the entries, the scenes and the sprites into the game's data and public dirs.
+    pub fn write(self, game: &Game, scenes: &BTreeSet<String>) -> Result<()> {
+        if !self.skipped.is_empty() {
+            eprintln!("skipped {} map entries:", self.skipped.len());
+            for reason in &self.skipped {
+                eprintln!("  {reason}");
+            }
         }
+        let data_dir = game.data_dir();
+        let game_dir = data_dir.join("game");
+        std::fs::create_dir_all(&game_dir)?;
+        write_json(&game_dir.join("scenes.json"), scenes)?;
+        write_json(&game_dir.join("map-entries.json"), &self.entries)?;
+        write_sprites(&game.public_dir().join("map"), &self.sprites)?;
+        println!(
+            "{} scenes, {} map entries, {} sprites -> {}",
+            scenes.len(),
+            self.entries.len(),
+            self.sprites.len(),
+            data_dir.display()
+        );
+        Ok(())
     }
-    Ok((entries, sprites))
 }
 
 /// World position and scale of a transform, accumulated up its parent chain (no rotation on the map).
@@ -316,7 +330,7 @@ struct TextureCache {
 impl TextureCache {
     fn get(
         &mut self,
-        file: &rabex_env::handle::SerializedFileHandle<'_>,
+        file: &SerializedFileHandle<'_>,
         texture: TypedPPtr<Texture2D>,
     ) -> Result<&RgbaImage> {
         let texture: Texture2D = file.deref_read(texture)?;
