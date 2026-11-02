@@ -13,7 +13,7 @@ tags.sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
 <Layout title="Tags">
   <h1>Tags <span class="count">{tags.length}</span></h1>
   <div class="tag-controls">
-    <input type="search" id="tag-search" placeholder="search tags…" autocomplete="off" />
+    <input type="search" id="tag-search" placeholder="Type 'S' to search" autocomplete="off" />
     <label><input type="checkbox" id="tag-sort-alpha" /> sort by name</label>
   </div>
   <ul class="tag-list" id="tag-list">
@@ -52,5 +52,14 @@ tags.sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
     }
     document.addEventListener("astro:after-swap", init);
     init();
+
+    // Module scripts run once, so this stays registered across page swaps.
+    document.addEventListener("keydown", (e) => {
+      const search = document.getElementById("tag-search");
+      const typing = e.target instanceof HTMLElement && e.target.closest("input, textarea, [contenteditable]");
+      if (!search || typing || e.ctrlKey || e.metaKey || e.altKey || e.key.toLowerCase() !== "s") return;
+      e.preventDefault();
+      search.focus();
+    });
   </script>
 </Layout>
