@@ -16,7 +16,7 @@
     "after": null,
     "before": null
   },
-  "exportedAt": "2026-10-31T13:41:49.0576282+01:00",
+  "exportedAt": "2026-11-02T21:06:48.1207052+01:00",
   "messages": [
     {
       "id": "1413222861400707166",
@@ -237528,7 +237528,247 @@
           "imageUrl": "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f434.svg"
         }
       ]
+    },
+    {
+      "id": "1566672382763208726",
+      "type": "Default",
+      "timestamp": "2026-11-02T05:36:43.416+01:00",
+      "timestampEdited": "2026-11-02T06:28:13.131+01:00",
+      "callEndedTimestamp": null,
+      "isPinned": false,
+      "content": "#ward_02b #te #whiteward #horse\nThe 'Seen Whiteward' autosplit always triggers in ~1.8s. We can use this knowledge to nail 5 times to always get a good quitout.\nThis saves a second over reacting to the text showing up.\n-# the videos are doing garama as the manual split*",
+      "author": {
+        "id": "489869953952907275",
+        "name": "adi_scovery",
+        "discriminator": "0000",
+        "nickname": "jicoworker",
+        "color": "#00FF00",
+        "isBot": false,
+        "roles": [
+          {
+            "id": "772975417459474453",
+            "name": "Modder",
+            "color": "#00FF00",
+            "position": 61
+          },
+          {
+            "id": "823545314904113183",
+            "name": "HK Runner",
+            "color": "#029AE2",
+            "position": 55
+          },
+          {
+            "id": "1412111828573618206",
+            "name": "Silksong Runner",
+            "color": "#D34357",
+            "position": 54
+          },
+          {
+            "id": "1025887754766266368",
+            "name": "OK to Ping",
+            "color": null,
+            "position": 50
+          },
+          {
+            "id": "830189400163483718",
+            "name": "he/him",
+            "color": null,
+            "position": 47
+          },
+          {
+            "id": "830189577952034856",
+            "name": "Event Ping",
+            "color": null,
+            "position": 33
+          },
+          {
+            "id": "830189658893582363",
+            "name": "HK NMG Discoveries Ping",
+            "color": null,
+            "position": 32
+          },
+          {
+            "id": "830199313351180290",
+            "name": "HK Glitched Discoveries Ping",
+            "color": null,
+            "position": 31
+          },
+          {
+            "id": "1486892187751813271",
+            "name": "Silksong NMG Discoveries Ping",
+            "color": null,
+            "position": 29
+          },
+          {
+            "id": "1486892419072135251",
+            "name": "Silksong Glitched Discoveries Ping",
+            "color": null,
+            "position": 28
+          },
+          {
+            "id": "830190769104224266",
+            "name": "Racer Ping",
+            "color": null,
+            "position": 26
+          },
+          {
+            "id": "928964763080347658",
+            "name": "simo",
+            "color": null,
+            "position": 21
+          },
+          {
+            "id": "1468732034808545383",
+            "name": "simo-silksong",
+            "color": null,
+            "position": 20
+          },
+          {
+            "id": "1218281892919378023",
+            "name": "Serious Channel Opt-In",
+            "color": null,
+            "position": 14
+          },
+          {
+            "id": "1365517935149318236",
+            "name": "Hollow Knight Gamer",
+            "color": null,
+            "position": 9
+          },
+          {
+            "id": "1365518432401096745",
+            "name": "Silksong Gamer",
+            "color": null,
+            "position": 8
+          },
+          {
+            "id": "1426654953287454740",
+            "name": "Silksong Any% Tournament Runner",
+            "color": null,
+            "position": 7
+          }
+        ],
+        "avatarUrl": "https://cdn.discordapp.com/avatars/489869953952907275/d36fe4bfa3959c2548e11ba5ec7b88f6.png?size=512"
+      },
+      "attachments": [
+        {
+          "id": "1566672372692549712",
+          "url": "https://cdn.discordapp.com/attachments/1365521515356885032/1566672372692549712/Replay_2026-11-01_19-31-22.mp4?ex=6aea0d99&is=6ae8bc19&hm=d7f247331974e0c89205c52adc7c580f30559d77ffbfb0ae23f8bb393478bb4e&",
+          "fileName": "Replay_2026-11-01_19-31-22.mp4",
+          "fileSizeBytes": 3924654
+        },
+        {
+          "id": "1566672373501923508",
+          "url": "https://cdn.discordapp.com/attachments/1365521515356885032/1566672373501923508/2026-11-01_19-33-05-00.00.00.000-00.00.18.477.mp4?ex=6aea0d99&is=6ae8bc19&hm=4128445d8bf5cf918dee1b1d6fd7523ae9105c022663d51ca4683d7e9e3aefc7&",
+          "fileName": "2026-11-01_19-33-05-00.00.00.000-00.00.18.477.mp4",
+          "fileSizeBytes": 4912324
+        }
+      ],
+      "embeds": [],
+      "stickers": [],
+      "reactions": [
+        {
+          "emoji": {
+            "id": "",
+            "name": "🔥",
+            "code": "fire",
+            "isAnimated": false,
+            "imageUrl": "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f525.svg"
+          },
+          "count": 2,
+          "users": [
+            {
+              "id": "97428172634595328",
+              "name": "zoltorion",
+              "discriminator": "0000",
+              "nickname": "Zoltorion",
+              "color": null,
+              "isBot": false,
+              "avatarUrl": "https://cdn.discordapp.com/avatars/97428172634595328/873f013f8cac388a12381977cc342705.png?size=512"
+            },
+            {
+              "id": "895258598266011679",
+              "name": "demtex_",
+              "discriminator": "0000",
+              "nickname": "Demtex",
+              "color": null,
+              "isBot": false,
+              "avatarUrl": "https://cdn.discordapp.com/avatars/895258598266011679/9a38deb49358fb131633c4a2481709de.png?size=512"
+            }
+          ]
+        }
+      ],
+      "mentions": [],
+      "inlineEmojis": []
+    },
+    {
+      "id": "1566683949298753649",
+      "type": "ThreadCreated",
+      "timestamp": "2026-11-02T06:22:41.093+01:00",
+      "timestampEdited": null,
+      "callEndedTimestamp": null,
+      "isPinned": false,
+      "content": "Started a thread.",
+      "author": {
+        "id": "362481133813891074",
+        "name": "pyuk",
+        "discriminator": "0000",
+        "nickname": "pyuk",
+        "color": "#ED91B8",
+        "isBot": false,
+        "roles": [
+          {
+            "id": "1422449882257690634",
+            "name": "Silksong Verifier",
+            "color": "#ED91B8",
+            "position": 62
+          },
+          {
+            "id": "1412111828573618206",
+            "name": "Silksong Runner",
+            "color": "#D34357",
+            "position": 54
+          },
+          {
+            "id": "1025887754766266368",
+            "name": "OK to Ping",
+            "color": null,
+            "position": 50
+          },
+          {
+            "id": "830189430068215818",
+            "name": "she/her",
+            "color": null,
+            "position": 46
+          },
+          {
+            "id": "1365517935149318236",
+            "name": "Hollow Knight Gamer",
+            "color": null,
+            "position": 9
+          },
+          {
+            "id": "1365518432401096745",
+            "name": "Silksong Gamer",
+            "color": null,
+            "position": 8
+          }
+        ],
+        "avatarUrl": "https://cdn.discordapp.com/avatars/362481133813891074/31238f978cfae54f6fbd407eac3f6a2e.png?size=512"
+      },
+      "attachments": [],
+      "embeds": [],
+      "stickers": [],
+      "reactions": [],
+      "mentions": [],
+      "reference": {
+        "type": "Default",
+        "messageId": null,
+        "channelId": "1566672382763208726",
+        "guildId": "772964112908156938"
+      },
+      "inlineEmojis": []
     }
   ],
-  "messageCount": 1955
+  "messageCount": 1957
 }

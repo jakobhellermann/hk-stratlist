@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-31T13:41:49.0576282+01:00",
+  "updated": "2026-11-02T21:06:48.1207052+01:00",
   "authors": {
     "100634228458258432": "JackmanMarcus 💙",
     "1008713216379076618": "Orange",
@@ -21394,6 +21394,41 @@
           "preview": "media/1565095275167744154.webp",
           "width": 950,
           "height": 720
+        }
+      ]
+    },
+    {
+      "id": "1566672382763208726",
+      "link": "https://discord.com/channels/772964112908156938/1365521515356885032/1566672382763208726",
+      "author": "489869953952907275",
+      "date": "2026-11-02T05:36:43.416+01:00",
+      "rooms": [
+        "Ward_02b"
+      ],
+      "tags": [
+        "true ending",
+        "whiteward",
+        "horse"
+      ],
+      "prose": "The 'Seen Whiteward' autosplit always triggers in ~1.8s. We can use this knowledge to nail 5 times to always get a good quitout.\nThis saves a second over reacting to the text showing up.\n-# the videos are doing garama as the manual split*",
+      "attachments": [
+        {
+          "url": "https://cdn.discordapp.com/attachments/1365521515356885032/1566672372692549712/Replay_2026-11-01_19-31-22.mp4?ex=6aea0d99&is=6ae8bc19&hm=d7f247331974e0c89205c52adc7c580f30559d77ffbfb0ae23f8bb393478bb4e&",
+          "name": "Replay_2026-11-01_19-31-22.mp4",
+          "kind": "video",
+          "preview": "media/1566672372692549712.webp",
+          "width": 1280,
+          "height": 720,
+          "fps": 60.0
+        },
+        {
+          "url": "https://cdn.discordapp.com/attachments/1365521515356885032/1566672373501923508/2026-11-01_19-33-05-00.00.00.000-00.00.18.477.mp4?ex=6aea0d99&is=6ae8bc19&hm=4128445d8bf5cf918dee1b1d6fd7523ae9105c022663d51ca4683d7e9e3aefc7&",
+          "name": "2026-11-01_19-33-05-00.00.00.000-00.00.18.477.mp4",
+          "kind": "video",
+          "preview": "media/1566672373501923508.webp",
+          "width": 1280,
+          "height": 720,
+          "fps": 60.0
         }
       ]
     }
