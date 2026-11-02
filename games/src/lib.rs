@@ -28,7 +28,7 @@ pub struct Game {
 #[derive(Deserialize, Default)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub struct TagRules {
-    /// Canonical tag -> variants that mean the same thing (lowercase, `_` already turned into spaces).
+    /// Canonical tag -> variants that mean the same thing (lowercase, `_` and `-` already turned into spaces).
     #[serde(default)]
     pub synonyms: BTreeMap<String, Vec<String>>,
     /// Misspelled or area-named room-code prefix -> scene prefix.

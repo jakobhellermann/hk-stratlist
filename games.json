@@ -14,15 +14,18 @@
           "1221": ["1.2.2.1"],
           "1432": ["1.4.3.2"],
           "1432+": ["1.4.3.2+"],
-          "all skills": ["as", "hk-all-skills"],
-          "any%": ["any", "any percent", "hk-any-percent"],
-          "cp": ["current-patch", "current patch", "currentpatch"],
+          "all skills": ["as", "hk all skills"],
+          "any%": ["any", "any percent", "hk any percent"],
+          "cp": ["current patch", "currentpatch"],
           "elegy%": ["elegy"],
           "epogo": ["explosionpogo", "explosion pogo"],
+          "flower": ["flowerquest"],
+          "flukes": ["flukenest"],
+          "grub": ["grubs"],
           "grubsong%": ["grubsong"],
-          "low%": ["low percent", "hk-low-percent"],
-          "lp": ["latest-patch", "latest patch", "latestpatch"],
-          "true ending": ["te", "hk-true-ending"],
+          "low%": ["low percent", "hk low percent"],
+          "lp": ["latest patch", "latestpatch"],
+          "true ending": ["te", "hk true ending"],
           "watcher knights": ["wk"]
         },
         "roomTypos": {
@@ -39,8 +42,8 @@
       "steamDir": "Hollow Knight Silksong",
       "tags": {
         "synonyms": {
+          "100%": ["100", "hundo", "100 percent"],
           "100% all bosses": ["100ab"],
-          "100%": ["100", "hundo", "100-percent"],
           "2 spool fragments": ["2sf"],
           "4 mask shards": ["4ms"],
           "all bosses": ["allbosses"],
@@ -53,7 +56,7 @@
           "lace 1": ["lace_1"],
           "lace 2": ["lace_2"],
           "mount fay": ["fay", "mtfay"],
-          "true ending": ["te", "true", "true-ending"]
+          "true ending": ["te", "true"]
         },
         "roomTypos": {
           "bone_ease_": "bone_east_",

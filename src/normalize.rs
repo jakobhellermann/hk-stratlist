@@ -7,7 +7,7 @@ use games::TagRules;
 
 use crate::parser::is_roomlike;
 
-/// Lowercase a tag, use spaces instead of `_` (except in room-code words) and map known variants
+/// Lowercase a tag, use spaces instead of `_` and `-` (except in room-code words) and map known variants
 /// to their canonical spelling.
 pub fn normalize_tag(raw: &str, rules: &TagRules) -> String {
     let spaced = raw
@@ -19,7 +19,7 @@ pub fn normalize_tag(raw: &str, rules: &TagRules) -> String {
             } else if is_roomlike(word) {
                 word.to_string()
             } else {
-                word.replace('_', " ")
+                word.replace(['_', '-'], " ")
             }
         })
         .collect::<Vec<_>>()
