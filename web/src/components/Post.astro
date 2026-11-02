@@ -24,4 +24,14 @@ const otherRooms = post.rooms.filter((r) => r !== currentRoom);
       {post.attachments.map((a) => <Attachment attachment={a} />)}
     </div>
   )}
+  {post.reactions.length > 0 && (
+    <ul class="reactions">
+      {post.reactions.map(({ emoji, count }) => (
+        <li title={emoji.id ? `:${emoji.name}:` : emoji.name}>
+          {emoji.id ? <img src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.isAnimated ? "gif" : "png"}`} alt={`:${emoji.name}:`} loading="lazy" decoding="async" /> : emoji.name}
+          {count}
+        </li>
+      ))}
+    </ul>
+  )}
 </article>

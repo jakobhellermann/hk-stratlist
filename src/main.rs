@@ -33,6 +33,26 @@ struct Message {
     content: String,
     attachments: Vec<media::Source>,
     mentions: Vec<User>,
+    reactions: Vec<Reaction>,
+}
+
+#[derive(Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
+struct Reaction {
+    emoji: Emoji,
+    count: u32,
+}
+
+#[derive(Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
+struct Emoji {
+    /// Empty for unicode emoji.
+    #[serde(skip_serializing_if = "String::is_empty")]
+    id: String,
+    /// The emoji itself for unicode emoji.
+    name: String,
+    #[serde(skip_serializing_if = "std::ops::Not::not")]
+    is_animated: bool,
 }
 
 #[derive(Deserialize)]
@@ -56,6 +76,7 @@ struct Post<'a> {
     tags: Vec<String>,
     prose: Option<String>,
     attachments: Vec<media::Attachment<'a>>,
+    reactions: &'a [Reaction],
 }
 
 #[derive(Serialize)]
@@ -164,6 +185,7 @@ fn main() -> Result<()> {
                 .iter()
                 .map(|a| media_cache.attachment(a))
                 .collect(),
+            reactions: &msg.reactions,
         });
     }
 
