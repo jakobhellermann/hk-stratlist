@@ -149,12 +149,12 @@ fn main() -> Result<()> {
         for tag in parsed.tags {
             let room = canonical
                 .get(&tag)
-                .or_else(|| canonical.get(&normalize::room_spelling(&tag)));
+                .or_else(|| canonical.get(&normalize::room_spelling(&tag, &game.tags)));
             match room.map(String::as_str) {
                 Some(room) if !post_rooms.contains(&room) => post_rooms.push(room),
                 Some(_) => {}
                 None => {
-                    let tag = normalize::normalize_tag(&tag);
+                    let tag = normalize::normalize_tag(&tag, &game.tags);
                     if !post_tags.contains(&tag) {
                         post_tags.push(tag);
                     }
@@ -196,9 +196,9 @@ fn main() -> Result<()> {
         post.tags = tags;
     }
     let mut aliases: BTreeMap<String, Vec<String>> = BTreeMap::new();
-    for (canonical, variants) in normalize::SYNONYMS {
-        let entry = aliases.entry(canonical.to_string()).or_default();
-        entry.extend(variants.iter().map(|v| v.to_string()));
+    for (canonical, variants) in &game.tags.synonyms {
+        let entry = aliases.entry(canonical.clone()).or_default();
+        entry.extend(variants.iter().cloned());
     }
     for (variant, canonical) in &space_variants {
         aliases

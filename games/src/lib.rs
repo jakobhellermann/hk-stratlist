@@ -1,5 +1,6 @@
 //! The games the site covers, as configured in `games.json`.
 
+use std::collections::BTreeMap;
 use std::path::PathBuf;
 
 use anyhow::{Context, Result};
@@ -19,6 +20,23 @@ pub struct Game {
     pub slug: String,
     /// Install directory name under `steamapps/common`.
     pub steam_dir: String,
+    #[serde(default)]
+    pub tags: TagRules,
+}
+
+/// How the community's spellings of tags map to canonical ones.
+#[derive(Deserialize, Default)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+pub struct TagRules {
+    /// Canonical tag -> variants that mean the same thing (lowercase, `_` already turned into spaces).
+    #[serde(default)]
+    pub synonyms: BTreeMap<String, Vec<String>>,
+    /// Misspelled or area-named room-code prefix -> scene prefix.
+    #[serde(default)]
+    pub room_typos: BTreeMap<String, String>,
+    /// Room-code prefix of numbered rooms -> the community's short prefix (`dust_maze_02` -> `m2`).
+    #[serde(default)]
+    pub room_nicknames: BTreeMap<String, String>,
 }
 
 impl Game {

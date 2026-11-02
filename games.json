@@ -5,7 +5,37 @@
       "slug": "ss",
       "label": "Silksong",
       "channel": "1365521515356885032",
-      "steamDir": "Hollow Knight Silksong"
+      "steamDir": "Hollow Knight Silksong",
+      "tags": {
+        "synonyms": {
+          "100% all bosses": ["100ab"],
+          "100%": ["100", "hundo", "100-percent"],
+          "2 spool fragments": ["2sf"],
+          "4 mask shards": ["4ms"],
+          "all bosses": ["allbosses"],
+          "any%": ["any"],
+          "awoo%": ["awoo"],
+          "bell route": ["bells route", "bells", "bell", "bell route any%"],
+          "fourth chorus": ["4c", "4cs", "fourth", "fourthchorus"],
+          "hha": ["hhg"],
+          "lace 1": ["lace_1"],
+          "lace 2": ["lace_2"],
+          "mount fay": ["fay", "mtfay"],
+          "true ending": ["te", "true", "true-ending"]
+        },
+        "roomTypos": {
+          "bone_ease_": "bone_east_",
+          "shadows_": "shadow_",
+          "cogworks_": "cog_",
+          "whiteward_": "ward_",
+          "sinners_road_": "dust_",
+          "high_": "hang_",
+          "bone_east_05b": "bone_east_05"
+        },
+        "roomNicknames": {
+          "dust_maze_": "m"
+        }
+      }
     }
   ]
 }

@@ -3,38 +3,19 @@
 use std::cmp::Reverse;
 use std::collections::{BTreeMap, HashMap};
 
-use crate::parser::is_roomlike;
+use games::TagRules;
 
-/// Canonical tag -> variants that mean the same thing (lowercase, `_` already turned into spaces).
-pub const SYNONYMS: &[(&str, &[&str])] = &[
-    ("100% all bosses", &["100ab"]),
-    ("100%", &["100", "hundo", "100-percent"]),
-    ("2 spool fragments", &["2sf"]),
-    ("4 mask shards", &["4ms"]),
-    ("all bosses", &["allbosses"]),
-    ("any%", &["any"]),
-    ("awoo%", &["awoo"]),
-    (
-        "bell route",
-        &["bells route", "bells", "bell", "bell route any%"],
-    ),
-    ("fourth chorus", &["4c", "4cs", "fourth", "fourthchorus"]),
-    ("hha", &["hhg"]),
-    ("lace 1", &["lace_1"]),
-    ("lace 2", &["lace_2"]),
-    ("mount fay", &["fay", "mtfay"]),
-    ("true ending", &["te", "true", "true-ending"]),
-];
+use crate::parser::is_roomlike;
 
 /// Lowercase a tag, use spaces instead of `_` (except in room-code words) and map known variants
 /// to their canonical spelling.
-pub fn normalize_tag(raw: &str) -> String {
+pub fn normalize_tag(raw: &str, rules: &TagRules) -> String {
     let spaced = raw
         .to_lowercase()
         .split_whitespace()
         .map(|word| {
-            if let Some(maze) = dust_maze_short(word) {
-                maze
+            if let Some(nickname) = room_nickname(word, rules) {
+                nickname
             } else if is_roomlike(word) {
                 word.to_string()
             } else {
@@ -43,27 +24,18 @@ pub fn normalize_tag(raw: &str) -> String {
         })
         .collect::<Vec<_>>()
         .join(" ");
-    SYNONYMS
+    rules
+        .synonyms
         .iter()
-        .find(|(_, variants)| variants.iter().any(|v| *v == spaced))
-        .map_or(spaced, |(canonical, _)| canonical.to_string())
+        .find(|(_, variants)| variants.contains(&spaced))
+        .map_or(spaced, |(canonical, _)| canonical.clone())
 }
-
-/// Misspelled or area-named room-code prefixes -> scene prefix.
-const ROOM_TYPOS: &[(&str, &str)] = &[
-    ("bone_ease_", "bone_east_"),
-    ("shadows_", "shadow_"),
-    ("cogworks_", "cog_"),
-    ("whiteward_", "ward_"),
-    ("sinners_road_", "dust_"),
-    ("high_", "hang_"),
-    ("bone_east_05b", "bone_east_05"),
-];
 
 /// Fixes common misspellings of a (lowercase) room code: known prefix typos and a missing
 /// leading zero (`cog_4` -> `cog_04`).
-pub fn room_spelling(tag: &str) -> String {
-    let fixed = ROOM_TYPOS
+pub fn room_spelling(tag: &str, rules: &TagRules) -> String {
+    let fixed = rules
+        .room_typos
         .iter()
         .find_map(|(typo, fix)| tag.strip_prefix(typo).map(|rest| format!("{fix}{rest}")))
         .unwrap_or_else(|| tag.to_string());
@@ -75,10 +47,12 @@ pub fn room_spelling(tag: &str) -> String {
     }
 }
 
-/// `dust_maze_02` -> `m2`, the community's name for the maze rooms.
-fn dust_maze_short(word: &str) -> Option<String> {
-    let n: u32 = word.strip_prefix("dust_maze_")?.parse().ok()?;
-    Some(format!("m{n}"))
+/// The community's short name of a numbered room (`dust_maze_02` -> `m2`).
+fn room_nickname(word: &str, rules: &TagRules) -> Option<String> {
+    rules.room_nicknames.iter().find_map(|(prefix, nickname)| {
+        let n: u32 = word.strip_prefix(prefix.as_str())?.parse().ok()?;
+        Some(format!("{nickname}{n}"))
+    })
 }
 
 /// Variant -> canonical tag for tags that only differ by spaces (`crawskip` / `craw skip`).
@@ -108,7 +82,21 @@ pub fn space_variants<'a>(tags: impl IntoIterator<Item = &'a str>) -> BTreeMap<S
 
 #[cfg(test)]
 mod tests {
+    use games::Game;
+
     use super::*;
+
+    fn ss_rules() -> TagRules {
+        Game::load("ss").unwrap().tags
+    }
+
+    fn normalize_tag(raw: &str) -> String {
+        super::normalize_tag(raw, &ss_rules())
+    }
+
+    fn room_spelling(tag: &str) -> String {
+        super::room_spelling(tag, &ss_rules())
+    }
 
     #[test]
     fn variants_map_to_canonical() {
