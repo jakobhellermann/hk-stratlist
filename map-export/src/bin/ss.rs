@@ -34,7 +34,7 @@ fn main() -> Result<()> {
         .map(|handle| handle.read())
         .collect::<Result<_>>()?;
     for room in rooms {
-        map.add_room(room.m_GameObject, Some(room.fullSprite))?;
+        map.add_room(room.m_GameObject.m_PathID, Some(room.fullSprite))?;
     }
     map.write(&game, &scenes)
 }

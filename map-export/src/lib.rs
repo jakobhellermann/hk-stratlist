@@ -149,19 +149,15 @@ impl<'a> MapBuilder<'a> {
         &self.file
     }
 
-    /// Hierarchy path of a GameObject, `<map>/<area>/<room>`.
-    pub fn path(&self, game_object: TypedPPtr<GameObject>) -> Result<String> {
-        self.file.deref(game_object)?.path()
-    }
-
     /// Adds the map entry of a room. Its drawing is `full_sprite` (shown once the room is explored)
     /// if there is one, else the rough outline of its SpriteRenderer.
     pub fn add_room(
         &mut self,
-        game_object: TypedPPtr<GameObject>,
+        game_object: PathId,
         full_sprite: Option<TypedPPtr<Sprite>>,
     ) -> Result<()> {
-        let path = self.path(game_object)?;
+        // `<map>/<area>/<room>`
+        let path = self.file.object_at::<GameObject>(game_object)?.path()?;
         let parts: Vec<&str> = path.split('/').collect();
         let name = parts
             .last()
@@ -169,14 +165,13 @@ impl<'a> MapBuilder<'a> {
             .to_string();
         let area = parts.get(1).copied().unwrap_or_default().to_string();
 
-        let go = game_object.m_PathID;
         let transform = *self
             .transform_of
-            .get(&go)
+            .get(&game_object)
             .with_context(|| format!("{path} has no Transform"))?;
         let ((wx, wy), (sx, sy)) = world_transform(&self.transforms, transform)?;
 
-        let Some(renderer) = self.renderers.get(&go) else {
+        let Some(renderer) = self.renderers.get(&game_object) else {
             self.skipped.push(format!("{name}: no SpriteRenderer"));
             return Ok(());
         };
