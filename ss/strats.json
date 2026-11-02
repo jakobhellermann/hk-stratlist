@@ -269,6 +269,9 @@
     "hha": [
       "hhg"
     ],
+    "high halls gauntlet": [
+      "high halls guantlet"
+    ],
     "key route": [
       "keyroute"
     ],
@@ -14009,7 +14012,7 @@
       "rooms": [],
       "tags": [
         "high halls arena",
-        "high halls guantlet",
+        "high halls gauntlet",
         "hha",
         "hhg wave 1"
       ],
