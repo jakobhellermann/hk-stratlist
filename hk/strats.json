@@ -223,6 +223,9 @@
     "great slash": [
       "greatslash"
     ],
+    "grubsong": [
+      "grubsong%"
+    ],
     "gruz mother": [
       "gruzmother"
     ],
@@ -6464,7 +6467,7 @@
       "tags": [
         "grubs",
         "fungal wastes",
-        "grubsong%"
+        "grubsong"
       ],
       "prose": "Timing this room is hard so numbers might not be completely accurate, but the estimate I got from doing this strat compared to hugging the left wall was about 1s - 1.5s.  Sometimes you can get hit by that last row of guys if you get a bad bounce which loses about 0.4s - 0.6s so it's still faster.  If things go wrong or you mess up, then I was losing about up to 2s to my fastest times for both strats so there isn't much of a difference there.  This strat seems to be more consistent though at least for me.  Useful for any categories that want to quit out from this grub like grubsong%",
       "attachments": [
