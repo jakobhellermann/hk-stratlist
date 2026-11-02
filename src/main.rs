@@ -235,6 +235,21 @@ fn main() -> Result<()> {
         std::fs::write(&path, contents).with_context(|| format!("writing {}", path.display()))
     };
     write("strats.json", serde_json::to_string_pretty(&strats)?)?;
+    let sprite_dir = out_dir.join("public/map");
+    let missing: Vec<&str> = rooms
+        .iter()
+        .flat_map(|r| &r.sprites)
+        .map(|s| s.file.as_str())
+        .filter(|file| !sprite_dir.join(file).exists())
+        .collect();
+    if !missing.is_empty() {
+        bail!(
+            "{} map sprites missing in {} (run maptools/export-sprites.py): {:?}",
+            missing.len(),
+            sprite_dir.display(),
+            &missing[..missing.len().min(5)]
+        );
+    }
     write("map.json", serde_json::to_string(&rooms)?)?;
     println!("\nwrote {}/{{strats,map}}.json", out_dir.display());
 

@@ -185,6 +185,23 @@ body.wide main {
   stroke: var(--fg);
   stroke-width: 2px;
 }
+.map .sprite {
+  opacity: 0.25;
+  pointer-events: none;
+}
+.map .sprite.has-strats {
+  opacity: 1;
+}
+.map .hit path {
+  fill: transparent;
+}
+/* opacity on the group, so overlapping pieces of one room highlight evenly */
+.map .hit:hover {
+  opacity: 0.12;
+}
+.map .hit:hover path {
+  fill: var(--fg);
+}
 .map {
   touch-action: none;
   cursor: grab;
@@ -201,7 +218,7 @@ body.wide main {
   fill: var(--muted);
 }
 .map .label.has-strats {
-  fill: #000;
+  fill: var(--fg);
   font-weight: 600;
 }
 /* Hidden until the script has restored the saved view and sized the labels. */

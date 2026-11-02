@@ -2,12 +2,14 @@
 //!
 //! map-data has one entry per map sprite, and a room's map drawing can consist of several sprites
 //! (e.g. `Bonetown`, `Bonetown_top_left`, `Bonetown_top_right`). An entry belongs to the longest
-//! `_`-separated prefix of its name that is a loadable scene. Like MapWarp, only the room's own
-//! sprites are drawn; segments are reveal pieces that overlap the room or reach into others.
+//! `_`-separated prefix of its name that is a loadable scene. Segments are further outline pieces
+//! of the room drawing: they are drawn and clickable, but only the room's own sprites define its box.
 
 use std::collections::{BTreeMap, HashSet};
 
 use serde::{Deserialize, Serialize};
+
+type Polygon = Vec<[f64; 2]>;
 
 #[derive(Deserialize)]
 pub struct MapEntry {
@@ -18,6 +20,34 @@ pub struct MapEntry {
     w: f64,
     h: f64,
     color: [f64; 4],
+    /// Path id of the map sprite; absent for rooms without one.
+    sprite: Option<i64>,
+    /// Physics outline of the sprite, i.e. the area enclosed by the drawn outline.
+    shape: Option<Vec<Polygon>>,
+}
+
+/// A map sprite image (see maptools' export-sprites.py), stretched over `[x, y, w, h]`.
+#[derive(Serialize)]
+pub struct Sprite {
+    x: f64,
+    y: f64,
+    w: f64,
+    h: f64,
+    pub file: String,
+}
+
+impl MapEntry {
+    fn sprite(&self) -> Option<Sprite> {
+        let [r, g, b] = [0, 1, 2].map(|i| (self.color[i] * 255.0).round() as u8);
+        // Unrounded: a sprite pixel is 0.01 units, so rounding shows as seams between adjacent sprites.
+        Some(Sprite {
+            x: self.x,
+            y: self.y,
+            w: self.w,
+            h: self.h,
+            file: format!("{}-{r:02x}{g:02x}{b:02x}.webp", self.sprite?),
+        })
+    }
 }
 
 #[derive(Serialize)]
@@ -31,6 +61,28 @@ pub struct MapRoom {
     h: f64,
     /// Bounding box `[x, y, w, h]` of the room's own map sprite(s).
     boxes: Vec<[f64; 4]>,
+    /// Outline of each of the room's own and segment sprites, used as click area. A sprite's outline
+    /// can consist of several polygons (holes), so pieces are kept apart.
+    hit: Vec<Vec<Polygon>>,
+    /// Own and segment sprites, in map-data order.
+    pub sprites: Vec<Sprite>,
+}
+
+impl MapRoom {
+    /// Adds an entry's sprite and its outline (click area) to the room's drawing.
+    fn add_drawing(&mut self, entry: MapEntry) {
+        self.sprites.extend(entry.sprite());
+        self.hit.extend(entry.shape.map(|shape| {
+            shape
+                .into_iter()
+                .map(|poly| {
+                    poly.into_iter()
+                        .map(|[x, y]| [round(x), round(y)])
+                        .collect()
+                })
+                .collect()
+        }));
+    }
 }
 
 /// Entry name without the `:n` duplicate suffix and stray spaces (`Library_04 _bot`).
@@ -60,6 +112,7 @@ fn round(v: f64) -> f64 {
 pub fn group(entries: Vec<MapEntry>, loadable: &HashSet<String>) -> (Vec<MapRoom>, Vec<String>) {
     let mut rooms: BTreeMap<String, MapRoom> = BTreeMap::new();
     let mut orphans = Vec::new();
+    let mut segments: Vec<(String, MapEntry)> = Vec::new();
 
     for entry in entries {
         let name = clean_name(&entry.name);
@@ -68,6 +121,7 @@ pub fn group(entries: Vec<MapEntry>, loadable: &HashSet<String>) -> (Vec<MapRoom
             name.clone()
         });
         if name != scene {
+            segments.push((scene, entry));
             continue;
         }
         let bbox = [entry.x, entry.y, entry.w, entry.h].map(round);
@@ -81,6 +135,8 @@ pub fn group(entries: Vec<MapEntry>, loadable: &HashSet<String>) -> (Vec<MapRoom
             w: entry.w,
             h: entry.h,
             boxes: Vec::new(),
+            hit: Vec::new(),
+            sprites: Vec::new(),
         });
         let (x1, y1) = (
             (room.x + room.w).max(entry.x + entry.w),
@@ -91,6 +147,13 @@ pub fn group(entries: Vec<MapEntry>, loadable: &HashSet<String>) -> (Vec<MapRoom
         room.w = x1 - room.x;
         room.h = y1 - room.y;
         room.boxes.push(bbox);
+        room.add_drawing(entry);
+    }
+    for (scene, entry) in segments {
+        rooms
+            .get_mut(&scene)
+            .unwrap_or_else(|| panic!("segment of {scene}, which has no map sprite of its own"))
+            .add_drawing(entry);
     }
 
     (rooms.into_values().collect(), orphans)

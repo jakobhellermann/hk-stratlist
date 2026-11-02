@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import mapRooms from "../../../data/map.json";
 import { byRoom, roomHref } from "../lib/data.js";
+import { url } from "../lib/url.js";
 
 const boxArea = ([, , w, h]) => w * h;
 // Rooms without a map sprite only have a position; they are drawn as a dot of this radius.
@@ -32,14 +33,20 @@ for (const stack of markers.values()) {
   });
 }
 
-// Each box is drawn on its own: rooms without strats (not clickable) below rooms with strats, then
-// largest first, so smaller boxes end up on top.
-const shapes = rooms
-  .flatMap((room) => (room.boxes.length ? room.boxes.map((box) => ({ room, box })) : [{ room }]))
-  .sort(
-    (a, b) =>
-      (a.room.count > 0) - (b.room.count > 0) || (b.box ? boxArea(b.box) : 0) - (a.box ? boxArea(a.box) : 0),
-  );
+// Map-data is y-up, SVG is y-down.
+const polygonPath = (poly) => "M" + poly.map(([x, y]) => `${x} ${-y}`).join("L") + "Z";
+const boxPath = ([x, y, w, h]) => polygonPath([[x, y], [x + w, y], [x + w, y + h], [x, y + h]]);
+const roomArea = (room) => room.boxes.reduce((sum, b) => sum + boxArea(b), 0);
+
+// Click areas of rooms with strats: one path per sprite outline (their boxes if the sprites have none),
+// larger rooms first so smaller ones end up on top.
+const hitAreas = rooms
+  .filter((room) => room.count && room.boxes.length)
+  .map((room) => ({
+    room,
+    pieces: room.hit.length ? room.hit.map((piece) => piece.map(polygonPath).join("")) : room.boxes.map(boxPath),
+  }))
+  .sort((a, b) => roomArea(b.room) - roomArea(a.room));
 
 const PAD = 2;
 const minX = Math.min(...rooms.map((r) => r.x));
@@ -52,14 +59,28 @@ const viewBox = `${minX - PAD} ${-maxY - PAD} ${maxX - minX + 2 * PAD} ${maxY - 
 
 <Layout title="Map" wide>
   <svg class="map" viewBox={viewBox}>
-    {shapes.map(({ room, box }) => {
-      const roomClass = ["room", { "has-strats": room.count }];
-      const shape = box
-        ? <rect x={box[0]} y={-(box[1] + box[3])} width={box[2]} height={box[3]} fill={room.fill} class:list={roomClass} />
-        : <circle cx={markerPos.get(room.name)[0]} cy={-markerPos.get(room.name)[1]} r={MARKER_R} fill={room.fill} class:list={roomClass} />;
-      const title = <title>{room.count ? `${room.name} · ${room.count} strats` : room.name}</title>;
-      return room.count ? <a href={roomHref(room.name)}>{shape}{title}</a> : <g>{shape}{title}</g>;
-    })}
+    <g class="sprites">
+      {rooms.flatMap((room) =>
+        room.sprites.map((s) => (
+          <image href={url(`map/${s.file}`)} x={s.x} y={-(s.y + s.h)} width={s.w} height={s.h} preserveAspectRatio="none" class:list={["sprite", { "has-strats": room.count }]} />
+        )),
+      )}
+    </g>
+    {rooms
+      .filter((room) => room.boxes.length === 0)
+      .toSorted((a, b) => (a.count > 0) - (b.count > 0))
+      .map((room) => {
+        const [cx, cy] = markerPos.get(room.name);
+        const dot = <circle cx={cx} cy={-cy} r={MARKER_R} fill={room.fill} class:list={["room", { "has-strats": room.count }]} />;
+        const title = <title>{room.count ? `${room.name} · ${room.count} strats` : room.name}</title>;
+        return room.count ? <a href={roomHref(room.name)}>{dot}{title}</a> : <g>{dot}{title}</g>;
+      })}
+    {hitAreas.map(({ room, pieces }) => (
+      <a href={roomHref(room.name)} class="hit">
+        {pieces.map((d) => <path d={d} fill-rule="evenodd" />)}
+        <title>{`${room.name} · ${room.count} strats`}</title>
+      </a>
+    ))}
     <g class="labels">
       {rooms.map(({ name, count, label: [x, y, w, h] }) => (
         <text x={x + w / 2} y={-(y + h / 2)} data-w={w} data-h={h} class:list={["label", { "has-strats": count }]}>{name}</text>
