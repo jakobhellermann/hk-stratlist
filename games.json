@@ -1,0 +1,11 @@
+{
+  "default": "ss",
+  "games": [
+    {
+      "slug": "ss",
+      "label": "Silksong",
+      "channel": "1365521515356885032",
+      "steamDir": "Hollow Knight Silksong"
+    }
+  ]
+}

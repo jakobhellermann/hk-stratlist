@@ -6,6 +6,7 @@ description = "Exports the Silksong world map (room layout, loadable scenes, roo
 
 [dependencies]
 anyhow = "1.0"
+games = { path = "../games" }
 image = { version = "0.25", default-features = false, features = ["webp"] }
 rabex = { version = "0.2", default-features = false, features = ["embed-tpk"] }
 rabex-env = { git = "https://github.com/jakobhellermann/rabex-env", rev = "84efd2637678" }

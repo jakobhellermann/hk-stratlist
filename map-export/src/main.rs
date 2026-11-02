@@ -1,17 +1,19 @@
-//! Exports the Silksong world map from the game files into the data directory:
+//! Exports the Silksong world map from the game files into the game's data directory:
 //!
 //! - `game/map-entries.json`: one entry per map sprite (`GameMapScene`), with its world box, color,
 //!   physics outline and sprite id
 //! - `game/scenes.json`: names of all loadable scenes
-//! - `public/map/<sprite id>-<rrggbb>.webp`: each sprite tinted with its room color, over its full rect
+//! - `map/<sprite id>-<rrggbb>.webp` in the public dir: each sprite tinted with its room color, over
+//!   its full rect
 //!
-//! Usage: map-export [DATA_DIR] [GAME_DIR]
+//! Usage: map-export <GAME> [GAME_DIR]
 
 use std::collections::{BTreeMap, BTreeSet, HashMap};
 use std::io::BufWriter;
 use std::path::{Path, PathBuf};
 
 use anyhow::{Context, Result, bail, ensure};
+use games::Game;
 use image::codecs::webp::WebPEncoder;
 use image::{ImageEncoder, RgbaImage};
 use rabex::objects::pptr::PathId;
@@ -28,7 +30,7 @@ use serde::{Deserialize, Serialize};
 
 const MAP_BUNDLE: &str = "maps_assets_all.bundle";
 const SCENE_BUNDLE_DIR: &str = "scenes_scenes_scenes";
-const DEFAULT_GAME_DIR: &str = ".local/share/Steam/steamapps/common/Hollow Knight Silksong";
+const STEAM_COMMON_DIR: &str = ".local/share/Steam/steamapps/common";
 
 #[derive(Deserialize)]
 #[allow(non_snake_case)]
@@ -95,12 +97,13 @@ fn sprite_file(name: &str, color: Color) -> String {
 
 fn main() -> Result<()> {
     let mut args = std::env::args().skip(1);
-    let data_dir = PathBuf::from(args.next().unwrap_or_else(|| "data".into()));
+    let game = Game::load(&args.next().context("usage: map-export <game> [game dir]")?)?;
+    let data_dir = game.data_dir();
     let game_dir = match args.next() {
         Some(dir) => PathBuf::from(dir),
-        None => {
-            PathBuf::from(std::env::var("HOME").context("HOME not set")?).join(DEFAULT_GAME_DIR)
-        }
+        None => PathBuf::from(std::env::var("HOME").context("HOME not set")?)
+            .join(STEAM_COMMON_DIR)
+            .join(&game.steam_dir),
     };
 
     let env = Environment::new(
@@ -116,7 +119,7 @@ fn main() -> Result<()> {
     std::fs::create_dir_all(&game_dir_out)?;
     write_json(&game_dir_out.join("scenes.json"), &scenes)?;
     write_json(&game_dir_out.join("map-entries.json"), &entries)?;
-    write_sprites(&data_dir.join("public/map"), &sprites)?;
+    write_sprites(&game.public_dir().join("map"), &sprites)?;
 
     println!(
         "{} scenes, {} map entries, {} sprites -> {}",

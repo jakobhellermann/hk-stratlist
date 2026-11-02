@@ -1,6 +1,22 @@
-import data from "@strats";
-import mapRooms from "../../../data/map.json";
+import games from "../../../games.json";
 import { url } from "./url.js";
+
+/** Game slug -> contents of `<slug>/<name>`, for each game's file in `dir`. */
+const byGame = (files) =>
+  new Map(Object.entries(files).map(([path, contents]) => [path.split("/").at(-2), contents]));
+const strats = byGame(
+  import.meta.glob("@strats/*/strats.json", { eager: true, import: "default" }),
+);
+const maps = byGame(
+  import.meta.glob("../../../data/*/map.json", { eager: true, import: "default" }),
+);
+
+export const game = games.default;
+const data = strats.get(game);
+export const mapRooms = maps.get(game);
+
+/** URL of a file in the game's public dir. */
+export const publicUrl = (path) => url(`${game}/${path}`);
 
 export const UNSORTED = "unsorted";
 

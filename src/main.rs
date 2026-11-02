@@ -2,6 +2,8 @@ use std::collections::{BTreeMap, HashMap, HashSet};
 use std::path::Path;
 
 use anyhow::{Context, Result, bail};
+use games::Game;
+use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
 
 mod map;
@@ -90,30 +92,23 @@ struct Strats<'a> {
     posts: Vec<Post<'a>>,
 }
 
-const STRATS_PATH: &str = "data/export/strats.json";
-/// Both written by map-export from the game files.
-const MAP_DATA_PATH: &str = "data/game/map-entries.json";
-const SCENES_PATH: &str = "data/game/scenes.json";
-const OUT_DIR: &str = "data";
-
-fn read(path: &str) -> Result<String> {
-    std::fs::read_to_string(path).with_context(|| format!("reading {path}"))
+fn read_json<T: DeserializeOwned>(path: &Path) -> Result<T> {
+    let contents =
+        std::fs::read_to_string(path).with_context(|| format!("reading {}", path.display()))?;
+    serde_json::from_str(&contents).with_context(|| format!("parsing {}", path.display()))
 }
 
 fn main() -> Result<()> {
-    let mut args = std::env::args().skip(1);
-    let strats_path = args.next().unwrap_or_else(|| STRATS_PATH.to_string());
-    let map_path = args.next().unwrap_or_else(|| MAP_DATA_PATH.to_string());
-    let scenes_path = args.next().unwrap_or_else(|| SCENES_PATH.to_string());
-    let out_dir = args.next().unwrap_or_else(|| OUT_DIR.to_string());
+    let slug = std::env::args().nth(1).context("usage: stratlist <game>")?;
+    let game = Game::load(&slug)?;
+    let out_dir = game.data_dir();
+    let public_dir = game.public_dir();
 
-    let export: Export = serde_json::from_str(&read(&strats_path)?)
-        .with_context(|| format!("parsing {strats_path}"))?;
+    let export: Export = read_json(&out_dir.join("export/strats.json"))?;
     let messages = &export.messages;
-    let entries: Vec<map::MapEntry> =
-        serde_json::from_str(&read(&map_path)?).with_context(|| format!("parsing {map_path}"))?;
-    let loadable: HashSet<String> = serde_json::from_str::<Vec<String>>(&read(&scenes_path)?)
-        .with_context(|| format!("parsing {scenes_path}"))?
+    // Both written by map-export from the game files.
+    let entries: Vec<map::MapEntry> = read_json(&out_dir.join("game/map-entries.json"))?;
+    let loadable: HashSet<String> = read_json::<Vec<String>>(&out_dir.join("game/scenes.json"))?
         .into_iter()
         .map(|scene| scene.to_lowercase())
         .collect();
@@ -136,8 +131,7 @@ fn main() -> Result<()> {
         })
         .collect();
 
-    let out_dir = Path::new(&out_dir);
-    let mut media_cache = media::Cache::open(&out_dir.join("media.json"), &out_dir.join("public"))?;
+    let mut media_cache = media::Cache::open(&out_dir.join("media.json"), &public_dir)?;
     if let Err(errors) = media_cache.fill(tagged.iter().flat_map(|(m, _)| &m.attachments).collect())
     {
         for e in &errors {
@@ -257,7 +251,7 @@ fn main() -> Result<()> {
         std::fs::write(&path, contents).with_context(|| format!("writing {}", path.display()))
     };
     write("strats.json", serde_json::to_string_pretty(&strats)?)?;
-    let sprite_dir = out_dir.join("public/map");
+    let sprite_dir = public_dir.join("map");
     let missing: Vec<&str> = rooms
         .iter()
         .flat_map(|r| &r.sprites)
@@ -266,9 +260,10 @@ fn main() -> Result<()> {
         .collect();
     if !missing.is_empty() {
         bail!(
-            "{} map sprites missing in {} (run maptools/export-sprites.py): {:?}",
+            "{} map sprites missing in {} (run `just map {}`): {:?}",
             missing.len(),
             sprite_dir.display(),
+            game.slug,
             &missing[..missing.len().min(5)]
         );
     }

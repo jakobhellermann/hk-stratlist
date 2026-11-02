@@ -1,5 +1,5 @@
 ---
-import { url } from "../lib/url.js";
+import { publicUrl } from "../lib/data.js";
 
 const { attachment: a } = Astro.props;
 
@@ -15,7 +15,7 @@ const style = a.width && `aspect-ratio: ${a.width} / ${a.height}`;
   {a.kind === "video" && (
     <video
       src={a.url}
-      data-poster={url(a.preview)}
+      data-poster={publicUrl(a.preview)}
       width={a.width}
       height={a.height}
       style={style}
@@ -27,7 +27,7 @@ const style = a.width && `aspect-ratio: ${a.width} / ${a.height}`;
   )}
   {a.kind === "image" && (
     <a href={a.url} target="_blank">
-      <img src={url(a.preview)} width={a.width} height={a.height} style={style} alt={a.name} title={a.name} loading="lazy" decoding="async" />
+      <img src={publicUrl(a.preview)} width={a.width} height={a.height} style={style} alt={a.name} title={a.name} loading="lazy" decoding="async" />
     </a>
   )}
 </figure>

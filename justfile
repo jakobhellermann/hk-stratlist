@@ -1,7 +1,6 @@
 set dotenv-load
 
-channel := "1365521515356885032"
-strats := "data/export/strats.json"
+games := `jq -r '[.games[].slug] | join(" ")' games.json`
 # AUR and nixpkgs name the binary differently
 exporter := `command -v discord-chat-exporter-cli || echo discordchatexporter-cli`
 
@@ -13,40 +12,46 @@ setup-workspace:
     jj bookmark track data@origin
     jj workspace root --name data >/dev/null 2>&1 || jj workspace add data -r data
 
+_channel game:
+    @jq -er --arg slug {{game}} '.games[] | select(.slug == $slug) | .channel' games.json
+
 # fetch messages newer than the last one in the export, then regenerate data
-update: && data
+update game: && (data game)
     #!/usr/bin/env bash
     set -euo pipefail
+    strats=data/{{game}}/export/strats.json
+    channel=$(just _channel {{game}})
     # the exporter reads DISCORD_TOKEN from the environment
-    last=$(jq -r '.messages | max_by(.id | [length, .]) | .id' {{strats}})
+    last=$(jq -r '.messages | max_by(.id | [length, .]) | .id' "$strats")
     tmp=$(mktemp -d)
     trap 'rm -rf "$tmp"' EXIT
-    {{exporter}} export -c {{channel}} -f Json --after "$last" -o "$tmp/new.json"
+    {{exporter}} export -c "$channel" -f Json --after "$last" -o "$tmp/new.json"
     # merge by message id, newer export wins; ids are snowflakes beyond float precision, so compare as (length, string)
     jq -s '.[0] + {
         messages: ((.[0].messages + .[1].messages) | group_by(.id) | map(last) | sort_by(.id | [length, .])),
         exportedAt: .[1].exportedAt,
-      } | .messageCount = (.messages | length)' {{strats}} "$tmp/new.json" > "$tmp/merged.json"
+      } | .messageCount = (.messages | length)' "$strats" "$tmp/new.json" > "$tmp/merged.json"
     echo "added $(jq '.messages | length' "$tmp/new.json") messages after $last"
-    mv "$tmp/merged.json" {{strats}}
+    mv "$tmp/merged.json" "$strats"
 
 # re-export the whole channel
-export-all: && data
-    {{exporter}} export -c {{channel}} -f Json -o {{strats}}
+export-all game: && (data game)
+    mkdir -p data/{{game}}/export
+    {{exporter}} export -c "$(just _channel {{game}})" -f Json -o data/{{game}}/export/strats.json
 
 # room layout, loadable scenes and map sprites from the installed game (pass its directory if not the default Steam one)
-map *game_dir:
-    cargo run --release -p map-export -- data {{game_dir}}
+map game *game_dir:
+    cargo run --release -p map-export -- {{game}} {{game_dir}}
 
 # strats.json, map.json and media previews
-data:
-    cargo run --release
+data game:
+    cargo run --release -- {{game}}
 
-# re-sign all attachment links of data/strats.json into out (they expire after ~24h); needs DISCORD_BOT_TOKEN
-refresh out="data/strats.json":
+# re-sign all attachment links of a game's strats.json into out (they expire after ~24h); needs DISCORD_BOT_TOKEN
+refresh game out=("data/" + game + "/strats.json"):
     #!/usr/bin/env bash
     set -euo pipefail
-    data=data/strats.json
+    data=data/{{game}}/strats.json
     tmp=$(mktemp -d)
     trap 'rm -rf "$tmp"' EXIT
     echo '[]' > "$tmp/refreshed.json"
@@ -72,12 +77,18 @@ publish:
     jj -R data git push -b data
     gh workflow run pages.yml
 
+# refresh the attachment links of every game
+refresh-all:
+    for game in {{games}}; do just refresh "$game"; done
+
 # dev server, on a copy of the data with fresh links so the data workspace stays untouched
-dev: (refresh "web/.dev-data/strats.json")
-    cd web && STRATS_JSON=.dev-data/strats.json pnpm dev
+dev:
+    for game in {{games}}; do just refresh "$game" "web/.dev-data/$game/strats.json"; done
+    cd web && STRATS_DIR=.dev-data pnpm dev
 
 # final export
-build: data
+build:
+    for game in {{games}}; do just data "$game"; done
     cd web && pnpm build
 
 preview: build

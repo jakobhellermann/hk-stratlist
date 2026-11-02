@@ -1,8 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import mapRooms from "../../../data/map.json";
-import { byRoom, roomHref } from "../lib/data.js";
-import { url } from "../lib/url.js";
+import { byRoom, mapRooms, publicUrl, roomHref } from "../lib/data.js";
 
 const boxArea = ([, , w, h]) => w * h;
 // Rooms without a map sprite only have a position; they are drawn as a dot of this radius.
@@ -62,7 +60,7 @@ const viewBox = `${minX - PAD} ${-maxY - PAD} ${maxX - minX + 2 * PAD} ${maxY - 
     <g class="sprites">
       {rooms.flatMap((room) =>
         room.sprites.map((s) => (
-          <image href={url(`map/${s.file}`)} x={s.x} y={-(s.y + s.h)} width={s.w} height={s.h} preserveAspectRatio="none" class:list={["sprite", { "has-strats": room.count }]} />
+          <image href={publicUrl(`map/${s.file}`)} x={s.x} y={-(s.y + s.h)} width={s.w} height={s.h} preserveAspectRatio="none" class:list={["sprite", { "has-strats": room.count }]} />
         )),
       )}
     </g>

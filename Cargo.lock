@@ -244,6 +244,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e6d5a32815ae3f33302d95fdcb2ce17862f8c65363dcfd29360480ba1001fc9c"
 
 [[package]]
+name = "games"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "hashbrown"
 version = "0.16.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -332,6 +341,7 @@ name = "map-export"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "games",
  "image",
  "rabex",
  "rabex-env",
@@ -704,6 +714,7 @@ name = "stratlist"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "games",
  "rayon",
  "serde",
  "serde_json",
