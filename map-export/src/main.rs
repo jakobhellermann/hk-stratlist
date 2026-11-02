@@ -11,7 +11,7 @@ use std::collections::{BTreeMap, BTreeSet, HashMap};
 use std::io::BufWriter;
 use std::path::{Path, PathBuf};
 
-use anyhow::{Context, Result, ensure};
+use anyhow::{Context, Result, bail, ensure};
 use image::codecs::webp::WebPEncoder;
 use image::{ImageEncoder, RgbaImage};
 use rabex::objects::pptr::PathId;
@@ -74,7 +74,8 @@ struct Entry {
     h: f64,
     color: [f64; 4],
     #[serde(skip_serializing_if = "Option::is_none")]
-    sprite: Option<PathId>,
+    /// File name of the tinted sprite in `public/map/`.
+    sprite: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     scale: Option<[f64; 2]>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -86,9 +87,10 @@ fn round(v: f64, decimals: i32) -> f64 {
     (v * f).round() / f
 }
 
-fn sprite_file(sprite: PathId, color: Color) -> String {
+/// `<sprite name>-<rrggbb>.webp`; a few sprites are drawn in several colors.
+fn sprite_file(name: &str, color: Color) -> String {
     let [r, g, b] = [color.r, color.g, color.b].map(|c| (c * 255.0).round() as u8);
-    format!("{sprite}-{r:02x}{g:02x}{b:02x}.webp")
+    format!("{name}-{r:02x}{g:02x}{b:02x}.webp")
 }
 
 fn main() -> Result<()> {
@@ -157,6 +159,7 @@ fn map_entries(env: &Environment) -> Result<(Vec<Entry>, BTreeMap<String, RgbaIm
     let mut textures = TextureCache::default();
     let mut entries = Vec::new();
     let mut sprites: BTreeMap<String, RgbaImage> = BTreeMap::new();
+    let mut sprite_owners: HashMap<String, PathId> = HashMap::new();
     let mut skipped = Vec::new();
 
     for handle in maps.scripts::<GameMapScene>("GameMapScene")? {
@@ -179,7 +182,7 @@ fn map_entries(env: &Environment) -> Result<(Vec<Entry>, BTreeMap<String, RgbaIm
             skipped.push(format!("{name}: no SpriteRenderer"));
             continue;
         };
-        // Rounded like the stored color, so the sprite file name can be derived from map-entries.json.
+        // Tinting and the file name use the stored (rounded) color.
         let c = renderer.m_Color;
         let color = [c.r, c.g, c.b, c.a].map(|v| round(v as f64, 4));
         let c = Color {
@@ -229,7 +232,16 @@ fn map_entries(env: &Environment) -> Result<(Vec<Entry>, BTreeMap<String, RgbaIm
             })
             .collect();
 
-        let file = sprite_file(sprite_ptr.m_PathID, c);
+        let file = sprite_file(&sprite.m_Name, c);
+        match sprite_owners.insert(file.clone(), sprite_ptr.m_PathID) {
+            Some(owner) if owner != sprite_ptr.m_PathID => {
+                bail!(
+                    "sprites {owner} and {} both map to {file}",
+                    sprite_ptr.m_PathID
+                )
+            }
+            _ => {}
+        }
         if !sprites.contains_key(&file) {
             let atlas: Option<SpriteAtlas> = match sprite.is_atlas_packed() {
                 true => Some(sprite_handle.file.deref_read(sprite.m_SpriteAtlas)?),
@@ -242,7 +254,7 @@ fn map_entries(env: &Environment) -> Result<(Vec<Entry>, BTreeMap<String, RgbaIm
             let mut image =
                 render_sprite(&sprite, rd, texture).with_context(|| format!("sprite of {path}"))?;
             tint(&mut image, c);
-            sprites.insert(file, image);
+            sprites.insert(file.clone(), image);
         }
 
         entries.push(Entry {
@@ -253,7 +265,7 @@ fn map_entries(env: &Environment) -> Result<(Vec<Entry>, BTreeMap<String, RgbaIm
             w: round(w, 3),
             h: round(h, 3),
             color,
-            sprite: Some(sprite_ptr.m_PathID),
+            sprite: Some(file),
             scale: Some([round(sx, 4), round(sy, 4)]),
             shape: (!shape.is_empty()).then_some(shape),
         });

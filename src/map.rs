@@ -20,13 +20,13 @@ pub struct MapEntry {
     w: f64,
     h: f64,
     color: [f64; 4],
-    /// Path id of the map sprite; absent for rooms without one.
-    sprite: Option<i64>,
+    /// File name of the room's sprite image in `public/map/`; absent for rooms without one.
+    sprite: Option<String>,
     /// Physics outline of the sprite, i.e. the area enclosed by the drawn outline.
     shape: Option<Vec<Polygon>>,
 }
 
-/// A map sprite image (see maptools' export-sprites.py), stretched over `[x, y, w, h]`.
+/// A map sprite image (written by map-export), stretched over `[x, y, w, h]`.
 #[derive(Serialize)]
 pub struct Sprite {
     x: f64,
@@ -38,14 +38,13 @@ pub struct Sprite {
 
 impl MapEntry {
     fn sprite(&self) -> Option<Sprite> {
-        let [r, g, b] = [0, 1, 2].map(|i| (self.color[i] * 255.0).round() as u8);
         // Unrounded: a sprite pixel is 0.01 units, so rounding shows as seams between adjacent sprites.
         Some(Sprite {
             x: self.x,
             y: self.y,
             w: self.w,
             h: self.h,
-            file: format!("{}-{r:02x}{g:02x}{b:02x}.webp", self.sprite?),
+            file: self.sprite.clone()?,
         })
     }
 }
