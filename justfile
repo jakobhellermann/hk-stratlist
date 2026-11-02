@@ -2,6 +2,13 @@ set dotenv-load
 
 channel := "1365521515356885032"
 strats := "data/export/strats.json"
+# AUR and nixpkgs name the binary differently
+exporter := `command -v discord-chat-exporter-cli || echo discordchatexporter-cli`
+
+# check out the data branch as a separate workspace in data/
+setup-workspace:
+    jj bookmark track data@origin
+    jj workspace root --name data >/dev/null 2>&1 || jj workspace add data -r data
 
 # fetch messages newer than the last one in the export, then regenerate data
 update: && data
@@ -11,7 +18,7 @@ update: && data
     last=$(jq -r '.messages | max_by(.id | [length, .]) | .id' {{strats}})
     tmp=$(mktemp -d)
     trap 'rm -rf "$tmp"' EXIT
-    discord-chat-exporter-cli export -c {{channel}} -f Json --after "$last" -o "$tmp/new.json"
+    {{exporter}} export -c {{channel}} -f Json --after "$last" -o "$tmp/new.json"
     # merge by message id, newer export wins; ids are snowflakes beyond float precision, so compare as (length, string)
     jq -s '.[0] + {
         messages: ((.[0].messages + .[1].messages) | group_by(.id) | map(last) | sort_by(.id | [length, .])),
@@ -22,7 +29,7 @@ update: && data
 
 # re-export the whole channel
 export-all: && data
-    discord-chat-exporter-cli export -c {{channel}} -f Json -o {{strats}}
+    {{exporter}} export -c {{channel}} -f Json -o {{strats}}
 
 # strats.json, map.json and media previews
 data:
