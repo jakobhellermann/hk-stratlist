@@ -15,6 +15,7 @@
 //!   (including any later `#`) is prose. Long segments followed by short ones
 //!   stay whole tags (`#mount fay first room no claw #low%`).
 //! * A `,` ends a tag; the rest of its segment is prose (`#100%, notes`).
+//! * A parenthesized aside at the end of a tag is prose (`#1221 (not on lp)`).
 //! * Trailing `-` is a separator, not part of the tag (`#100%-#belltown_08`).
 //! * A channel/thread mention (`<#id>`) ends the tags; it and the rest of the line are prose.
 //! * Markdown markers and quotes around a tag are dropped (`#any% **#Trobbio**`,
@@ -89,12 +90,15 @@ pub fn parse_content(content: &str) -> Option<ParsedPost> {
             Some((tag, rest)) => (tag, rest.trim()),
             None => (seg_trimmed, ""),
         };
+        let (tag, aside) = split_trailing_aside(tag);
         let tag = trim_separators(tag);
         if !tag.is_empty() {
             tags.push(tag.to_lowercase());
         }
-        if !after_comma.is_empty() {
-            inline_prose.push(after_comma);
+        for prose in [aside, after_comma] {
+            if !prose.is_empty() {
+                inline_prose.push(prose);
+            }
         }
     }
 
@@ -110,6 +114,15 @@ pub fn parse_content(content: &str) -> Option<ParsedPost> {
     };
 
     Some(ParsedPost { tags, prose })
+}
+
+/// Splits `tag (aside)` into the tag and `(aside)`.
+fn split_trailing_aside(tag: &str) -> (&str, &str) {
+    let trimmed = tag.trim_end();
+    match trimmed.ends_with(')').then(|| trimmed.rfind('(')).flatten() {
+        Some(i) => (&trimmed[..i], &trimmed[i..]),
+        None => (tag, ""),
+    }
 }
 
 fn trim_separators(tag: &str) -> &str {
@@ -279,6 +292,20 @@ mod tests {
         let parsed = parse_content("#cog_08 #any%, short note\nsecond line").unwrap();
         assert_eq!(parsed.tags, vec!["cog_08", "any%"]);
         assert_eq!(parsed.prose.as_deref(), Some("short note\nsecond line"));
+    }
+
+    #[test]
+    fn trailing_aside_is_prose() {
+        let parsed = parse_content("#greymoor_15b (made up aside) #any%").unwrap();
+        assert_eq!(parsed.tags, vec!["greymoor_15b", "any%"]);
+        assert_eq!(parsed.prose.as_deref(), Some("(made up aside)"));
+    }
+
+    #[test]
+    fn parentheses_inside_or_unclosed_stay_in_the_tag() {
+        let parsed = parse_content("#made (up) tag #107 (maybe #106?)").unwrap();
+        assert_eq!(parsed.tags, vec!["made (up) tag", "107 (maybe", "106?)"]);
+        assert_eq!(parsed.prose, None);
     }
 
     #[test]
