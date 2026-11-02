@@ -5,8 +5,30 @@ const SEEK_SECONDS_SHIFT = 5;
 /** The video that keyboard shortcuts act on: the one last played or clicked. */
 let active = null;
 
+const POSTER_MARGIN_PX = 1000;
+
+// Posters can't be lazy-loaded natively, so they are only set once the video comes near the viewport.
+const posterLoader = new IntersectionObserver(
+  (entries) => {
+    for (const { isIntersecting, target } of entries) {
+      if (!isIntersecting) continue;
+      target.poster = target.dataset.poster;
+      posterLoader.unobserve(target);
+    }
+  },
+  { rootMargin: `${POSTER_MARGIN_PX}px` },
+);
+
 function setup() {
-  for (const video of document.querySelectorAll("video")) video.volume = VOLUME;
+  posterLoader.disconnect();
+  for (const video of document.querySelectorAll("video")) {
+    video.volume = VOLUME;
+    // The observer only reports after a few frames, which on long pages comes noticeably late for visible videos.
+    const { top, bottom } = video.getBoundingClientRect();
+    if (bottom > -POSTER_MARGIN_PX && top < innerHeight + POSTER_MARGIN_PX)
+      video.poster = video.dataset.poster;
+    else posterLoader.observe(video);
+  }
 }
 document.addEventListener("astro:page-load", setup);
 

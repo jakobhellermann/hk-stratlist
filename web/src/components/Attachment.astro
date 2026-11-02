@@ -15,7 +15,7 @@ const style = a.width && `aspect-ratio: ${a.width} / ${a.height}`;
   {a.kind === "video" && (
     <video
       src={a.url}
-      poster={url(a.preview)}
+      data-poster={url(a.preview)}
       width={a.width}
       height={a.height}
       style={style}
