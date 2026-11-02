@@ -340,6 +340,9 @@
       "hk true ending",
       "trueending"
     ],
+    "vengefly king": [
+      "vfk"
+    ],
     "wall cling storage": [
       "wallcling storage"
     ],
@@ -14226,8 +14229,7 @@
       "tags": [
         "112%",
         "vengefly king",
-        "vking",
-        "vfk"
+        "vking"
       ],
       "prose": "best startup I can find with steady body ~~not cursed at all~~, can replace flukes with shriek if you run shaman build, shaman shriek is .5s faster",
       "attachments": [
@@ -28429,7 +28431,6 @@
         "all skills",
         "mothwing cloak",
         "mwc",
-        "vfk",
         "vengefly king",
         "fury"
       ],
