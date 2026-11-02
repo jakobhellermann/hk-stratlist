@@ -220,6 +220,13 @@
     "early control": [
       "earlycontrol"
     ],
+    "elegy%": [
+      "elegy"
+    ],
+    "epogo": [
+      "explosionpogo",
+      "explosion pogo"
+    ],
     "fk skip": [
       "fkskip"
     ],
@@ -235,8 +242,8 @@
     "great slash": [
       "greatslash"
     ],
-    "grubsong": [
-      "grubsong%"
+    "grubsong%": [
+      "grubsong"
     ],
     "gruz mother": [
       "gruzmother"
@@ -5071,7 +5078,7 @@
       "date": "2021-10-22T16:25:26.029+02:00",
       "rooms": [],
       "tags": [
-        "elegy",
+        "elegy%",
         "collector",
         "scream skip"
       ],
@@ -6140,7 +6147,7 @@
       "rooms": [],
       "tags": [
         "collector",
-        "elegy",
+        "elegy%",
         "scream skip"
       ],
       "prose": "An alternative method of scream skip that only uses cdash and a walljump. Check this for cues: https://discord.com/channels/772964112908156938/836364889604751450/910120787955052564",
@@ -6479,7 +6486,7 @@
       "tags": [
         "grubs",
         "fungal wastes",
-        "grubsong"
+        "grubsong%"
       ],
       "prose": "Timing this room is hard so numbers might not be completely accurate, but the estimate I got from doing this strat compared to hugging the left wall was about 1s - 1.5s.  Sometimes you can get hit by that last row of guys if you get a bad bounce which loses about 0.4s - 0.6s so it's still faster.  If things go wrong or you mess up, then I was losing about up to 2s to my fastest times for both strats so there isn't much of a difference there.  This strat seems to be more consistent though at least for me.  Useful for any categories that want to quit out from this grub like grubsong%",
       "attachments": [
@@ -9156,7 +9163,6 @@
       "rooms": [],
       "tags": [
         "epogo",
-        "explosionpogo",
         "1fb",
         "cp"
       ],
@@ -9192,7 +9198,6 @@
       ],
       "tags": [
         "epogo",
-        "explosionpogo",
         "1fb",
         "cp"
       ],
@@ -9226,7 +9231,6 @@
       "rooms": [],
       "tags": [
         "epogo",
-        "explosionpogo",
         "1fb",
         "1221"
       ],
@@ -9251,7 +9255,7 @@
       "date": "2022-02-07T21:36:36.813+01:00",
       "rooms": [],
       "tags": [
-        "grubsong",
+        "grubsong%",
         "cp"
       ],
       "prose": "Made a tutorial video going over some of the Grubsong% movement! Hopefully this makes learning and optimising the category a little easier. Thanks to everyone who shared their strats and knowledge of the movement. \nhttps://youtu.be/zeBLxtC5rpM",
@@ -10764,7 +10768,6 @@
       ],
       "tags": [
         "epogo",
-        "explosionpogo",
         "lp",
         "cp",
         "2fb",
@@ -11575,7 +11578,7 @@
       ],
       "tags": [
         "112%",
-        "elegy",
+        "elegy%",
         "collector"
       ],
       "prose": ".2-.3 timesave. Sticky ceiling is precise but not too bad with practice, might be worse in runs.",
@@ -14132,7 +14135,7 @@
       "tags": [
         "112%",
         "107%",
-        "elegy"
+        "elegy%"
       ],
       "prose": "cdash instead of dashes at the end of the room. Pretty hard, saves .15 max, .1 is more to be expected, messing up is ~.3 timeloss",
       "attachments": [
@@ -14165,7 +14168,7 @@
         "Mines_03"
       ],
       "tags": [
-        "elegy",
+        "elegy%",
         "107%",
         "112%"
       ],
@@ -20208,7 +20211,6 @@
       ],
       "tags": [
         "epogo",
-        "explosionpogo",
         "lp",
         "cp",
         "2fb",
@@ -20914,7 +20916,6 @@
       "tags": [
         "meemeepogo",
         "epogo",
-        "explosionpogo",
         "lp",
         "cp",
         "2fb"
@@ -26763,7 +26764,7 @@
         "all skills",
         "106%",
         "acn",
-        "elegy",
+        "elegy%",
         "happy couple etc."
       ],
       "prose": "By clinging to and unclinging from the left wall in the previous room, you can dash left once and then dash right to your heart's content with wall cling storage.\n\nWithout dashmaster: \n- If the glimback is on the right, wall jump over it midair and continue as normal to save around 0.4\n- If the glimback is on left, you can either do the same thing or go for the chain and do the sequence in the first video to save 1.1\n\nWith dashmaster:\n- If the glimback is on the right, do the sequence shown in the second video - delaying the dash after the glimback pogo helps make the rest more lenient but make sure not to touch the ceiling \n- If the glimback is on the left, do the sequence shown in the third video - the background object on the left is pogoable but the right one isn't so dash quickly after pogoing the glimback to line yourself up\n- For both patterns you save around a second, and if you lose too much height and have to midair wall jump you barely lose anything to a perfect room. \n- Theoretically you could probably save more time by chaining and keep wcs through the entire horizontal section of the room but it's pretty hard because you can graze the wall",
@@ -30100,7 +30101,7 @@
         "Fungus1_28"
       ],
       "tags": [
-        "elegy",
+        "elegy%",
         "baldurshellgrub"
       ],
       "prose": "delaying the dash after the object pogo goes even/-0.1 with the current strat but is fully consistent and saves 0.5 with bad crawlid rng",
@@ -31333,7 +31334,7 @@
       "tags": [
         "1221",
         "hopper cdash cycle",
-        "elegy",
+        "elegy%",
         "other categories idk"
       ],
       "prose": "two setups for the cdash hopper cycle with dashmaster, saves 0.4 and 0.2 to dmless cdash cycle\n\nwith the first strat, you have to delay one of the two final dashes or the final cdash, the more delayed the safer",
