@@ -12,12 +12,12 @@ const { title, wide = false } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title ? `${title} · Silk Strats` : "Silk Strats"}</title>
+    <title>{title ? `${title} · #strats` : "#strats"}</title>
     <ClientRouter />
   </head>
   <body class:list={{ wide }}>
     <header>
-      <a href={url("")}>Silk Strats</a>
+      <a href={url("")}>#strats</a>
       <nav><a href={url("list/")}>List</a> <a href={url("tags/")}>Tags</a></nav>
       <time class="updated" datetime={updated}>Updated {updated.slice(0, 10)}</time>
     </header>
