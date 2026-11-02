@@ -124,6 +124,15 @@
     "984780196290891786": "Five"
   },
   "aliases": {
+    "1221": [
+      "1.2.2.1"
+    ],
+    "1432": [
+      "1.4.3.2"
+    ],
+    "1432+": [
+      "1.4.3.2+"
+    ],
     "50 fps": [
       "50fps"
     ],
@@ -161,14 +170,16 @@
     "broken vessel": [
       "brokenvessel"
     ],
+    "cp": [
+      "current-patch",
+      "current patch",
+      "currentpatch"
+    ],
     "crystal heart": [
       "crystalheart"
     ],
     "crystal peak": [
       "crystalpeak"
-    ],
-    "current patch": [
-      "currentpatch"
     ],
     "descending dark": [
       "descendingdark"
@@ -233,6 +244,11 @@
     "low%": [
       "low percent",
       "hk-low-percent"
+    ],
+    "lp": [
+      "latest-patch",
+      "latest patch",
+      "latestpatch"
     ],
     "mantis lords": [
       "mantislords"
@@ -507,7 +523,6 @@
       "tags": [
         "uumuu",
         "cp",
-        "current patch",
         "any%"
       ],
       "prose": "Here's my guide for uumuu on current patch, for which I use a dramatically different setup than I do in 1221 for reasons explained in here\nhttps://www.youtube.com/watch?v=Chh_BuLfdVI\nOriginal post by RhinoFeeder\n- - - - -",
@@ -3547,7 +3562,7 @@
         "11",
         "te-cp",
         "cp",
-        "1.4.3.2",
+        "1432",
         "1.5",
         "lk-dream",
         "lost kin"
@@ -8997,7 +9012,7 @@
       "tags": [
         "112",
         "lp",
-        "current patch",
+        "cp",
         "1.4",
         "above lemm",
         "lemm drop"
@@ -9128,7 +9143,7 @@
         "epogo",
         "explosionpogo",
         "1fb",
-        "current patch"
+        "cp"
       ],
       "prose": "Epogo strat i found (this might exist already in that case sorry) that is fast and looks cool \ni find it easy to do because there's no waiting to it, you just go through the motions.\n\ndash off as soon as you land, neutral off the wall, walk left to the far left mushroom, turn back to the bouncies, bounce off leftward, fireball, pogo spore. It's hard but as i said if you get the rhythm it should be pretty ok. main thing to note is that you just need to focus on dashing high enough after the mushroom bounce",
       "attachments": [
@@ -9164,7 +9179,7 @@
         "epogo",
         "explosionpogo",
         "1fb",
-        "current patch"
+        "cp"
       ],
       "prose": "bc i saw blue's post so might as well share another possible setup",
       "attachments": [
@@ -9222,7 +9237,6 @@
       "rooms": [],
       "tags": [
         "grubsong",
-        "current patch",
         "cp"
       ],
       "prose": "Made a tutorial video going over some of the Grubsong% movement! Hopefully this makes learning and optimising the category a little easier. Thanks to everyone who shared their strats and knowledge of the movement. \nhttps://youtu.be/zeBLxtC5rpM",
@@ -9552,7 +9566,7 @@
       "tags": [
         "epogo",
         "low%",
-        "current patch"
+        "cp"
       ],
       "prose": "A more consistent way of doing epogo for current patch.",
       "attachments": [
@@ -9990,7 +10004,7 @@
       "rooms": [],
       "tags": [
         "4ms",
-        "current patch",
+        "cp",
         "mawlek"
       ],
       "prose": "Mawlek optimisation for when it does the jump attack, allows for one extra hit in the air which allows you to keep doing consecutive hits instead of having to pause a little bit waiting for mawlek to land.\nThis strat is 100% consistent and makes jumps \"optimal\" over big spits, because the fastest big spit attack is RNG.\nSaves around .2-.3 for every jump",
@@ -10737,7 +10751,7 @@
         "epogo",
         "explosionpogo",
         "lp",
-        "current patch",
+        "cp",
         "2fb",
         "rekcahpogo"
       ],
@@ -10822,7 +10836,7 @@
       "tags": [
         "epogo",
         "low%",
-        "current patch"
+        "cp"
       ],
       "prose": "A consistent low% epogo strat for current patch. Much easier than the previous version. These were done at 200 fps",
       "attachments": [
@@ -11722,7 +11736,7 @@
       "tags": [
         "all skills",
         "1.5+",
-        "latest-patch"
+        "lp"
       ],
       "prose": "Better drop for latest patch all skills. saves .8s on previous single dive strat. Not too tight of a timing, savable if you miss the small platform by winging.",
       "attachments": [
@@ -11972,7 +11986,6 @@
         "Crossroads_01"
       ],
       "tags": [
-        "1.4.3.2",
         "1432",
         "crossroads entrance"
       ],
@@ -12886,7 +12899,7 @@
       "rooms": [],
       "tags": [
         "low%",
-        "current patch",
+        "cp",
         "uumuu",
         "3 cycle"
       ],
@@ -12969,7 +12982,7 @@
         "abyss_18 shade skip skip",
         "shaman stone",
         "shamanless",
-        "current patch",
+        "cp",
         "any%"
       ],
       "prose": "(dare I say that?) Consistent setups for shade skip skip, with and without shaman. Get the horizontal position correct (with shaman you need to be slightly further to the right) using the background textures. For shamanless, dash and cast as high as possible. With shaman stone, you need to fall a tiny bit or your fireball will go too fast as it does in the first attempt. Either way, don't press directions until after the dash. Only consistent at 50 fps",
@@ -13016,7 +13029,7 @@
         "soul catcher early control",
         "gpz",
         "true ending",
-        "current patch"
+        "cp"
       ],
       "prose": "more lenient and more consistent ending setup for soul catcher early control. you have a lot of iframes, so wait until you see the baldur start to curl up and then move to the left side of it. warning that you CAN go too far left so dont just hold left and expect to get hit since you need the iframes for when the baldur comes back.",
       "attachments": [
@@ -13055,7 +13068,7 @@
       "rooms": [],
       "tags": [
         "white-palace",
-        "current-patch",
+        "cp",
         "true ending"
       ],
       "prose": "Starting from the loading zone you basically do 3 wall jumps into a dash, double jump, then fireball the bottom corner of the wall while the top of the knight is slightly above the bottom of it. You want to be near the center but slightly closer to the wall you arent facing. Works in both directions and use vysnc of course.",
@@ -13347,7 +13360,7 @@
       "tags": [
         "nmg",
         "fireball-skip",
-        "current patch"
+        "cp"
       ],
       "prose": "Super consistent 1 fireball setup for the 3rd Greenpath fireball skip. Once in between the background pole and pillar as shown in the image, do 2 mini-hops followed up by a full jump and it should line you up perfectly to do 1 fireball.  I've found this to be pretty much 100% consistent for me!",
       "attachments": [
@@ -14843,7 +14856,7 @@
       ],
       "tags": [
         "all skills",
-        "1.2.2.1",
+        "1221",
         "shade cloak"
       ],
       "prose": "Doing this wiggle saves ~0.4s compared to doing the lookdown",
@@ -19675,7 +19688,7 @@
       "tags": [
         "gslash",
         "gauntlet",
-        "1.4.3.2+"
+        "1432+"
       ],
       "prose": "by cdashing the first part with the singular duranda, you make it to the next part so early in the cycle that you have time to dash into the wall to set your cdash on the correct height to dash over the ledge and still get the fastest cycle\nmakes it very easy, saves about .7-.9 over the most common strats",
       "attachments": [
@@ -19708,7 +19721,7 @@
       ],
       "tags": [
         "any%",
-        "1.4.3.2+",
+        "1432+",
         "lp",
         "watcher knights"
       ],
@@ -20183,7 +20196,7 @@
         "epogo",
         "explosionpogo",
         "lp",
-        "current patch",
+        "cp",
         "2fb",
         "cooperrekcahpogo"
       ],
@@ -20889,7 +20902,7 @@
         "epogo",
         "explosionpogo",
         "lp",
-        "current patch",
+        "cp",
         "2fb"
       ],
       "prose": "Very simple and easy setup for lp epogo. Full jump slightly to the left as soon as you touch the platform, then fall right to the mushroom. Use mushroom pogo to move to the middle of the platform and wall (make sure not to go too far left or the spore will bounce). The dash after is super lenient, you can go pretty low and it will still work. The trick has been very consistent for me in practice and the timings are all lenient.\nThe setup is dependent on sporg being asleep so if you miss but still have soul you need to do a backup (such as 2nd video) to get the setup again.",
@@ -25817,7 +25830,6 @@
       "date": "2024-10-23T02:40:35.101+02:00",
       "rooms": [],
       "tags": [
-        "1.2.2.1",
         "1221",
         "dreamer",
         "focus",
