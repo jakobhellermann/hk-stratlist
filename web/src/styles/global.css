@@ -155,10 +155,6 @@ figure video {
   height: auto;
   background: var(--chip);
 }
-figcaption {
-  font-size: 0.8rem;
-  overflow-wrap: anywhere;
-}
 header {
   display: flex;
   flex-wrap: wrap;

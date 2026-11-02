@@ -20,14 +20,14 @@ const style = a.width && `aspect-ratio: ${a.width} / ${a.height}`;
       height={a.height}
       style={style}
       data-fps={a.fps}
+      title={a.name}
       controls
       preload="none"
     />
   )}
   {a.kind === "image" && (
     <a href={a.url} target="_blank">
-      <img src={url(a.preview)} width={a.width} height={a.height} style={style} alt={a.name} loading="lazy" decoding="async" />
+      <img src={url(a.preview)} width={a.width} height={a.height} style={style} alt={a.name} title={a.name} loading="lazy" decoding="async" />
     </a>
   )}
-  <figcaption><a href={a.url} target="_blank">{a.name}</a></figcaption>
 </figure>
