@@ -185,7 +185,7 @@
     "100%": [
       "100",
       "hundo",
-      "100-percent"
+      "100 percent"
     ],
     "100% all bosses": [
       "100ab"
@@ -308,8 +308,7 @@
     ],
     "true ending": [
       "te",
-      "true",
-      "true-ending"
+      "true"
     ],
     "upper cog": [
       "uppercog"
@@ -7525,7 +7524,7 @@
         "Peak_01"
       ],
       "tags": [
-        "clawline-less",
+        "clawline less",
         "beast crest",
         "needolin skip"
       ],
@@ -8285,7 +8284,7 @@
       ],
       "tags": [
         "min%",
-        "line-lessfay"
+        "line lessfay"
       ],
       "prose": "You can skip the third cocoon pogo in the clawline-less mount fay route with some pretty precise and quick jumps\nIn order to get the highest jump height on slopes like I did, first you land on the slope, then jump without inputting any direction against the slope (or just don't input anything)\nI think it can be done without an air stall, it just makes it much easier to pull off\nhttps://youtu.be/dmymiKZVXwY",
       "attachments": [],
@@ -18654,7 +18653,7 @@
         "Cog_08"
       ],
       "tags": [
-        "key-route",
+        "key route",
         "cogwork core"
       ],
       "prose": "thanks to @74v13r  that gave the idea, it does not save a cycle, but it's probably a little bit faster than going right (by nothing, but it's alternative routing and maybe a litle bit easier to do ?\nIt also need some fine tuning at the end",
@@ -19017,7 +19016,7 @@
       "rooms": [],
       "tags": [
         "any%",
-        "crawl-3b"
+        "crawl 3b"
       ],
       "prose": "(dunno if it's faster, but it might be)",
       "attachments": [
@@ -24080,7 +24079,7 @@
         "Belltown_04"
       ],
       "tags": [
-        "pre-widow"
+        "pre widow"
       ],
       "prose": "not sure if this is already known,  but..\nyou can break this wall in 2 hits consistently if you know when to start swinging. provided screenshot shows the visual cue. you have to start swinging up below that red circle area. its not super precise but isnt super lenient either. \n\nyou probably can dash instead of pogoing after the fall, not sure which is faster. but pogoing there was easier to position myself right for the double hit.",
       "attachments": [
@@ -24217,7 +24216,7 @@
         "Belltown_04"
       ],
       "tags": [
-        "pre-widow",
+        "pre widow",
         "widow"
       ],
       "prose": "2 things: first not doing the fast break on the first wall lines up for me to just go and not have to time going under the guy\nsecond thank you to nebula for telling me, sprinting has a lower hitbox so you can go under it earlier compared to walking",

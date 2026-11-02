@@ -153,7 +153,7 @@
     ],
     "all skills": [
       "as",
-      "hk-all-skills",
+      "hk all skills",
       "allskills"
     ],
     "all whispering roots": [
@@ -162,7 +162,7 @@
     "any%": [
       "any",
       "any percent",
-      "hk-any-percent"
+      "hk any percent"
     ],
     "aspid arena": [
       "aspidarena"
@@ -180,7 +180,6 @@
       "brokenvessel"
     ],
     "cp": [
-      "current-patch",
       "current patch",
       "currentpatch"
     ],
@@ -230,6 +229,12 @@
     "fk skip": [
       "fkskip"
     ],
+    "flower": [
+      "flowerquest"
+    ],
+    "flukes": [
+      "flukenest"
+    ],
     "glowing womb": [
       "glowingwomb"
     ],
@@ -241,6 +246,9 @@
     ],
     "great slash": [
       "greatslash"
+    ],
+    "grub": [
+      "grubs"
     ],
     "grubsong%": [
       "grubsong"
@@ -260,15 +268,17 @@
     "left side rafter skip": [
       "leftsiderafterskip"
     ],
+    "lifeblood core": [
+      "lifebloodcore"
+    ],
     "lost kin": [
       "lostkin"
     ],
     "low%": [
       "low percent",
-      "hk-low-percent"
+      "hk low percent"
     ],
     "lp": [
-      "latest-patch",
       "latest patch",
       "latestpatch"
     ],
@@ -310,7 +320,7 @@
     ],
     "true ending": [
       "te",
-      "hk-true-ending",
+      "hk true ending",
       "trueending"
     ],
     "wall cling storage": [
@@ -1100,9 +1110,9 @@
         "nmg",
         "kingspass",
         "softfall",
-        "softfall-setup",
+        "softfall setup",
         "cues",
-        "min-hop"
+        "min hop"
       ],
       "prose": "Do a minimum height hop at this cue (the smallest tap of the jump button you can), and land on the highest ledge below for a simple consistent soft-fall setup in King's Pass.\n \n*note: there are upslash strats to cut your minimum height hop even shorter. This, however, means this cue is very likely too early to get consistent soft-fall, depending on how early you upslash to cancel your hop height.*\n\nFirst scr.shot shows where cue is before ground crumbles, second shows after.\nCredits: Muri\n\nhttps://media.discordapp.net/attachments/740939883446796298/788787271197392916/unknown.png?width=1587&height=901\nhttps://media.discordapp.net/attachments/740939883446796298/788787349755658260/unknown.png",
       "attachments": [],
@@ -1171,7 +1181,7 @@
       "rooms": [],
       "tags": [
         "low%",
-        "trinomi-drop"
+        "trinomi drop"
       ],
       "prose": "Modified trinomi drop for low-percent.  I didn't feel like recording more but if your fireball turnaround is really clean you can land on top of that ledge without needing to wall grab.",
       "attachments": [
@@ -1195,7 +1205,7 @@
       "rooms": [],
       "tags": [
         "low%",
-        "fog-canyon"
+        "fog canyon"
       ],
       "prose": "Fastest drop I could find through the room right before Queen's Station Skip.  If you're low on soul you can hit a few of these jellyfish on the way down without losing much time. \n\nAlso to note - you can pogo the jellyfish I took damage on but\n\na.) their positions are slightly rng so it can be hard to react\nb.) it actually seemed to be optimal to just take the hit and keep falling",
       "attachments": [
@@ -1234,8 +1244,8 @@
       "rooms": [],
       "tags": [
         "low%",
-        "waterways-climb",
-        "broken-elevator"
+        "waterways climb",
+        "broken elevator"
       ],
       "prose": "Fastest elevator climb I've been able to manage over the last few days, incorporates all new strats.  The last enemy has some RNG on position but the most consistent setup I find is to just ignore him and fireball skip.  If you're not comfortable with a fireball jump there's ways to lure that enemy lower (cling the side of the wall for one jump) and then pogo it.\nhttps://www.youtube.com/watch?v=pzJsEwcLK2I",
       "attachments": [],
@@ -1251,7 +1261,7 @@
         "clawless shade cloak",
         "csc",
         "basin spike tunnel",
-        "hk-misc-categories",
+        "hk misc categories",
         "bestgirl%",
         "shade skip"
       ],
@@ -1363,7 +1373,7 @@
         "Deepnest_East_04"
       ],
       "tags": [
-        "hk-107-112-percent",
+        "hk 107 112 percent",
         "112%",
         "106%",
         "kingdom's edge"
@@ -1398,7 +1408,7 @@
       "rooms": [],
       "tags": [
         "nmms",
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "dream nail",
         "airwalk"
       ],
@@ -1432,7 +1442,7 @@
       "rooms": [],
       "tags": [
         "nmms",
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "monomon",
         "wcs"
       ],
@@ -1901,7 +1911,7 @@
         "acn",
         "1221",
         "deepfocus",
-        "no-wings"
+        "no wings"
       ],
       "prose": "unfortunately i couldnt find any real way around the 2nd portion as it would kill a lot of time to do the \"straightforward\" way, sets you up nicely to just inch by the 3rd portion cycle too\n\nslightly easy to bonk head on the first wall cling jump (in 2nd portion) going up to the 2nd wall cling jump, but a bit of an outward swing should alleviate that as well",
       "attachments": [
@@ -2010,7 +2020,7 @@
       "rooms": [],
       "tags": [
         "benching",
-        "trigger-distance"
+        "trigger distance"
       ],
       "prose": "quick comparison for bench animation/timings based on distance between trigger distance and final sitting position.\nbased off of this and frameforwarding it seems regardless of where you activate the trigger, the animation takes a set amount of time.\naka bench asap as you reach the trigger\n\nhttps://youtu.be/Aym1PFk856I",
       "attachments": [],
@@ -2034,7 +2044,7 @@
         "106%",
         "1221",
         "fury",
-        "fury-of-the-fallen"
+        "fury of the fallen"
       ],
       "prose": "this shows the post-king's pass set respawn trigger for any 1221 categories picking up fury before s/q. \nonce the knight's hitbox (the yellow box in/around the knight) touches the vertical box here, your spawn in point is set and you can turn around to reenter KP",
       "attachments": [
@@ -2078,9 +2088,9 @@
       "date": "2021-06-27T00:10:50.008+02:00",
       "rooms": [],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
-        "shade-soul",
+        "shade soul",
         "crab"
       ],
       "prose": "Small optimization to do the movement for shade soul. Allows you to send the elevator back down without having to wait for it to reach the top (where it delays a little before being able to be sent down again). Two setups - 3 hits is safer, you can't really send the elevator back down too fast.  2 hits is tighter, if you send the elevator down too fast you'll def lose time\nSafe (3 hits) :",
@@ -2106,7 +2116,7 @@
       "tags": [
         "nmg",
         "mound",
-        "ancient-mound",
+        "ancient mound",
         "greenpath",
         "underplat"
       ],
@@ -2507,7 +2517,6 @@
       "rooms": [],
       "tags": [
         "flower",
-        "flowerquest",
         "1xx",
         "112%",
         "106%",
@@ -2741,7 +2750,7 @@
         "1xx",
         "106%",
         "112%",
-        "wraiths https://youtu.be/-uwbi5pkake"
+        "wraiths https://youtu.be/ uwbi5pkake"
       ],
       "prose": null,
       "attachments": [],
@@ -2762,7 +2771,6 @@
         "nmms",
         "ag",
         "geo",
-        "flukenest",
         "flukes",
         "kill dupe"
       ],
@@ -2965,7 +2973,7 @@
         "Crossroads_50"
       ],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "wcs"
       ],
       "prose": "Alternate setup for Blue Lake WCS. I'm saving an average of ~~0.2~~ 0.5 using timer mod, though my comparison is kinda rudimentary. The dash must be done from the ground and the walljump (full, neutral jump) needs to be done ASAP. ~~Dashing at the beginning of the room instead of the long jump doesn't work, presumably because of subpixels.~~",
@@ -3242,7 +3250,7 @@
         "Fungus1_21"
       ],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "oobprejump"
       ],
@@ -3269,7 +3277,7 @@
         "Crossroads_03"
       ],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms"
       ],
       "prose": "Movement to avoid the bad rng crawlid (if it comes towards you) if you're going for the fk dupe route",
@@ -3582,11 +3590,11 @@
       "rooms": [],
       "tags": [
         "11",
-        "te-cp",
+        "te cp",
         "cp",
         "1432",
         "1.5",
-        "lk-dream",
+        "lk dream",
         "lost kin"
       ],
       "prose": "consistently fastest strat at the start of Lost Kin dream (cp inv drop may be faster, but this is faster on avg for any humans, bc not 1/50th of a second input), saves 0.1-0.3 over other non-invdrop strats\nnote: start with neutral dash\n\n*faster strat from sawayoshi here:\nhttps://discord.com/channels/772964112908156938/822611746086715423/886141987395350559\nhttps://cdn.discordapp.com/attachments/822611746086715423/886141986980110357/2021-09-11_00-49-27.mp4",
@@ -3906,7 +3914,7 @@
       "rooms": [],
       "tags": [
         "106%",
-        "flukenest",
+        "flukes",
         "lemm sanctum elevator",
         "nmg"
       ],
@@ -3921,7 +3929,7 @@
       "date": "2021-09-22T12:39:33.22+02:00",
       "rooms": [],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "petra",
         "1221"
       ],
@@ -4080,8 +4088,8 @@
       "tags": [
         "1221",
         "mossknightdouble",
-        "tas-setup",
-        "rta-viable"
+        "tas setup",
+        "rta viable"
       ],
       "prose": "**timings**\nthis shows a consistently human viable mossknight tas double setup (fb, pogo fb)\n- saves about 0.2-0.3s over the regular nailcancel jump fb setup. \n- failing it and having to do a second air fb makes you lose 0.1-0.2s over nailcancel jump setup, depending on how well you aggroed the mossknight\n\n**key points I found:**\nafter the first fb you need to walk forward to where you can neutral jump pogo, and you have to pogo as close to the ground as possible. there should be no directional inputs after the pogo at all until after youve shot the fb\n\n(youtube link so you can move around by frame with `,` and `.`)\nhttps://youtu.be/k15QwhD-Y2g\n\nmuri's original post with a good explanation and examples of it:\nhttps://discord.com/channels/772964112908156938/822611544231772170/842072156765552661",
       "attachments": [],
@@ -4123,7 +4131,7 @@
       ],
       "tags": [
         "106%",
-        "descending-dark"
+        "descending dark"
       ],
       "prose": "https://clips.twitch.tv/VivaciousBadHeronPanicVis-KSuB2xhUQVmQ28-r\n\nFaster exit in the room with the grub. Found by pest",
       "attachments": [],
@@ -4137,7 +4145,7 @@
       "rooms": [],
       "tags": [
         "1xx",
-        "dream-nail"
+        "dream nail"
       ],
       "prose": "https://clips.twitch.tv/GlamorousAssiduousCrowChefFrank-vQl3F9b0H4SuSS39\n\ndash into side of platform to get to roof, saves 0.4 over landing on top. walljumpable surface for the ceiling goes lower than it looks visually",
       "attachments": [],
@@ -4865,7 +4873,7 @@
         "cyclone",
         "1xx",
         "infected grub",
-        "pre-mawlek",
+        "pre mawlek",
         "fog canyon entry"
       ],
       "prose": "directly saves 0.2s over comsob in this room (which loses 1.3s in the next room due to skipping the cdash)\nsaves 0.5-1.0s over ax's double dnail strat somewhere\n\ngathers a bit less soul. still enough for the needed 3 casts for mawlek, usually part of the extra vessel as well.",
@@ -4892,7 +4900,7 @@
       ],
       "tags": [
         "1xx",
-        "pre-mawlek",
+        "pre mawlek",
         "fog canyon entry"
       ],
       "prose": "saves 1s< over comsob in total",
@@ -4931,7 +4939,7 @@
       "rooms": [],
       "tags": [
         "1221",
-        "any-nmg",
+        "any nmg",
         "uumuu",
         "dnail"
       ],
@@ -5065,7 +5073,7 @@
       "date": "2021-10-22T03:53:55.996+02:00",
       "rooms": [],
       "tags": [
-        "hk-100-106-percent"
+        "hk 100 106 percent"
       ],
       "prose": null,
       "attachments": [],
@@ -5235,7 +5243,7 @@
         "Crossroads_03"
       ],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "dupe",
         "fk skip"
       ],
@@ -5254,7 +5262,7 @@
       "tags": [
         "any%",
         "nmg",
-        "fog-canyon acid skip"
+        "fog canyon acid skip"
       ],
       "prose": "underplat for fog canyon acid skip, saves 0.05-0.1s over normal strat",
       "attachments": [
@@ -5291,7 +5299,7 @@
       "date": "2021-10-28T02:26:38.796+02:00",
       "rooms": [],
       "tags": [
-        "hk-100-106-percent"
+        "hk 100 106 percent"
       ],
       "prose": "a nice wallcling storage to start off flower quest, also saves .2-.4 seconds",
       "attachments": [],
@@ -5373,7 +5381,7 @@
       "date": "2021-10-29T19:42:54.345+02:00",
       "rooms": [],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "crypts"
       ],
       "prose": "Good movement through crypts - in particular, the early control (from the \"soob\") into downdash is pretty nice alternative to cancelling a transition storage drop & cancel. I recommend tapping right a bit after the map close animation (don't actually soob tho), then when you get visibility tapping right then downdashing then hold right again. Often you will land just a LITTLE bit to the left of the breakable floor, be ready for that",
@@ -5447,7 +5455,7 @@
       "date": "2021-11-02T12:04:17.993+01:00",
       "rooms": [],
       "tags": [
-        "aspid-arena",
+        "aspid arena",
         "cp"
       ],
       "prose": "backup for getting bad aspid spawns and missing double spike ~~if you don't want to reset~~",
@@ -5692,7 +5700,7 @@
       "date": "2021-11-06T19:03:33.944+01:00",
       "rooms": [],
       "tags": [
-        "lifeblood-core",
+        "lifeblood core",
         "swagdoor",
         "birthplace",
         "1xx",
@@ -5947,7 +5955,7 @@
         "all skills",
         "106%",
         "1221",
-        "abyss-door-wcs",
+        "abyss door wcs",
         "setup"
       ],
       "prose": "cdash into door, 4 dashes right (until big veins here), then 4 dashes back left, single slightly delayed nail for the knockback and timing, full yump, dash, wcs (also try to dash as you land on the ground. if youre lucky it preserves the wcs (likely physics framerate jank))",
@@ -6315,7 +6323,7 @@
       "date": "2021-11-21T15:21:43.876+01:00",
       "rooms": [],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "soul collection",
         "herrah dupe"
@@ -6411,7 +6419,7 @@
       "date": "2021-11-25T03:20:04.236+01:00",
       "rooms": [],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "blue lake",
         "wcs"
       ],
@@ -6451,7 +6459,7 @@
       "date": "2021-11-25T08:33:12.577+01:00",
       "rooms": [],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "blue lake",
         "wcs"
       ],
@@ -6484,7 +6492,7 @@
       "date": "2021-11-26T08:52:13.693+01:00",
       "rooms": [],
       "tags": [
-        "grubs",
+        "grub",
         "fungal wastes",
         "grubsong%"
       ],
@@ -6683,8 +6691,8 @@
         "RestingGrounds_06"
       ],
       "tags": [
-        "hk-100-106-percent",
-        "arena-vf"
+        "hk 100 106 percent",
+        "arena vf"
       ],
       "prose": "WCS strat for movement in this room. If you get a bodyslam attack the shade soul will not double and you'll have to do an additional one. This also requires that you overcharm shaman + twister + grimmchild for this section since you'll have to go for the soul totem otherwise",
       "attachments": [
@@ -6715,7 +6723,7 @@
       "date": "2021-11-30T20:19:20.659+01:00",
       "rooms": [],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "herrah dupe"
       ],
       "prose": "Small but consistent 5s timesave for the dupe to herrah. Credits Krythom.\nafter getting early control from the spikes, immediately hit the load, mash nail and as soon as you hear the nail hit do a full jump. Video shows it twice, once with visibility, once with normal vision. Save state is positionned just before the load that you would hit by slowfall\n\nAs a bonus if you need it (for example hecked up the soul collection from archives) you can gather soul off the spiders.",
@@ -6873,8 +6881,8 @@
       "date": "2021-12-05T07:07:33.127+01:00",
       "rooms": [],
       "tags": [
-        "hk-100-106-percent",
-        "waterways-01"
+        "hk 100 106 percent",
+        "waterways 01"
       ],
       "prose": "transition wcs to avoid the hardfall without dashing. I did not discover this, I believe it was first discovered by CC",
       "attachments": [
@@ -7810,7 +7818,7 @@
         "cp",
         "107%",
         "nosk",
-        "flukenest"
+        "flukes"
       ],
       "prose": "nosk quick kill on cp, saves around 15 seconds overall compared to optimal flukeless fight. very very lenient, just fluke it in whichever direction it goes and it should always work. requires 5 flukes, or 4 with really good rng",
       "attachments": [
@@ -8335,7 +8343,7 @@
         "Fungus1_14"
       ],
       "tags": [
-        "hk-107-112-percent",
+        "hk 107 112 percent",
         "thorns of agony"
       ],
       "prose": "same speed as the known fastest strat, but doesn't require damagetanking. You can shave off another .3 if you do the cdash high enough, but would not go for it in runs",
@@ -8361,7 +8369,7 @@
         "Fungus3_28"
       ],
       "tags": [
-        "hk-107-112-percent",
+        "hk 107 112 percent",
         "fog canyon notch"
       ],
       "prose": "Slightly optimized strat for fog canyon charm notch. Need to pay attention to both jelly's positionning, as well as how high you are after the first walljump (if too high don't do the second wj right away, delay just a bit - if too low, wings up before dashing through the jelly).",
@@ -8515,7 +8523,7 @@
         "Hive_02"
       ],
       "tags": [
-        "hk-107-112-percent"
+        "hk 107 112 percent"
       ],
       "prose": "faster movement before and after the hive parkour. Saves about ~1s compared to regular strat",
       "attachments": [
@@ -8548,7 +8556,7 @@
         "Hive_03_c"
       ],
       "tags": [
-        "hk-107-112-percent"
+        "hk 107 112 percent"
       ],
       "prose": "Hive underplat. Saves 0.8s compared to regular strat. If the bigbee breaks the platform, it will still save 0.2s but you take damage",
       "attachments": [
@@ -8573,7 +8581,7 @@
         "Deepnest_East_06"
       ],
       "tags": [
-        "hk-107-112-percent"
+        "hk 107 112 percent"
       ],
       "prose": "faster movement for the room before dash slash that allows for soul collection",
       "attachments": [
@@ -8701,7 +8709,7 @@
       "date": "2022-01-24T03:26:37.04+01:00",
       "rooms": [],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "herrah dupe",
         "wrong warp"
@@ -9358,7 +9366,7 @@
         "RestingGrounds_05"
       ],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "1028"
       ],
@@ -9383,7 +9391,7 @@
       "date": "2022-02-14T05:56:12.033+01:00",
       "rooms": [],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "1028",
         "shade soul",
@@ -9620,8 +9628,7 @@
         "1221",
         "collector",
         "quick kill",
-        "flukes",
-        "flukenest"
+        "flukes"
       ],
       "prose": "labbed the flukenest extra quick kill we can do go for in 106% at least now (with twister + dwielder + flukes + shaman). basically 1x <0.8 fluke first, then 6x flukes with a dnail at whichever point youre comfortable with, make absolutely sure to not overshoot *any* of your post-dnail flukes, and end with a ddark. this was unironically 90%< consistent when I performed the inputs correctly, where the only irregularity was how the first cast bounced.\nthere are 2 risks you have to be aware of for this:\n1: if too much of the first cast hits you have to adapt and either miss some of your pre-dnail flukes on purpose, or simply accept a slower kill and do one less fluke during the early control.\n2: if you have *any* flukes laying around after your casts when you're supposed to ddark: be *very* careful about ddarking. this is why you want to be completely inside collector basically during your casts. thats what the \"failed\" video demonstrates here.",
       "attachments": [
@@ -9742,7 +9749,7 @@
         "any%",
         "all skills",
         "true ending",
-        "hk-100-106-percent"
+        "hk 100 106 percent"
       ],
       "prose": "setup to get a really good wcs into room, also just ensures you never miss it (2 slashes when the elevator hits the bottom, not precise when you start them)",
       "attachments": [
@@ -9835,7 +9842,7 @@
         "Fungus2_06"
       ],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "prejump",
         "transition storage"
@@ -9878,7 +9885,7 @@
         "Crossroads_03"
       ],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "dupe",
         "false knight skip",
@@ -9915,7 +9922,7 @@
         "Crossroads_01"
       ],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "oob",
         "crab"
@@ -9942,7 +9949,7 @@
       "rooms": [],
       "tags": [
         "room final boss core",
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "oob",
         "early control"
@@ -9970,7 +9977,7 @@
         "Fungus1_21"
       ],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "transition storage"
       ],
@@ -9997,7 +10004,7 @@
         "Crossroads_18"
       ],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "transition storage"
       ],
@@ -10057,7 +10064,7 @@
         "Crossroads_01"
       ],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "oob",
         "transition storage",
         "nmms"
@@ -10084,7 +10091,7 @@
       "rooms": [],
       "tags": [
         "herrah dupe",
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "soul"
       ],
@@ -10109,7 +10116,7 @@
       "date": "2022-02-28T22:45:12.328+01:00",
       "rooms": [],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "soul",
         "firebell"
@@ -10165,8 +10172,8 @@
         "any%",
         "all skills",
         "true ending",
-        "hk-100-106-percent",
-        "hk-107-112-percent"
+        "hk 100 106 percent",
+        "hk 107 112 percent"
       ],
       "prose": "Ceiling boost here for more fall speed through the platform. In order to get the boost you need to be holding right for (idk one or more?) frames after your jump bonks the ceiling, so that you move into the ceiling. Takes a lot of practice.",
       "attachments": [
@@ -10204,7 +10211,7 @@
       "date": "2022-03-01T18:32:27.181+01:00",
       "rooms": [],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "uumuu"
       ],
@@ -10312,7 +10319,7 @@
         "Fungus2_14"
       ],
       "tags": [
-        "te-nmms",
+        "te nmms",
         "benchstorage"
       ],
       "prose": "Saves ~0.5-0.6 for any category with bench storage entering this room, roughly 0.3 from reaching the ground sooner and 0.3 from dashing during the fireball. Still works by focusing to cancel transition storage if you don't have VS, but then only saves 0.3 total.",
@@ -10660,7 +10667,7 @@
         "106%",
         "107%",
         "112%",
-        "hk-all-bosses",
+        "hk all bosses",
         "ge"
       ],
       "prose": "alternative route for this room, loses ~0.2s to my best lower route but breaks even/saves time on average since it doesn't have to deal with hoppers",
@@ -10692,7 +10699,7 @@
       "date": "2022-03-13T16:53:21.455+01:00",
       "rooms": [],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "herrah",
         "den"
@@ -11030,7 +11037,7 @@
         "Ruins1_05"
       ],
       "tags": [
-        "hk-100-106-percent",
+        "hk 100 106 percent",
         "awr"
       ],
       "prose": "finally a strat to get over this idiot without waiting\nJust delay the jump and pogo a tiny bit, it looks like it'll hit you but it just doesn't",
@@ -11065,7 +11072,7 @@
       ],
       "tags": [
         "awr",
-        "hk-100-106-percent"
+        "hk 100 106 percent"
       ],
       "prose": "This is hard but lines up the walljumps correctly, idk if worth in runs",
       "attachments": [
@@ -11098,7 +11105,7 @@
         "Ruins1_28"
       ],
       "tags": [
-        "hk-100-106-percent",
+        "hk 100 106 percent",
         "ass"
       ],
       "prose": "0.1 faster than scruffy or ax's movement here, doesn't matter if you walljump or jump. Jump at the end is to avoid corner correct.\n\nIMO Ax's movement is the easiest/best for runs",
@@ -11300,7 +11307,7 @@
       "tags": [
         "all skills",
         "isma",
-        "hk-107-112-percent"
+        "hk 107 112 percent"
       ],
       "prose": "reverse acid skip saves 0.3sh over no cdash. if cdash is too high and ends at the end of the overhang it loses time. don't do this.",
       "attachments": [
@@ -11440,7 +11447,7 @@
       ],
       "tags": [
         "spelless",
-        "mantis-pogo"
+        "mantis pogo"
       ],
       "prose": "Consistent mantis pogo for spelless categories",
       "attachments": [
@@ -11665,8 +11672,8 @@
         "any%",
         "all skills",
         "true ending",
-        "hk-100-106-percent",
-        "hk-misc-categories"
+        "hk 100 106 percent",
+        "hk misc categories"
       ],
       "prose": "Doing this forward slash pogo doesn't lose much soul and saves 0.3-0.5 over the normal strat. You don't need to greed as hard as I did, as long as you play like you would in a run its impossible to be too fast (technically possible if you are like zkad irl or smth). Very lenient",
       "attachments": [
@@ -11699,7 +11706,7 @@
         "Deepnest_Spider_Town"
       ],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "spider tunnel",
         "slashes"
       ],
@@ -11785,9 +11792,9 @@
       "date": "2022-04-01T18:16:52.511+02:00",
       "rooms": [],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "airwalk",
-        "dash-first",
+        "dash first",
         "cliffs"
       ],
       "prose": "Pause buffering kinda works for midair airwalk jumps, in order to get it it you need to jump the frame after you unpause, this is the main required trick for the dash first route which saves ~20-30s if done optimally",
@@ -11819,9 +11826,9 @@
       "date": "2022-04-01T23:49:43.572+02:00",
       "rooms": [],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "geo",
-        "herrah-rock"
+        "herrah rock"
       ],
       "prose": "PSA about geo routing (particularly negotiating Spire geo, Lever geo, and Herrah Rock geo):\n\nThe colors on the last table represent the \"tiers\" of money, where green is fastest but gets you the least, yellow is average on both, and red is slowest but gives the most. They're ordered in this way because Herrah Rock + Lever is roughly equivalent to Spire (~30-35 geo).\n\nSo, from this the strats are:\n1) **If you're filthy rich (531 is the minimum assuming you pick up all the geo that drops) coming out of GHusk, Lever geo in Chandelier and in Lantern is the fastest.**\n2) **For all other cases, start with Spire geo in Chandelier and get Lever geo in Lantern. If you have an extra cast after Spire Geo then also collect Lever geo in Chandelier. If you still don't have enough, get Herrah Rock geo after.** Lever in Chandelier isn't worth if you're gonna get Herrah Rock after since it's faster to just get Spire in Chandelier and skip Herrah Rock, but the opposite is true for Lantern.",
       "attachments": [
@@ -11853,7 +11860,7 @@
         "Crossroads_03"
       ],
       "tags": [
-        "any-nmg"
+        "any nmg"
       ],
       "prose": "CC mentioned this a while ago but this pogo movement (first clip) is basically identical to the normal walljump movement (second clip), but because of the fewer dashes in the pogo movement I found it much easier to optimize and was saving 0.2ish most of the time doing the pogo. More importantly, you can get 1-2 soul from the pogo, which we need bc of firebell in lantern. This in conjunction with never collecting Spire geo in lantern and pogoing those enemies instead should hopefully mean you don't have to pogo the enemies in the big room before photoshop jump, which is often awkward and slow (especially if the GHS is in the way).",
       "attachments": [
@@ -11895,8 +11902,8 @@
         "Mines_05"
       ],
       "tags": [
-        "dog-cycle",
-        "laser-manip"
+        "dog cycle",
+        "laser manip"
       ],
       "prose": "Some clips to demo the laser manip I do for dog cycle. In order they're the standard low barrel pogo, a backup for going too high on the barrel pogo, the jump strat to make the laser cycle easier, and the standard god cycle movement as a comparison point. For the laser manip note the height both near the barrel and on the walljump from the wall marked in the screenshot. You need to be low on both to stay out of range (and of course if you accidentally go too high there's the backup in the second clip that can save some of them).\n\nThis isn't meant to be an optimal timing comparison (I've gotten a sub 11 room with the jump strat, for example), but the timer is there to give a rough idea of the difference between each strat, and to order them from fastest to slowest",
       "attachments": [
@@ -11971,7 +11978,7 @@
         "cdash",
         "true ending",
         "all skills",
-        "hk-107-112-percent"
+        "hk 107 112 percent"
       ],
       "prose": "cdash early control from shade cloak on 1.4+. Need to tap up+dnail as soon as the scene name changes to Menu_Title (-33.0, -2000.0) (idk cue for when you don't have mods on, just need to learn timing) then hold cdash. first found by yihou i think",
       "attachments": [
@@ -12104,7 +12111,7 @@
         "Crossroads_35"
       ],
       "tags": [
-        "hk-107-112-percent",
+        "hk 107 112 percent",
         "112%",
         "107%",
         "106 partially"
@@ -12140,7 +12147,7 @@
         "Fungus3_26"
       ],
       "tags": [
-        "hk-107-112-percent",
+        "hk 107 112 percent",
         "112%",
         "107%"
       ],
@@ -12218,10 +12225,10 @@
         "Abyss_06_Core"
       ],
       "tags": [
-        "hk-107-112-percent",
+        "hk 107 112 percent",
         "112%",
         "107%",
-        "early-birthplace"
+        "early birthplace"
       ],
       "prose": "go right to dodge the hazard respawn below, then a bit back to not hit a hazard respawn to the right. Really lenient, you can take your time to be sure to dodge everything. My visual cue is lining up with the biggest vine on the first bit drop, hardfall on the platform, then just drop off to the left slightly - if you want you can wings to airstall and make sure you're lined up properly to be 200% sure you're not hitting anything on the way down.\n\nSaves a spell (2 if you kill the crawler with shriek) over the other early birthplace strat",
       "attachments": [
@@ -12254,10 +12261,10 @@
         "Abyss_06_Core"
       ],
       "tags": [
-        "hk-107-112-percent",
+        "hk 107 112 percent",
         "112%",
         "107%",
-        "early-birthplace"
+        "early birthplace"
       ],
       "prose": "Second cyclone is under the right corner of the platform you're releasing it under. If you're very fast with your cyclones, delay going left before the ddark a little bit, to avoid hitting them. Saves 1.15s optimally",
       "attachments": [
@@ -12941,7 +12948,7 @@
       "rooms": [],
       "tags": [
         "low%",
-        "mantis-claw",
+        "mantis claw",
         "nmg",
         "1.3",
         "50 fps"
@@ -13085,7 +13092,7 @@
       "date": "2022-05-10T05:53:26.551+02:00",
       "rooms": [],
       "tags": [
-        "white-palace",
+        "white palace",
         "cp",
         "true ending"
       ],
@@ -13377,7 +13384,7 @@
       ],
       "tags": [
         "nmg",
-        "fireball-skip",
+        "fireball skip",
         "cp"
       ],
       "prose": "Super consistent 1 fireball setup for the 3rd Greenpath fireball skip. Once in between the background pole and pillar as shown in the image, do 2 mini-hops followed up by a full jump and it should line you up perfectly to do 1 fireball.  I've found this to be pretty much 100% consistent for me!",
@@ -13538,10 +13545,10 @@
       "rooms": [],
       "tags": [
         "nmg",
-        "fungal-core",
+        "fungal core",
         "mop",
         "shaman's stone",
-        "stall-ball"
+        "stall ball"
       ],
       "prose": "May uploaded the version of the stallball with more items, just wanted to put this here in case anyone wants to know how to do the fungal core stallball skip with only MoP and shamans.",
       "attachments": [
@@ -13863,12 +13870,12 @@
       "date": "2022-06-05T16:24:49.649+02:00",
       "rooms": [],
       "tags": [
-        "soul-warrior",
+        "soul warrior",
         "pantheon",
         "p1",
         "p5",
         "112%",
-        "godhome-ending"
+        "godhome ending"
       ],
       "prose": "I don't know if there's any particular reason why runners don't shriek soul warrior once it spawns, but this shriek easily deals 2/3 hits so outweighs the current great slash.\nI always leave 1 cast soul to deal this shriek, cos there's usually enough soul and time window to heal after soul warrior or even after mawlek.",
       "attachments": [
@@ -13899,7 +13906,7 @@
       "date": "2022-06-05T16:35:47.717+02:00",
       "rooms": [],
       "tags": [
-        "soul-master",
+        "soul master",
         "pantheon",
         "p2",
         "p5",
@@ -13936,11 +13943,11 @@
         "Abyss_06_Core"
       ],
       "tags": [
-        "hk-100-106-percent",
+        "hk 100 106 percent",
         "106%",
         "100",
-        "early-birthplace",
-        "birthplace-trigger"
+        "early birthplace",
+        "birthplace trigger"
       ],
       "prose": "played around with jen's early birthplace/voidheart unlock drop, and found cues for it. \n1: as long as you are further right than this position for the drop you'll be safe from any spikes.\n2: the yellow box below the knight is the entrance trigger, so you can simply walk off -> drop a bit -> dash -> wings in to the spikes\n(also there is zero practical reason to cut it that close even, but its still nice to know when youve gone too far)",
       "attachments": [
@@ -13988,7 +13995,7 @@
       "rooms": [],
       "tags": [
         "112%",
-        "oro-mato"
+        "oro mato"
       ],
       "prose": "consistent way to deal with the worst rng in p1 without slowing down the other patterns. don't cast the first shriek too quickly, otherwise it only deals 3 hits and can't kill oro using this strat. timing of the ssoul isn't very hard, just finish this combo consecutively and don't wait for ssoul. \nI'm practicing nonfury p5 with steady body, but of course this strat works without it.",
       "attachments": [
@@ -14202,7 +14209,7 @@
       "rooms": [],
       "tags": [
         "112%",
-        "vengefly-king",
+        "vengefly king",
         "vking",
         "vfk"
       ],
@@ -14228,7 +14235,7 @@
       "rooms": [],
       "tags": [
         "112%",
-        "gruz-mother"
+        "gruz mother"
       ],
       "prose": "timing for fluke multi hit:\n1) 6 slash then fluke, this fluke deals melting damage\n2) when gruz mother does the slamming attack, usually 2x damage",
       "attachments": [
@@ -14261,7 +14268,7 @@
       "rooms": [],
       "tags": [
         "112%",
-        "dung-defender"
+        "dung defender"
       ],
       "prose": "fastest and completely consistent setup for dung defender using flukes. note that if you don't pogo dung defender before the 2nd scream skip, you will prob stagger it once more and lose ~0.8s.",
       "attachments": [
@@ -14719,7 +14726,7 @@
       "tags": [
         "true ending",
         "lp",
-        "shriek-route",
+        "shriek route",
         "50 fps",
         "stall ball"
       ],
@@ -14794,8 +14801,8 @@
         "any%",
         "all skills",
         "true ending",
-        "hk-100-106-percent",
-        "hk-107-112-percent",
+        "hk 100 106 percent",
+        "hk 107 112 percent",
         "cheart"
       ],
       "prose": "New jump saves 0.1:\nAfter entering laser gauntlet, land as early as possible on the 2nd flipping platform and immediately jump really high and dash. This triggers the proximity on the 2nd to last crystal earlier (green line good), which is normally the only laser you need to wait a brief moment on, which means it disappears 0.1-0.15 earlier",
@@ -15005,7 +15012,7 @@
       "date": "2022-07-18T00:13:54.841+02:00",
       "rooms": [],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "blue lake",
         "wcs"
       ],
@@ -15079,7 +15086,7 @@
         "Fungus3_02"
       ],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "any%",
         "1028"
@@ -15107,7 +15114,7 @@
         "Crossroads_02"
       ],
       "tags": [
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "any%",
         "dashmaster"
@@ -15136,7 +15143,7 @@
       ],
       "tags": [
         "beast den",
-        "hk-any-percent-glitched",
+        "hk any percent glitched",
         "nmms",
         "any%",
         "float"
@@ -15361,7 +15368,7 @@
         "any%",
         "1221",
         "beast den",
-        "devout-skip"
+        "devout skip"
       ],
       "prose": "Faster strat to skip the devout, the idea is to get very close and high to the devout, then do a pogo and take dmg asap (to simulate the devout opening and dmg tank from original devout skip), then dash over\nhttps://youtu.be/4-HnHnqhUjM",
       "attachments": [],
@@ -15382,10 +15389,10 @@
       "date": "2022-08-07T20:30:32.036+02:00",
       "rooms": [],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "1221",
         "beast den",
-        "devout-skip"
+        "devout skip"
       ],
       "prose": "Easy and consistent devout skip setup found by @Magma. Loses 0.8s to the above setup by Aksel. First clip shows what you'd do in 99% of cases, second clip shows what to do when it opens before you can upslash it (need to change strats on reaction for this to be consistent). You need to delay your dash over in that case, so the pogo just keeps you up for longer. If it backs up you just dash over it, though you're likely to take a second hit.",
       "attachments": [
@@ -15427,9 +15434,9 @@
         "Fungus1_21"
       ],
       "tags": [
-        "any-nmg",
-        "allskills-nmg",
-        "trueending-nmg",
+        "any nmg",
+        "allskills nmg",
+        "trueending nmg",
         "1221",
         "mossknights"
       ],
@@ -15672,9 +15679,9 @@
       "date": "2022-08-17T02:47:52.15+02:00",
       "rooms": [],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "1221",
-        "trap-bench",
+        "trap bench",
         "petras",
         "soul"
       ],
@@ -15764,10 +15771,10 @@
         "107%",
         "112%",
         "voidheart",
-        "lifebloodcore",
-        "hk-107-112-percent",
-        "hk-100-106-percent",
-        "early-birthplace"
+        "lifeblood core",
+        "hk 107 112 percent",
+        "hk 100 106 percent",
+        "early birthplace"
       ],
       "prose": "easy setup for early birthplace drop to keep your hazard respawn at lifeblood core (speed is mostly irrelevant)",
       "attachments": [
@@ -15811,7 +15818,7 @@
       "rooms": [],
       "tags": [
         "107%",
-        "hk-107-112-percent",
+        "hk 107 112 percent",
         "grimm",
         "tmg",
         "unovercharmed",
@@ -15847,7 +15854,7 @@
       "rooms": [],
       "tags": [
         "ruins_house_02",
-        "any-nmg",
+        "any nmg",
         "ghusk"
       ],
       "prose": "Low soul strat for GHusk. Collects more geo on average, loses like 0.2s-0.5s to the normal strat (timing is v hard bc of GHusk rng), though situationally it should save time depending on how you normally collect that soul. The point where you dash after the big jump is kinda specific, since it's mostly what determines whether the pogo dash will make it into the lil tube thing\nhttps://youtu.be/kGir7C5M5bQ",
@@ -16541,7 +16548,7 @@
         "Ruins1_02"
       ],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "ghusk",
         "turnaround slash"
       ],
@@ -16662,7 +16669,7 @@
       "tags": [
         "any% nmg",
         "rafters",
-        "low-fps"
+        "low fps"
       ],
       "prose": "A Low-fps version thats the fastest, it can be pretty tight at times but its very consistent; I get it like 50-70% of the time on 90 fps. Sorry for framerate at the beginning. Its much more consistent than high fps.\n\nSometimes the vf can hit you the wrong direction for the second damage-tank, so be weary of that. For the first pogo, make sure to be holding left the entire time, for the fireballs: Remember to delay them after the pogo, but don't delay them inbetween each other. For the second pogo, either do a neutral pogo, or go towards the vf to pogo.",
       "attachments": [
@@ -16765,7 +16772,7 @@
         "Crossroads_19"
       ],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "jennifer",
         "gruz mother"
       ],
@@ -16788,9 +16795,9 @@
       "date": "2022-11-04T12:50:42.742+01:00",
       "rooms": [],
       "tags": [
-        "white-palace",
+        "white palace",
         "white_palace_15",
-        "stall-ball"
+        "stall ball"
       ],
       "prose": "Consistent set up for White Palace stallball\nso it works bc you bonk your head on the ceiling i hit in the start of the clip which position you at the right height to dash-wings and then shoot your fb\nthings that can happen : you don't bonk your head on the right spot and that mess up all the setup (back up-able) \n; the setup doesn't position you in the x axis so you can be too far or too close of the slope\n; you don't bonk your head, if that happens you're going to be too high so you have to back it up like normally",
       "attachments": [
@@ -16940,7 +16947,7 @@
         "1.4.3.2+ nmg",
         "ismas",
         "any%",
-        "c-dashless petras"
+        "c dashless petras"
       ],
       "prose": "Left side petras without c-dash. This one has much more consistent doubles and get more soul than right side, it overall saves about 0.5-0.8 on avg to right side (If you don't do safety wings before 2fbs, if you do it relatively breaks even). \n\nThe first petra is little bit harder but its key to delay the dash before the fireball in order to get the double. I tried to see if using any other entering movement and none of them worked that well. The monarch wings before the second petras fireballs isn't needed but highly reccomended for more consistnet doubles and to kill the close petra.",
       "attachments": [
@@ -16973,8 +16980,8 @@
         "Fungus2_21"
       ],
       "tags": [
-        "hk-100-106-percent",
-        "hk-107-112-percent"
+        "hk 100 106 percent",
+        "hk 107 112 percent"
       ],
       "prose": "minihop here and hold right and upslash, also dash as early as possible under these thorns",
       "attachments": [
@@ -17452,7 +17459,7 @@
         "Ruins2_04"
       ],
       "tags": [
-        "pre g-husk room",
+        "pre g husk room",
         "any%"
       ],
       "prose": "A nice pogo strat for this room, to be able to hit the husk like this. This only works if you pogo the first husk and the other husks goes left. It saves 0.14 to going over and you can't just jump from the platform if you pogo the first husk without going neutral for a bit so it saves time there (Although I haven't timed it).\n\nJust mind the music I forgot I had it on",
@@ -17650,7 +17657,7 @@
         "Ruins2_01"
       ],
       "tags": [
-        "hk-1xx-percent-glitched",
+        "hk 1xx percent glitched",
         "benchstorage",
         "112%",
         "glitched",
@@ -17722,7 +17729,7 @@
         "Deepnest_East_03"
       ],
       "tags": [
-        "hk-1xx-percent-glitched",
+        "hk 1xx percent glitched",
         "glitched",
         "112%"
       ],
@@ -17757,7 +17764,7 @@
         "Mines_05"
       ],
       "tags": [
-        "hk-1xx-percent-glitched",
+        "hk 1xx percent glitched",
         "glitched",
         "112%",
         "loaddependant"
@@ -17858,7 +17865,7 @@
       "tags": [
         "lp",
         "true ending",
-        "hk-107-112-percent",
+        "hk 107 112 percent",
         "all skills",
         "monarch wings"
       ],
@@ -17984,8 +17991,8 @@
       "tags": [
         "any%",
         "1.4.3.2+ nmg",
-        "trap-bench",
-        "c-dash route"
+        "trap bench",
+        "c dash route"
       ],
       "prose": "This inv drop saves 0.5 to the normal lp non-inv drop. Sometimes the petra can be in a bad position so be weary of that, and revert to the normal strat if that happens cause you won't get enough distance to cross the gap. Also note about 1/5 times you can get hit by the moss creep, but usually it doesn't happen. You can also very rarely get a diagonal inv drop. This example is pretty slow, but usually get around a 5.4-5.5 room time, whereas no inv drop gets a 5.9-6.0. This example would be a high without 5.5 without hktimer being dumb.",
       "attachments": [
@@ -18118,7 +18125,7 @@
         "Hive_04"
       ],
       "tags": [
-        "hk-107-112-percent",
+        "hk 107 112 percent",
         "hiveblood",
         "bigby"
       ],
@@ -19633,8 +19640,8 @@
       "date": "2023-03-24T11:05:39.956+01:00",
       "rooms": [],
       "tags": [
-        "hk-107-112-percent",
-        "hk-100-106-percent",
+        "hk 107 112 percent",
+        "hk 100 106 percent",
         "flukemarm",
         "waterways12"
       ],
@@ -19667,8 +19674,8 @@
       "date": "2023-03-24T12:07:21.374+01:00",
       "rooms": [],
       "tags": [
-        "hk-107-112-percent",
-        "hk-100-106-percent",
+        "hk 107 112 percent",
+        "hk 100 106 percent",
         "defender",
         "waterways05"
       ],
@@ -20287,7 +20294,7 @@
       "rooms": [],
       "tags": [
         "room final boss core",
-        "any-nmg",
+        "any nmg",
         "thk",
         "bounce"
       ],
@@ -20322,8 +20329,8 @@
         "Fungus2_17"
       ],
       "tags": [
-        "mantis-ec",
-        "look-up"
+        "mantis ec",
+        "look up"
       ],
       "prose": "Something very silly for y'all, this is a look up method for timing mantis early control. The lure is irrelevant, but after you've done whatever lure you're using, use the right analog stick (or an equivalent bind in virtual controller software) to immediately look up. Dash over to the pickup when the mantis's head/neck is at the line in the wall marked in the screenshot. This is just the cue I've found; there's likely an easier one to see for runs and this could easily be adapted for a super early EC like in RoomSoB. \n\nThis should allow for more consistent dash timing since it doesn't hinge on your reaction time for the mantis flying onscreen like conventional setups. It also saves 0.2s over that conventional setup.",
       "attachments": [
@@ -21129,8 +21136,8 @@
       ],
       "tags": [
         "mantis early control",
-        "mantis-ec",
-        "look-up"
+        "mantis ec",
+        "look up"
       ],
       "prose": "Slightly more consistent version of the [lookup early control](https://discord.com/channels/772964112908156938/822611544231772170/1111065485145030706) found by Lep which uses a second lookup for a visual cue, rather than a nailslash setup. \n\nFor a visual cue I wait for the mantis's head to be past the ledge as shown in the screenshot, then use the same one as before for the second lookup.",
       "attachments": [
@@ -21348,7 +21355,7 @@
         "Ruins2_06"
       ],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "wigglebell",
         "ks"
       ],
@@ -21391,7 +21398,7 @@
         "Fungus3_08"
       ],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "petra",
         "gauntlet",
         "safety",
@@ -21547,7 +21554,7 @@
         "Ruins2_03"
       ],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "rafters",
         "elevator",
         "wcs"
@@ -21705,8 +21712,8 @@
         "Ruins1_03"
       ],
       "tags": [
-        "any-nmg",
-        "te-nmg",
+        "any nmg",
+        "te nmg",
         "rafters",
         "left",
         "knockback",
@@ -22993,7 +23000,7 @@
         "Ruins2_04"
       ],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "ghusk",
         "double",
         "enemy",
@@ -23408,7 +23415,7 @@
         "rg wcs",
         "all skills",
         "true ending",
-        "any-nmg",
+        "any nmg",
         "any%",
         "106%",
         "1221"
@@ -23724,7 +23731,7 @@
       ],
       "tags": [
         "1221",
-        "any-nmg",
+        "any nmg",
         "petra",
         "arena",
         "planks"
@@ -23770,7 +23777,7 @@
       ],
       "tags": [
         "1221",
-        "any-nmg"
+        "any nmg"
       ],
       "prose": "(Credits to CC)\nWalljumping at the top from the right wall (first clip) is 0.1-0.15s faster than the old strat which jumps from the left wall (second clip). Though it requires you to react to the spiders position: If the spider is in the way, you can back up with the old strat by staying on the left wall.",
       "attachments": [
@@ -23813,7 +23820,7 @@
       ],
       "tags": [
         "1221",
-        "any-nmg",
+        "any nmg",
         "dv",
         "stag",
         "entrance",
@@ -23959,7 +23966,7 @@
         "Deepnest_Spider_Town"
       ],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "1221",
         "den",
         "last",
@@ -24132,12 +24139,11 @@
       "rooms": [],
       "tags": [
         "dream nailcollection",
-        "dream-dash",
         "dream dash",
         "cue",
         "visual cue",
         "visual",
-        "2-slash"
+        "2 slash"
       ],
       "prose": "the cue is when the seer avatar is about halfway into its 8th flap downwards (count every down stroke) \nwhen this happens press nail jump and right on the same frame, then buffer nailslash, and buffer dash out of the 2nd slash\n\nslyzian thought of idea to do 2 slashes instead of 8\npicture is when to go in the down flap",
       "attachments": [
@@ -24161,7 +24167,7 @@
         "Fungus1_31"
       ],
       "tags": [
-        "hk-107-112-percent",
+        "hk 107 112 percent",
         "1xx"
       ],
       "prose": "This is far from new but I've seen some people who don't know about it. If you manually cancel your cdash here you don't hardfall so you don't need to dash before the second cdash. Saves 0.15ish over a perfect low dash without the risk. The cue I use is generally somewhere between the last bg object and the edge here. It's extremely generous and you can start implementing it in runs immediately after reading this it is straight up just knowledge timeloss.",
@@ -27564,7 +27570,7 @@
       ],
       "tags": [
         "1221",
-        "any-nmg",
+        "any nmg",
         "damageless",
         "drop",
         "fury"
@@ -29506,7 +29512,7 @@
         "Ruins2_06"
       ],
       "tags": [
-        "any-nmg",
+        "any nmg",
         "1221",
         "firebell",
         "wigglebell",
@@ -31274,7 +31280,7 @@
         "blue lake wcs",
         "0 slash",
         "mediumbrainrot",
-        "non-dm",
+        "non dm",
         "dm"
       ],
       "prose": "Ladies, gentlemen and everything in between, here we have 0 slash (1st vid regular dash setup and 2nd is dm setup)\n\nTurns out that dashing first thing in the room gives you perfect subpixels for corner wcs. In addition, neither downdashing nor dashing off of these 2 walls (image).\n\nIt saves like 0.6 for dm and idk for non dm",
@@ -31995,7 +32001,7 @@
       "rooms": [],
       "tags": [
         "ruins_house_02",
-        "any-nmg",
+        "any nmg",
         "ghusk",
         "double",
         "pogo"
@@ -32067,7 +32073,7 @@
       "rooms": [],
       "tags": [
         "ruins_house_02",
-        "any-nmg",
+        "any nmg",
         "ghusk",
         "prejump",
         "dash"
