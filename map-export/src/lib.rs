@@ -30,6 +30,8 @@ use rayon::prelude::*;
 use serde::{Deserialize, Serialize};
 
 const STEAM_COMMON_DIR: &str = ".local/share/Steam/steamapps/common";
+/// Color of rooms without a SpriteRenderer, which have no color of their own.
+const POINT_COLOR: [f64; 4] = [0.6, 0.6, 0.6, 1.0];
 
 /// Loads the game's config and its game files, from the directory given as the first argument or
 /// else its Steam install.
@@ -115,7 +117,14 @@ pub struct MapBuilder<'a> {
     /// Tinted sprite images, by file name.
     sprites: BTreeMap<String, RgbaImage>,
     sprite_owners: HashMap<String, PathId>,
-    skipped: Vec<String>,
+}
+
+struct Place {
+    path: String,
+    name: String,
+    area: String,
+    pos: (f64, f64),
+    scale: (f64, f64),
 }
 
 impl<'a> MapBuilder<'a> {
@@ -141,12 +150,57 @@ impl<'a> MapBuilder<'a> {
             entries: Vec::new(),
             sprites: BTreeMap::new(),
             sprite_owners: HashMap::new(),
-            skipped: Vec::new(),
         })
     }
 
     pub fn file(&self) -> &SerializedFileHandle<'a> {
         &self.file
+    }
+
+    /// Path, name, area and world position and scale of a map object at `<map>/<area>/…/<name>`.
+    fn place(&self, game_object: PathId) -> Result<Place> {
+        let path = self.file.object_at::<GameObject>(game_object)?.path()?;
+        let parts: Vec<&str> = path.split('/').collect();
+        let name = parts
+            .last()
+            .expect("split yields at least one item")
+            .to_string();
+        let area = parts.get(1).copied().unwrap_or_default().to_string();
+        let transform = *self
+            .transform_of
+            .get(&game_object)
+            .with_context(|| format!("{path} has no Transform"))?;
+        let (pos, scale) = world_transform(&self.transforms, transform)?;
+        Ok(Place {
+            path,
+            name,
+            area,
+            pos,
+            scale,
+        })
+    }
+
+    /// Adds a room without a drawing, shown as a point at the position of `game_object`.
+    pub fn add_point(&mut self, game_object: PathId) -> Result<()> {
+        let place = self.place(game_object)?;
+        self.push_point(place, POINT_COLOR);
+        Ok(())
+    }
+
+    fn push_point(&mut self, place: Place, color: [f64; 4]) {
+        let (x, y) = place.pos;
+        self.entries.push(Entry {
+            name: place.name,
+            area: place.area,
+            x: round(x, 3),
+            y: round(y, 3),
+            w: 0.0,
+            h: 0.0,
+            color,
+            sprite: None,
+            scale: None,
+            shape: None,
+        });
     }
 
     /// Adds the map entry of a room. Its drawing is `full_sprite` (shown once the room is explored)
@@ -156,23 +210,9 @@ impl<'a> MapBuilder<'a> {
         game_object: PathId,
         full_sprite: Option<TypedPPtr<Sprite>>,
     ) -> Result<()> {
-        // `<map>/<area>/<room>`
-        let path = self.file.object_at::<GameObject>(game_object)?.path()?;
-        let parts: Vec<&str> = path.split('/').collect();
-        let name = parts
-            .last()
-            .expect("split yields at least one item")
-            .to_string();
-        let area = parts.get(1).copied().unwrap_or_default().to_string();
-
-        let transform = *self
-            .transform_of
-            .get(&game_object)
-            .with_context(|| format!("{path} has no Transform"))?;
-        let ((wx, wy), (sx, sy)) = world_transform(&self.transforms, transform)?;
-
+        let place = self.place(game_object)?;
         let Some(renderer) = self.renderers.get(&game_object) else {
-            self.skipped.push(format!("{name}: no SpriteRenderer"));
+            self.push_point(place, POINT_COLOR);
             return Ok(());
         };
         // Tinting and the file name use the stored (rounded) color.
@@ -190,21 +230,16 @@ impl<'a> MapBuilder<'a> {
             .chain([renderer.m_Sprite])
             .find(|ptr| ptr.m_PathID != 0);
         let Some(sprite_ptr) = sprite_ptr else {
-            // No map sprite at all: the room still has a map position, but no size or shape.
-            self.entries.push(Entry {
-                name,
-                area,
-                x: round(wx, 3),
-                y: round(wy, 3),
-                w: 0.0,
-                h: 0.0,
-                color,
-                sprite: None,
-                scale: None,
-                shape: None,
-            });
+            self.push_point(place, color);
             return Ok(());
         };
+        let Place {
+            path,
+            name,
+            area,
+            pos: (wx, wy),
+            scale: (sx, sy),
+        } = place;
         let sprite_handle = self
             .file
             .deref(sprite_ptr)
@@ -269,12 +304,6 @@ impl<'a> MapBuilder<'a> {
 
     /// Writes the entries, the scenes and the sprites into the game's data and public dirs.
     pub fn write(self, game: &Game, scenes: &BTreeSet<String>) -> Result<()> {
-        if !self.skipped.is_empty() {
-            eprintln!("skipped {} map entries:", self.skipped.len());
-            for reason in &self.skipped {
-                eprintln!("  {reason}");
-            }
-        }
         let data_dir = game.data_dir();
         let game_dir = data_dir.join("game");
         std::fs::create_dir_all(&game_dir)?;
