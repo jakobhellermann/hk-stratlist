@@ -350,6 +350,8 @@
       "wallcling storage"
     ],
     "watcher knights": [
+      "watcher knight",
+      "watchers",
       "wk",
       "watcherknights"
     ],
@@ -3489,7 +3491,6 @@
       "tags": [
         "nmg",
         "watcher knights",
-        "watchers",
         "pest"
       ],
       "prose": "Pest's \"old\" tutorial on basic watcher knight's strats, specifically with some meta think strats (which can be applied to literally any boss) on how to learn the fight:\nhttps://youtu.be/Oc-_Vg-Y8ME",
@@ -7416,7 +7417,6 @@
       "rooms": [],
       "tags": [
         "all skills",
-        "watcher knight",
         "watcher knights"
       ],
       "prose": "a setup to greed the first ddark\nafter the dnail do 2 normal dashes then full jump when the knight overlaps with the right eye of the last watcher, as soon as you hit the wall do a full wall jump while holding left and do 2 neutrals when you hit the ground\nthe visual cue to start the ddark is when the knight's feet are at the top of the watcher's horn, you can do it when they are halfway between the top of its head and the top of the horn like i did in the clip but it's very risky and doesn't save much time(probably less than 0.2s)\nto see if you got it or not open the debug console and if the watcher's health is at 132 then you got it, if its at 155 then you missed the first hit\nuse this only if you know the timing for the dnail without any setup cause if you mess up, knowing the timing is the only backup\nif you are too late and can't get the dnail without getting hit, commit to the dnail and tank the damage, the soul is more important than the health\ni tested this only on 1221 but it should work on cp too",
@@ -24462,7 +24462,7 @@
         "Ruins2_03"
       ],
       "tags": [
-        "watcher knight",
+        "watcher knights",
         "gate setup",
         "timing"
       ],
@@ -30381,7 +30381,6 @@
         "Ruins2_03"
       ],
       "tags": [
-        "watchers",
         "watcher knights",
         "timing setup"
       ],
