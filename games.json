@@ -8,9 +8,14 @@
       "steamDir": "Hollow Knight",
       "tags": {
         "synonyms": {
+          "1221": ["1.2.2.1"],
+          "1432": ["1.4.3.2"],
+          "1432+": ["1.4.3.2+"],
           "all skills": ["as", "hk-all-skills"],
           "any%": ["any", "any percent", "hk-any-percent"],
+          "cp": ["current-patch", "current patch", "currentpatch"],
           "low%": ["low percent", "hk-low-percent"],
+          "lp": ["latest-patch", "latest patch", "latestpatch"],
           "true ending": ["te", "hk-true-ending"],
           "watcher knights": ["wk"]
         },
