@@ -124,6 +124,15 @@
     "984780196290891786": "Five"
   },
   "aliases": {
+    "106%": [
+      "106"
+    ],
+    "107%": [
+      "107"
+    ],
+    "112%": [
+      "112"
+    ],
     "1221": [
       "1.2.2.1"
     ],
@@ -391,8 +400,8 @@
       "date": "2021-04-24T11:28:50.605+02:00",
       "rooms": [],
       "tags": [
-        "112",
-        "106",
+        "112%",
+        "106%",
         "deepfocus"
       ],
       "prose": "https://www.youtube.com/watch?v=ZGcq90gkUvE\nOriginal post by Zaliant\n- - - - -",
@@ -408,8 +417,8 @@
         "Fungus2_11"
       ],
       "tags": [
-        "112",
-        "106"
+        "112%",
+        "106%"
       ],
       "prose": "RNG dependent on big boi at start of room\n112 gets pogo at end for extra soul hit, 106 doesn't due to enemy pos\nhttps://www.youtube.com/watch?v=uopZ8faU5wQ\nOriginal post by Zaliant\n- - - - -",
       "attachments": [],
@@ -668,7 +677,7 @@
       "rooms": [],
       "tags": [
         "dung defender",
-        "106",
+        "106%",
         "quick kill"
       ],
       "prose": "Tinker's 2 dnail Dung Defender quick kill clip, for 1.2.2.1 flukes + shaman (current 106%) - https://clips.twitch.tv/GorgeousModernGorillaShadyLulu-5D5D02NxpSVjQihj\n- - - - -",
@@ -884,7 +893,7 @@
       "tags": [
         "grimm",
         "tmg",
-        "112"
+        "112%"
       ],
       "prose": "Grimm quick kill for 112% with spell twister\nhttps://clips.twitch.tv/CheerfulSpotlessPoxJKanStyle\nOriginal post by MonStahLer\n- - - - -",
       "attachments": [],
@@ -945,7 +954,7 @@
       "date": "2021-04-26T11:07:03.103+02:00",
       "rooms": [],
       "tags": [
-        "106",
+        "106%",
         "tmg",
         "balloon skip",
         "flukes"
@@ -1040,8 +1049,8 @@
       "tags": [
         "collector",
         "scream skip",
-        "106",
-        "112",
+        "106%",
+        "112%",
         "nmg"
       ],
       "prose": "https://youtu.be/C_u5NWznCsI consistent collector scream skip setup (use background objects to time the dashes)\nOriginal post by Ax2u\n- - - - -",
@@ -1345,8 +1354,8 @@
       ],
       "tags": [
         "hk-107-112-percent",
-        "112",
-        "106",
+        "112%",
+        "106%",
         "kingdom's edge"
       ],
       "prose": "right side climb\n\nThis is rng dependent and the boofly can sometimes not be there for you to pogo, in this case, a full double jump will work, but will lose you 0.3, but is still faster than the left side",
@@ -1631,7 +1640,7 @@
         "nmg",
         "all skills",
         "true ending",
-        "106",
+        "106%",
         "basin"
       ],
       "prose": "Dashing to the wall is an easy way to inventory slide.\nIt's also possible to do it without the dash but more precise so higher chance to get pushed to the spikes.",
@@ -1763,7 +1772,7 @@
       "rooms": [],
       "tags": [
         "1xx",
-        "106",
+        "106%",
         "nmg",
         "grimmkin",
         "deepfocus"
@@ -2012,7 +2021,7 @@
       "date": "2021-06-24T20:40:57.489+02:00",
       "rooms": [],
       "tags": [
-        "106",
+        "106%",
         "1221",
         "fury",
         "fury-of-the-fallen"
@@ -2490,8 +2499,8 @@
         "flower",
         "flowerquest",
         "1xx",
-        "112",
-        "106",
+        "112%",
+        "106%",
         "salubra",
         "gruz mother"
       ],
@@ -2720,8 +2729,8 @@
       "tags": [
         "all skills",
         "1xx",
-        "106",
-        "112",
+        "106%",
+        "112%",
         "wraiths https://youtu.be/-uwbi5pkake"
       ],
       "prose": null,
@@ -3166,7 +3175,7 @@
         "Fungus2_11"
       ],
       "tags": [
-        "106",
+        "106%",
         "zalroom",
         "transdash",
         "exit"
@@ -3302,9 +3311,9 @@
         "Mines_05"
       ],
       "tags": [
-        "106",
+        "106%",
         "1xx",
-        "112",
+        "112%",
         "crystal peak"
       ],
       "prose": "Use this bench pogo to normalize movement and make the cycle every time, and never fail dreamgate.",
@@ -3328,7 +3337,7 @@
       "date": "2021-09-03T21:34:48.931+02:00",
       "rooms": [],
       "tags": [
-        "106",
+        "106%",
         "1xx",
         "qga",
         "tripledash",
@@ -3777,8 +3786,8 @@
       ],
       "tags": [
         "cp",
-        "112",
-        "107",
+        "112%",
+        "107%",
         "rafters"
       ],
       "prose": "A way to go on the upper ledge right after the elevator by pogoing the flying guard. Works kinda consistently, but you have to be aware of when it doesn't work to fall back to the normal strat. You can kinda guess how it'll go after landing on first post-elevator ledge based on whether the flying guard is visible or not",
@@ -3794,8 +3803,8 @@
       "tags": [
         "wcs",
         "cp",
-        "107",
-        "112",
+        "107%",
+        "112%",
         "cheart grub"
       ],
       "prose": "Faster way to reach this grub using wall cling storage. Doing a full height jump against the wall here gives wcs. You can either choose to line yourself up before the full jump, or just go for it straight away. Faster strat saves about 2.5 seconds while the easier one saves 1.5 over the cdash from the left wall.\nYou'll want to be neutral while falling past the wall and it will automatically push you away from it as you reach the bottom of it. Once you get pushed away you can dash left and do the pogo.",
@@ -3821,7 +3830,7 @@
         "Deepnest_East_01"
       ],
       "tags": [
-        "106",
+        "106%",
         "climb"
       ],
       "prose": "Consistent climb for this room. If the boofly that you pogo drifts too far right, you may have to pogo an additional small bee",
@@ -3853,8 +3862,8 @@
       "date": "2021-09-21T11:46:02.606+02:00",
       "rooms": [],
       "tags": [
-        "112",
-        "107",
+        "112%",
+        "107%",
         "dashmaster"
       ],
       "prose": "do two neutral dashes at the start of the room to fool the shade gate into letting you in before the shade cloak cooldown. Originally found by Monstah way back in the days. You can hold a direction and still get this, but it's not as consistent as just two neutral dashes. Those work every time",
@@ -3886,7 +3895,7 @@
       "date": "2021-09-22T00:47:20.996+02:00",
       "rooms": [],
       "tags": [
-        "106",
+        "106%",
         "flukenest",
         "lemm sanctum elevator",
         "nmg"
@@ -3917,8 +3926,8 @@
       "date": "2021-09-23T14:08:10.197+02:00",
       "rooms": [],
       "tags": [
-        "112",
-        "107",
+        "112%",
+        "107%",
         "cp",
         "mantis lords"
       ],
@@ -3951,7 +3960,7 @@
       "date": "2021-09-23T22:52:14.279+02:00",
       "rooms": [],
       "tags": [
-        "106",
+        "106%",
         "room colosseum gold",
         "colo3"
       ],
@@ -4103,7 +4112,7 @@
         "Mines_19"
       ],
       "tags": [
-        "106",
+        "106%",
         "descending-dark"
       ],
       "prose": "https://clips.twitch.tv/VivaciousBadHeronPanicVis-KSuB2xhUQVmQ28-r\n\nFaster exit in the room with the grub. Found by pest",
@@ -4191,7 +4200,7 @@
         "true ending",
         "1221",
         "all skills",
-        "106",
+        "106%",
         "anythingbutlow%andcurrentpatch",
         "archives",
         "fungus03 archive 02"
@@ -4222,7 +4231,7 @@
         "any%",
         "true ending",
         "1221",
-        "106",
+        "106%",
         "kingsstation"
       ],
       "prose": "Obtain transition wcs on left. Frame perfect jump, dash while holding left. Messed up the end. When performed cleanly 0.2s timesave",
@@ -4281,7 +4290,7 @@
       "date": "2021-10-01T12:54:28.893+02:00",
       "rooms": [],
       "tags": [
-        "106",
+        "106%",
         "kingsstation",
         "cyclone",
         "drop",
@@ -4569,9 +4578,9 @@
       "rooms": [],
       "tags": [
         "1xx",
-        "106",
-        "107",
-        "112",
+        "106%",
+        "107%",
+        "112%",
         "wiggles"
       ],
       "prose": "5 dashes after nightmare lantern dreamnail perfectly align you with the left edge of the lantern for wiggles with the inner hitbox of the cyclone slash: https://clips.twitch.tv/SmellyHomelyLionAMPEnergy-HIJWxid2SYJrh-jY\n\nI guess you can technically do it even faster on the right edge of the lantern, but the slow camera makes it very curse to align yourself",
@@ -4622,8 +4631,8 @@
       "date": "2021-10-11T13:11:15.915+02:00",
       "rooms": [],
       "tags": [
-        "107",
-        "112",
+        "107%",
+        "112%",
         "all skills",
         "cp"
       ],
@@ -5101,7 +5110,7 @@
       ],
       "tags": [
         "grub",
-        "107"
+        "107%"
       ],
       "prose": "I found this movement for the grub under sanctum, pretty consistently at or under 11 seconds for that room, best being 10.66 (I checked some 107 runs that get this grub entering sanctum and elowen had the cleanest at around 12 sec) and I think I've done it over a hundred times and only had the rava run into me once so it feels much cleaner than going right then up. the wall jump on the small ledge can be a bit awkward, but you can dash into it (but don't hold left until the dash, else you'll dash off it and it goes badly). also, because of the way you aggro the rava, even if you miss the pogo or walljump, you can safely climb the right wall. the two dashes after the grub can be a bit tight, i've found letting go of a direction during the second means i don't overshoot it and fall into the elevator but ymmv. not sure if it applies to other categories/patches (did this on 1578) but maybe? (also yes i should use hktimer i just didn't feel like setting that up today)",
       "attachments": [
@@ -5414,7 +5423,7 @@
       "date": "2021-11-02T00:49:43.862+01:00",
       "rooms": [],
       "tags": [
-        "106",
+        "106%",
         "tl"
       ],
       "prose": "tl scream skip 2\nhttps://clips.twitch.tv/CrispyHandsomeSkunkPrimeMe-blmmFk0y_dFFOmqR\n\nenter with full soul, cyclone 2nd wave and dive on top of the mantis you didnt cyclone. 3x fluke into upswing, land on floor (dont have TL land on you) and spam fluke. \nbeware: if you do the last fluke late and kill TL during his scream you softlock so yeah dont do that",
@@ -5474,7 +5483,7 @@
       "date": "2021-11-03T02:55:57.146+01:00",
       "rooms": [],
       "tags": [
-        "106",
+        "106%",
         "1xx",
         "all skills",
         "descending dark"
@@ -5677,7 +5686,7 @@
         "swagdoor",
         "birthplace",
         "1xx",
-        "106"
+        "106%"
       ],
       "prose": "just a circa cue for a swagdoor setup with the birthplace early opening. stand there, charge cdash as the lifeblood light thingy lights up \"fully\", release when its charged. it works for me, but i also have slow reflexes so may need some adjustments\nhttps://clips.twitch.tv/PatientPuzzledPepperKevinTurtle-KrZ9qMJ4M4O67Vzh",
       "attachments": [],
@@ -5863,7 +5872,7 @@
       "tags": [
         "all skills",
         "1xx",
-        "106"
+        "106%"
       ],
       "prose": ".1 faster hahahahahahahahahahahahahahahahhahahahahahahahhahahahahahahahhahahahahahahahhahahahahahahahhahahahahahahah :maggotprime: :maggotprime: :maggotprime: :maggotprime: :maggotprime: :maggotprime: :maggotprime: :maggotprime:",
       "attachments": [
@@ -5926,7 +5935,7 @@
       "rooms": [],
       "tags": [
         "all skills",
-        "106",
+        "106%",
         "1221",
         "abyss-door-wcs",
         "setup"
@@ -6262,8 +6271,8 @@
       "date": "2021-11-19T18:29:16.502+01:00",
       "rooms": [],
       "tags": [
-        "112",
-        "107",
+        "112%",
+        "107%",
         "great slash",
         "greenpath"
       ],
@@ -6359,9 +6368,9 @@
       "tags": [
         "failed champion",
         "true ending",
-        "106",
-        "107",
-        "112"
+        "106%",
+        "107%",
+        "112%"
       ],
       "prose": "a setup to time the final shade soul to finish failed champ. useful in any category that does this fight with shade soul.\nthe timing is done by falling down when the floor breaks, hardfalling, fullhopping off the ledge, and casting at failed champ's height. tested on 1432, should work on any patch 1221-1.5",
       "attachments": [
@@ -6499,7 +6508,7 @@
       "rooms": [],
       "tags": [
         "112 maybe",
-        "107",
+        "107%",
         "gorb",
         "earycontrol"
       ],
@@ -7262,8 +7271,8 @@
       "date": "2021-12-15T10:50:44.59+01:00",
       "rooms": [],
       "tags": [
-        "112",
-        "107",
+        "112%",
+        "107%",
         "deepnest",
         "herrah",
         "dashmaster"
@@ -7297,7 +7306,7 @@
       "date": "2021-12-15T22:10:50.814+01:00",
       "rooms": [],
       "tags": [
-        "106",
+        "106%",
         "true ending",
         "deepnest",
         "herrah",
@@ -7789,7 +7798,7 @@
       "rooms": [],
       "tags": [
         "cp",
-        "107",
+        "107%",
         "nosk",
         "flukenest"
       ],
@@ -7928,7 +7937,7 @@
         "Abyss_17"
       ],
       "tags": [
-        "106",
+        "106%",
         "basin pale ore"
       ],
       "prose": "strat, timings, video, and notes from pest:\nsoul gathering for grub in basin pale ore. saves 1.2s with good rng, .7ish with bad rng over doing regular nail hits",
@@ -9013,7 +9022,7 @@
         "Ruins1_05c"
       ],
       "tags": [
-        "112",
+        "112%",
         "lp",
         "cp",
         "1.4",
@@ -9600,7 +9609,7 @@
       "date": "2022-02-19T01:32:01.593+01:00",
       "rooms": [],
       "tags": [
-        "106",
+        "106%",
         "1221",
         "collector",
         "quick kill",
@@ -10641,9 +10650,9 @@
         "Deepnest_East_08"
       ],
       "tags": [
-        "106",
-        "107",
-        "112",
+        "106%",
+        "107%",
+        "112%",
         "hk-all-bosses",
         "ge"
       ],
@@ -11326,8 +11335,8 @@
       ],
       "tags": [
         "hiveknight",
-        "112",
-        "107"
+        "112%",
+        "107%"
       ],
       "prose": "jump to bait Hive Knight's teleport higher for more shriek opportunities. Execution here is a bit over the top to prove a point, but hopefully you get the idea",
       "attachments": [
@@ -11456,7 +11465,7 @@
       "date": "2022-03-25T11:11:12.898+01:00",
       "rooms": [],
       "tags": [
-        "112",
+        "112%",
         "p5",
         "pantheon5",
         "nonfury",
@@ -11562,7 +11571,7 @@
         "Ruins2_11"
       ],
       "tags": [
-        "112",
+        "112%",
         "elegy",
         "collector"
       ],
@@ -12090,8 +12099,8 @@
       ],
       "tags": [
         "hk-107-112-percent",
-        "112",
-        "107",
+        "112%",
+        "107%",
         "106 partially"
       ],
       "prose": "two things here:\n1) upslash the first aspid as soon as you can and charge the cdash a bit to the left, this way you have very high chance of pushing him away, so his spawned babies won't be on the way. Very comfy\n2) don't instantly dash away after freeing the grub, instead kickstart your movement by pogoing the spike that just fell down, and then use another background object to setup the dash right under the acid. It's a bit tight and saves about 0.3, no biggie if you miss it, it'll still be faster than previous movement strat with dashing instantly away from grub",
@@ -12126,8 +12135,8 @@
       ],
       "tags": [
         "hk-107-112-percent",
-        "112",
-        "107"
+        "112%",
+        "107%"
       ],
       "prose": "0.3 faster than normal trimoni-ish drop. Kinda load dependent and rather tight",
       "attachments": [
@@ -12204,8 +12213,8 @@
       ],
       "tags": [
         "hk-107-112-percent",
-        "112",
-        "107",
+        "112%",
+        "107%",
         "early-birthplace"
       ],
       "prose": "go right to dodge the hazard respawn below, then a bit back to not hit a hazard respawn to the right. Really lenient, you can take your time to be sure to dodge everything. My visual cue is lining up with the biggest vine on the first bit drop, hardfall on the platform, then just drop off to the left slightly - if you want you can wings to airstall and make sure you're lined up properly to be 200% sure you're not hitting anything on the way down.\n\nSaves a spell (2 if you kill the crawler with shriek) over the other early birthplace strat",
@@ -12240,8 +12249,8 @@
       ],
       "tags": [
         "hk-107-112-percent",
-        "112",
-        "107",
+        "112%",
+        "107%",
         "early-birthplace"
       ],
       "prose": "Second cyclone is under the right corner of the platform you're releasing it under. If you're very fast with your cyclones, delay going left before the ddark a little bit, to avoid hitting them. Saves 1.15s optimally",
@@ -12425,7 +12434,7 @@
         "any%",
         "all skills",
         "true ending",
-        "106"
+        "106%"
       ],
       "prose": "Doing an upslash here lets you get a sub short hop height prejump, which saves about 0.05-0.07, and messing it up will basically just give you the normal time. Its not too bad imo. \nI think a similar thing could have the potential to be applied in other areas, though its use case is quite specific.\nI've tagged it 1221 because I know upslashes take longer to cap your jump on cp and idk if it would kick in soon enough. Might be that it makes it easier or impossible.",
       "attachments": [
@@ -12490,8 +12499,8 @@
         "Ruins1_27"
       ],
       "tags": [
-        "107",
-        "112"
+        "107%",
+        "112%"
       ],
       "prose": "delaying cyclone and doing it from above (second showcase in the video) saves 0.6 over firing cyclone as early as possible, because prefired cyclone doesn't trigger the lever (1st showcase in the video). I've seen 106 runners do similar movement, but I thought it's just to mitigate bad rng",
       "attachments": [
@@ -12542,8 +12551,8 @@
       ],
       "tags": [
         "mimic grub",
-        "112",
-        "107",
+        "112%",
+        "107%",
         "dashmaster"
       ],
       "prose": "Fastest strat i could find, saves ~.3 over the previous strat from my timings. Just stop holding right a brief moment after the last dash to land on the corner, dash wings dash pogo dash. Timesave comes from squeezing in the extra dash.\n\nThere are slightly faster strats (~.1) but they aren't run viable",
@@ -12634,7 +12643,7 @@
         "ruins 1 28",
         "grimmkin",
         "storerooms",
-        "112"
+        "112%"
       ],
       "prose": "Faster strat for the grimmkin.\nend the cdash just a bit early to have time to charge the cyclone and not hardfall (by landing on the corner)\nIf you can react to getting good rng (low spawn, left or right) (by cancelling your cyclone early), you can get a 2s timesave by one cycling the grimmkin (like in video).\nIf you get bad rng, it's .3-.6s timesave.\nYou can also go for double fireballing if the grimmkin gives you a high spawn and shoots fireball, but would not go for it - if you fail it you're screwed",
       "attachments": [
@@ -13852,7 +13861,7 @@
         "pantheon",
         "p1",
         "p5",
-        "112",
+        "112%",
         "godhome-ending"
       ],
       "prose": "I don't know if there's any particular reason why runners don't shriek soul warrior once it spawns, but this shriek easily deals 2/3 hits so outweighs the current great slash.\nI always leave 1 cast soul to deal this shriek, cos there's usually enough soul and time window to heal after soul warrior or even after mawlek.",
@@ -13888,7 +13897,7 @@
         "pantheon",
         "p2",
         "p5",
-        "112"
+        "112%"
       ],
       "prose": "consistent strat to deal soul master phase 2 in 3 rounds if you have some soul",
       "attachments": [
@@ -13922,7 +13931,7 @@
       ],
       "tags": [
         "hk-100-106-percent",
-        "106",
+        "106%",
         "100",
         "early-birthplace",
         "birthplace-trigger"
@@ -13972,7 +13981,7 @@
       "date": "2022-06-11T11:35:21.195+02:00",
       "rooms": [],
       "tags": [
-        "112",
+        "112%",
         "oro-mato"
       ],
       "prose": "consistent way to deal with the worst rng in p1 without slowing down the other patterns. don't cast the first shriek too quickly, otherwise it only deals 3 hits and can't kill oro using this strat. timing of the ssoul isn't very hard, just finish this combo consecutively and don't wait for ssoul. \nI'm practicing nonfury p5 with steady body, but of course this strat works without it.",
@@ -14085,7 +14094,7 @@
         "Crossroads_07"
       ],
       "tags": [
-        "112"
+        "112%"
       ],
       "prose": "faster strat than currently used one for mawlek, by about .9s optimally, more usually .7.s. Pretty much impossible to mess up. Does make the overcharm spelltwister here not a thing. You cannot dash to avoid the hit instead because mawlek's hitbox juts out",
       "attachments": [
@@ -14118,8 +14127,8 @@
         "Mines_19"
       ],
       "tags": [
-        "112",
-        "107",
+        "112%",
+        "107%",
         "elegy"
       ],
       "prose": "cdash instead of dashes at the end of the room. Pretty hard, saves .15 max, .1 is more to be expected, messing up is ~.3 timeloss",
@@ -14154,8 +14163,8 @@
       ],
       "tags": [
         "elegy",
-        "107",
-        "112"
+        "107%",
+        "112%"
       ],
       "prose": "regrabbing the wall allows you to get to the right wall slightly faster, saving optimally .25, on average .15. Room for greeding too much, by grabbing wall too early and dashing in the spikes, but not too hard. Strat seen originally in one of hotaru_st's runs",
       "attachments": [
@@ -14186,7 +14195,7 @@
       "date": "2022-06-22T16:26:59.993+02:00",
       "rooms": [],
       "tags": [
-        "112",
+        "112%",
         "vengefly-king",
         "vking",
         "vfk"
@@ -14212,7 +14221,7 @@
       "date": "2022-06-22T16:57:48.453+02:00",
       "rooms": [],
       "tags": [
-        "112",
+        "112%",
         "gruz-mother"
       ],
       "prose": "timing for fluke multi hit:\n1) 6 slash then fluke, this fluke deals melting damage\n2) when gruz mother does the slamming attack, usually 2x damage",
@@ -14245,7 +14254,7 @@
       "date": "2022-06-23T05:40:17.919+02:00",
       "rooms": [],
       "tags": [
-        "112",
+        "112%",
         "dung-defender"
       ],
       "prose": "fastest and completely consistent setup for dung defender using flukes. note that if you don't pogo dung defender before the 2nd scream skip, you will prob stagger it once more and lose ~0.8s.",
@@ -14370,7 +14379,7 @@
         "Fungus3_10"
       ],
       "tags": [
-        "112"
+        "112%"
       ],
       "prose": "strats for big QG arena in 112%, make sure to be facing to the right when shrieking\nhttps://clips.twitch.tv/RefinedPrettiestCobblerSquadGoals-SVO75rhLoGMX9pS7",
       "attachments": [],
@@ -14633,7 +14642,6 @@
       ],
       "tags": [
         "106%",
-        "106",
         "flukemarm"
       ],
       "prose": "labbed this area and found these to be the fastest movement alternatives at the end. (hard to account for the pre-cdash movement and hwurmp manips though, because rng positions. so wont say one saves 0.4s over the other)",
@@ -14893,8 +14901,8 @@
         "Deepnest_37"
       ],
       "tags": [
-        "107",
-        "112",
+        "107%",
+        "112%",
         "sharpshadow"
       ],
       "prose": "Sharpshadow movement through deepnest_37 on the way to tram. low 8.5 with good execution, ikc strat is low 8.7 - .2s timesave over it. Only minor points are to not bonk after the walk section, and to be sure to dash high enough that you don't corner correct (otherwise the sharp shadow recharges before second dash after damagetank).",
@@ -15747,8 +15755,8 @@
         "Abyss_06_Core"
       ],
       "tags": [
-        "107",
-        "112",
+        "107%",
+        "112%",
         "voidheart",
         "lifebloodcore",
         "hk-107-112-percent",
@@ -15796,7 +15804,7 @@
       "date": "2022-09-02T09:41:45.006+02:00",
       "rooms": [],
       "tags": [
-        "107",
+        "107%",
         "hk-107-112-percent",
         "grimm",
         "tmg",
@@ -16156,7 +16164,7 @@
         "Ruins1_02"
       ],
       "tags": [
-        "106",
+        "106%",
         "all charm notches",
         "city of tears",
         "wall cling storage"
@@ -17137,7 +17145,7 @@
       "rooms": [],
       "tags": [
         "wp",
-        "112",
+        "112%",
         "sharpshadow",
         "white_palace_14"
       ],
@@ -17295,7 +17303,7 @@
         "Fungus1_28"
       ],
       "tags": [
-        "112",
+        "112%",
         "banishment",
         "baldurshell"
       ],
@@ -17328,7 +17336,7 @@
       "date": "2022-11-26T01:51:24.256+01:00",
       "rooms": [],
       "tags": [
-        "112",
+        "112%",
         "gg mantis lords v"
       ],
       "prose": "A 4 hits setup for the downdash pattern.\nAt the start of the fight, walk up to middle platform, swing 7 times and then full jump with an upslash.\nFor the consecutive cycles walk up the middle and then full jump. Walking up the middle won't mess damage rotation for any other attack, so doesn't really have any downsides: https://clips.twitch.tv/PolishedCrepuscularOstrichSuperVinlin-cxv3M8Hksrsac7R2",
@@ -17353,7 +17361,7 @@
         "Fungus1_28"
       ],
       "tags": [
-        "112"
+        "112%"
       ],
       "prose": "following Scruffy's findings, fastest movement I've been able to find up to baldur shell. 0.9-1 faster than the fastest cdash alternative I've been able to get. If you fail to refresh your sharp shadow at the start of baldur shell room, it's not a big deal, loses only 0.1-0.2 at most",
       "attachments": [
@@ -17464,7 +17472,7 @@
         "Crossroads_13"
       ],
       "tags": [
-        "112",
+        "112%",
         "107 (maybe",
         "106?)"
       ],
@@ -17638,7 +17646,7 @@
       "tags": [
         "hk-1xx-percent-glitched",
         "benchstorage",
-        "112",
+        "112%",
         "glitched",
         "spire",
         "lpleverskip"
@@ -17710,7 +17718,7 @@
       "tags": [
         "hk-1xx-percent-glitched",
         "glitched",
-        "112"
+        "112%"
       ],
       "prose": ".5 faster than left wall cdash, also a lil' bit of soul if you need it. Make sure you get your sharp shadow recharged after the pogo so you can easily make it under the platform",
       "attachments": [
@@ -17745,7 +17753,7 @@
       "tags": [
         "hk-1xx-percent-glitched",
         "glitched",
-        "112",
+        "112%",
         "loaddependant"
       ],
       "prose": "Most likely load dependent timesave sorry, experiment if it works for you. Need to go a bit fast to not get hit by the laser cycle. Saves about 1s over the standard setup strat to do the downdash",
@@ -18139,8 +18147,8 @@
         "Crossroads_13"
       ],
       "tags": [
-        "112",
-        "107"
+        "112%",
+        "107%"
       ],
       "prose": "easier movement to the cycle vali posted a while ago, basically 100% consistent this way",
       "attachments": [
@@ -18559,9 +18567,9 @@
       "tags": [
         "ismas",
         "all skills",
-        "106",
-        "107",
-        "112"
+        "106%",
+        "107%",
+        "112%"
       ],
       "prose": "hwurmp knockback storage explanation\n\nIts consistent, all you have to do is leave their orange aggro circle before they inflate fully\n\n1) you want to take a diagonal path after slashing, preferably by holding jump but falling works too\n2) you want to slash as far away as possible\n3) you want to turn as quickly as possible\n\nIt DOES NOT MATTER\n1) what direction you slash after the one to wake them up\n2) when you get close to them again\n3) when the slashes after the inflation happen\n\nPlease Note: im still looking further into this since it seemed to stop working as soon as i started doing il attempts, so bear with me",
       "attachments": [
@@ -19525,7 +19533,7 @@
       "rooms": [],
       "tags": [
         "white_palace_11",
-        "107",
+        "107%",
         "wp",
         "white palace",
         "1xx",
@@ -19793,8 +19801,8 @@
         "Mines_24"
       ],
       "tags": [
-        "112",
-        "107"
+        "112%",
+        "107%"
       ],
       "prose": "Saves ~1.2s over the fluke strat, plus whatever you save not needing to collect soul.\nTry to be right of the stalactite to hit the grub without hitting the hazard respawn box",
       "attachments": [
@@ -19882,8 +19890,8 @@
       ],
       "tags": [
         "crystal heart",
-        "107",
-        "112",
+        "107%",
+        "112%",
         "acn",
         "100",
         "1xx",
@@ -19923,8 +19931,8 @@
         "dashmaster",
         "ddark",
         "crushers",
-        "107",
-        "112"
+        "107%",
+        "112%"
       ],
       "prose": "faster cycle with no inv drop, saves ~0.4 over normal cycle, quite a bit more difficult but should be run viable. downdash like right after the shardmite to set up the crusher positions",
       "attachments": [
@@ -19960,8 +19968,8 @@
         "dashmaster",
         "ddark",
         "1xx",
-        "112",
-        "107",
+        "112%",
+        "107%",
         "dark room"
       ],
       "prose": "Fastest dark room strat with dashmaster - extra dash after the big jump saves ~0.2 and imo makes the room a bit easier. Starting with neutral dashes is like a couple frames faster by my timing and is also easier. Go neutral for part of the big jump before the extra dash, and if you're too far right then go neutral for a bit of the double dash after. I included 2 diff starts, both are the same speed but one gets a free hit of soul (but is maybe harder to position)",
@@ -20054,8 +20062,8 @@
         "Waterways_05"
       ],
       "tags": [
-        "107",
-        "112",
+        "107%",
+        "112%",
         "dung defender"
       ],
       "prose": "possibly\nFaster and lower variance Dung Defender quick kill using Flukenest Twister. The scream skip takes some getting used to but I'm over 95% at it now.\n\n__Troubleshooting:__\nScream Skip:\nMake sure you are close to Dung Defender when you do the jump, and then hold in when you are part way up your jump. You need to dive him out of the ground ASAP. I line up with the small background dung ball to space my dive so it sets me up for this. The nail hit is what starts the scream, so you want your jump and nail hit to always happen at the same time relative to each other or you will have inconsistent results.\n\nStaggers Early:\nYou need to delay your first hit out of getting hit a little (I fall about half way to the ground, as late as hitting the ground can work but earlier means you don't need to be 100% on your nail cancels)\n\nDoesn't backstep out of first stagger:\nDung Defender was able to move too far right when he first spawned, make sure your dive hits as soon as possible.",
@@ -20115,8 +20123,8 @@
       "rooms": [],
       "tags": [
         "1xx",
-        "107",
-        "112",
+        "107%",
+        "112%",
         "dream nail",
         "catacombs entry",
         "dream plats",
@@ -20656,8 +20664,8 @@
         "lost kin",
         "shade soul",
         "true ending",
-        "107",
-        "112"
+        "107%",
+        "112%"
       ],
       "prose": "**LK Dash Attack Storage**\nIf you stagger Lost Kin during its aerial dash attack animation, it skips the landing phase and still thinks it's supposed to dash. Even if it pulls an empty hop or down stab, air dash always overrides them. You can manipulate this to chain air dash triples multiple times with the right timing. (s/o to Magnetic Pizza for helping me figure this out lol)\n\nIn order for the dash attack to be stored, Lost Kin needs to be staggered during the \"Dash Attack\" animation (green circle). If it enters the \"In Air\" animation (red circle), it loses the storage. Getting the third fireball tick to hit lost kin before the animation ends is a bit tricky, so watch the video on the left and practice the timing. You want to shoot the fireball at about the same time as LK starts the dash - just be careful because if you shoot too early you'll single hit. Even when you're not in the stagger lock, be on the lookout for the air dash attack and see if you can stagger during the dash animation - the dash anticipate animation lasts a long time so make sure it's not staggered until the dash starts to get the storage.\n\nThe video on the right shows an alternate stagger rotation that could be viable for LP. The extra nail hit will get the stagger count up to 7 after the triple, and on 1.2.2.1 it will still get tripled fairly consistently. However, it can be awkward/rng to triple the air dash with the extra stagger hit, so I would recommend only trying that on later patches. \n\nWhen the dash attack is stored, Lost Kin can do a grounded dash 28% of the time which is worse than an aerial dash because you can't keep the storage (at least not consistently) but you can still triple it if you fireball early enough.",
       "attachments": [
@@ -21483,7 +21491,7 @@
       ],
       "tags": [
         "scsbte",
-        "107",
+        "107%",
         "1.4+"
       ],
       "prose": "soul catcher early control very free ver",
@@ -21518,7 +21526,7 @@
       ],
       "tags": [
         "scsbte",
-        "107",
+        "107%",
         "1.4+",
         "soul catcher early control"
       ],
@@ -21838,8 +21846,8 @@
       "tags": [
         "cyclone",
         "all skills",
-        "107",
-        "112"
+        "107%",
+        "112%"
       ],
       "prose": "You're able to fit 2 cyclone drops in this room, and it is a lot easier to go towards the left before entering the transition.",
       "attachments": [
@@ -21942,9 +21950,9 @@
       ],
       "tags": [
         "1xx",
-        "106",
-        "107",
-        "112",
+        "106%",
+        "107%",
+        "112%",
         "awr",
         "storerooms"
       ],
@@ -22080,7 +22088,7 @@
         "ooma cdash",
         "true ending",
         "all skills",
-        "106"
+        "106%"
       ],
       "prose": "After breaking the wall by archives, cdashing into the upper fog canyon room instead of dashing through is ~1.5 seconds faster for True Ending and ~0.9 faster for All Skills [1]. The cdash will work in the following situations:\n- If the ooma is high enough, the cdash will kill it and knock the core towards the transition and doesn't hit you (this is the most common)\n- The ooma is very low and you can cdash right above it \n\nIf the ooma is high enough that your cdash will hit it but low enough that it'll get knocked into the wall, attempting to cdash through the room will result in a hefty damage tank which loses 0.1 to cdashless [2]. This is especially punishing in TE where being 3 HP for No Eyes up to the toll bench sucks, but you can react to the ooma position and cancel the cdash to avoid the damage tank (also applicable to AS and 106%):\n- The most safe option is to cancel the cdash early, then shade dash through it and do a minimum height wings [3]. This loses 0.05 to cdashless but saves 0.05 to damage tanking. To avoid floaty wings from the dream gate, do a jump wings during dash cooldown in the previous room which loses nothing if done correctly.\n- Alternatively, you can wait until your cdash hits the ooma and cancel cdash on reaction, then quickly wings and shade dash through the explosion [4]. This saves 0.05 to cdashless and 0.15 to damage tanking, but is considerably harder and riskier so I wouldn't default to this especially in TE. However, this can be used as a backup if you try to cdash above it but misjudge its position and get hit, so you can afford to be less cautious about going through with the cdash. (Do note that you have to react to hitting the ooma, NOT the ooma core hitting the wall. If you wait that long it'll be too late to cancel the cdash, so there is still a level of proactivity required for this strat, you just have more time to make the decision.)",
       "attachments": [
@@ -22549,7 +22557,7 @@
       "date": "2023-12-06T02:58:49.825+01:00",
       "rooms": [],
       "tags": [
-        "106",
+        "106%",
         "wp"
       ],
       "prose": "doing a normal dash for gate wcs lines up the dashes for the rest of the room better",
@@ -22647,7 +22655,7 @@
       ],
       "tags": [
         "all skills",
-        "106",
+        "106%",
         "howlingwraiths"
       ],
       "prose": "Better movement for the lumafly room, saves around 0.3-0.4 to the double cdash version, the first wings jump is min height, and the last one is max height so they line up really nicely",
@@ -23398,7 +23406,7 @@
         "true ending",
         "any-nmg",
         "any%",
-        "106",
+        "106%",
         "1221"
       ],
       "prose": "makes bad rng lose 0 (unless you chain, dash chain is prolly faster than chaining here)\nhold down at the start of room (dont release until you pogo or see you didnt get the rng) to make it easier, if you get the rng in these  videos you let go of analog left (so u don't cling and can pogo) when near then pogo, dash, and during dash repress analog left to recling\nleft video is new strat, right video is old strat\nnew strat saves ~.3, but you can save more by getting chain (no video as this rng is v rare so i havent hit it and i cant be bothered. it saves time regardless.)\n(dont expect perfect timings for these strats, they are very hard to time as the rng is pretty rare)\ncredits to @PsyKlone for helping with timing and labbing",
@@ -24192,7 +24200,7 @@
       ],
       "tags": [
         "thorns",
-        "107"
+        "107%"
       ],
       "prose": "So even factoring in the .81 cdash charge time this still seems to be the fastest strat at least from searching the toom code here, and it doesn't need dashmaster. Imma be real with you I wouldn't do this, unless I'm missing something this is extremely tight. I've gotten it to maybe 1 in 4 after 20m of practice but ymmv and maybe I just suck, or maybe the charged lumafly timings are random. It feels like you need to  be EXTREMELY tight on the last dash over the thorns before the last lot of lumaflies in order to  avoid getting hit\n\nLmao nvm cc posted this ages ago it just wasn't tagged oh well new 107 runners enjoy",
       "attachments": [
@@ -25952,8 +25960,8 @@
       ],
       "tags": [
         "bretta bench",
-        "107",
-        "112"
+        "107%",
+        "112%"
       ],
       "prose": "when exiting bretta bench, you can buffer a minihop, which prevents the late dash (due to lag/t-ft/fps memes) from causing a dunk, since you're in dash speed you have extra leniency with coyote frames (walking further left takes longer before you're dash is ending too far left)**you're struggling to get the minihop go neutral before the first dash**, missing the minihop isnt the end of the world as you can still buffer the last dash and probably make it\n\nif performed optimally you'll dash one frame later, however this doesnt lose a frame usually because of how the load lines up, but this means you can't buffer and instead have to time the dash, meaning this strat probably loses a couple frames on average, but its a lot more consistent",
       "attachments": [
@@ -26249,9 +26257,9 @@
       "tags": [
         "all skills",
         "1xx",
-        "106",
-        "107",
-        "112",
+        "106%",
+        "107%",
+        "112%",
         "true ending"
       ],
       "prose": "left/right is objectively optimal here because you get the dash refresh sooner and dont have the speed reset\n\nleft/analog right at the top, can hold it from the cdash, and let go of analog right before dashing, then swap to right/analog left for the gate wall, continue to hold this as you dash through since its a right dash and you dont have to worry about greed as much, careful not to dash early or you'll dash off the wall\n\nsaves 0.14 on a perfectly greeded cyclone to the bottom, and 0.02-0.1 on a good cling -> downpress, however it saves more than that generally since this is bufferable consistency where the other strats have a lot of timing going on, probably closer to 0.3 for most people",
@@ -26604,8 +26612,8 @@
         "all skills",
         "lp",
         "1xx",
-        "107",
-        "112"
+        "107%",
+        "112%"
       ],
       "prose": "(mainly directed towards aslp but applies to 1xx lp as well)\nBroken Vessel has 525hp; stagger values are 9 hits for combo (<1s/hit) and 13 otherwise; headbanging phase starts for the first time once you deal 155 damage, so 4 shade soul hits is always enough to trigger it.\n\nYou want to always start the fight by firing 2 shade souls (where you do a small jump between the first fb and the second one), which has a few different outcomes:\n-both shade souls double or one triples and the other singles (e.g. whilst bv is on the ground or dashing towards you):\nFor this case get 4 nail hits before the headbanging phase starts*, and then you want to get 1 nail, 1 pogo and a ddark, followed by 1 upslash, one pogo and another ddark, followed by a pogo and a ddark, finally ending with a ddark. \n\n-only one shade soul doubles and two single hit:\nFor this case there's pretty much no risk of staggering before the headbanging phase starts, so try to get 7/8 nail hits in and then do your first ddark. After that you want to do a sequence of 1 upslash, 1 pogo and a ddark (all) twice, which will send the boss into a staggered state. Depending on wether you got 7 or 8 nail hits at the beginning you can either directly ddark the boss (or shade soul double if you're feeling spicy) or you'll have to do a pogo into the ddark.\n\nThe two most common cases are the ones described above, but there are some other misc starts to the fight, for example, where you get \"bad rng\" but the 3rd shade soul doubles (or even triples in some cases) or you try to go for three doubles. Essentially, if you get 5 shade soul hits at the start of the fight you want to follow the 1double2singles case (soul gathering a little less strict), but instead of finishing with a ddark you can get enough soul for a last shade soul.\n*try not going for more than 4 because stagger is at 9 combo hits (or 3 hits if you start with 5 shade soul hits)",
       "attachments": [
@@ -26750,7 +26758,7 @@
         "wcs",
         "1221",
         "all skills",
-        "106",
+        "106%",
         "acn",
         "elegy",
         "happy couple etc."
@@ -27042,9 +27050,9 @@
         "Fungus2_15"
       ],
       "tags": [
-        "112",
+        "112%",
         "1xx",
-        "107",
+        "107%",
         "lords",
         "gg mantis lords"
       ],
