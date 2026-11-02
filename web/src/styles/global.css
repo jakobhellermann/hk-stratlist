@@ -2,8 +2,6 @@
   --bg: #fff;
   --fg: #1b1b1f;
   --muted: #6b6b76;
-  --accent: #8a2b3a;
-  --accent-hover: #c43f55;
   --chip: #eee9ea;
   color-scheme: light dark;
 }
@@ -12,9 +10,26 @@
     --bg: #141417;
     --fg: #e6e6ea;
     --muted: #9a9aa6;
+    --chip: #2a2a30;
+  }
+}
+/* Set on the page and on links to a game, which then show that game's colors. */
+[data-game="hk"] {
+  --accent: #1f5fa8;
+  --accent-hover: #3a82d6;
+}
+[data-game="ss"] {
+  --accent: #8a2b3a;
+  --accent-hover: #c43f55;
+}
+@media (prefers-color-scheme: dark) {
+  [data-game="hk"] {
+    --accent: #6cb6ff;
+    --accent-hover: #a8d4ff;
+  }
+  [data-game="ss"] {
     --accent: #e0788a;
     --accent-hover: #ffb3c0;
-    --chip: #2a2a30;
   }
 }
 body {
@@ -189,7 +204,7 @@ header nav.games a + a {
   border-left: 1px solid var(--muted);
 }
 header nav.games a:hover {
-  color: var(--accent-hover);
+  color: var(--accent);
 }
 header nav.games a[aria-current] {
   color: var(--accent);

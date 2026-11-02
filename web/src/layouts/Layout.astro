@@ -9,7 +9,7 @@ const { gameUrl, updated } = gameData(game);
 ---
 
 <!doctype html>
-<html lang="en" transition:animate="none">
+<html lang="en" data-game={game} transition:animate="none">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,7 +23,7 @@ const { gameUrl, updated } = gameData(game);
       <time class="updated" datetime={updated}>Updated {updated.slice(0, 10)}</time>
       <nav class="games">
         {games.map(({ slug, label }) => (
-          <a href={gameData(slug).gameUrl("")} title={label} aria-current={slug === game ? "page" : undefined}>
+          <a href={gameData(slug).gameUrl("")} data-game={slug} title={label} aria-current={slug === game ? "page" : undefined}>
             <span class="long">{label}</span><span class="short">{slug.toUpperCase()}</span>
           </a>
         ))}
