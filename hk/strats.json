@@ -289,6 +289,13 @@
     "mantis lords": [
       "mantislords"
     ],
+    "p5": [
+      "pantheon5",
+      "pantheon 5"
+    ],
+    "pop": [
+      "path of pain"
+    ],
     "quick kill": [
       "quickkill"
     ],
@@ -10387,7 +10394,7 @@
       "date": "2022-03-02T23:12:22.232+01:00",
       "rooms": [],
       "tags": [
-        "path of pain",
+        "pop",
         "thorn skip skip",
         "r3",
         "room 3"
@@ -11484,7 +11491,6 @@
       "tags": [
         "112%",
         "p5",
-        "pantheon5",
         "nonfury",
         "markoth"
       ],
