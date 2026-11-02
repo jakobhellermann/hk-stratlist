@@ -1,3 +1,6 @@
+[workspace]
+members = ["map-export"]
+
 [package]
 name = "stratlist"
 version = "0.1.0"

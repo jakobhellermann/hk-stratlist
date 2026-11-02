@@ -70,8 +70,9 @@ struct Strats<'a> {
 }
 
 const STRATS_PATH: &str = "data/export/strats.json";
-const MAP_DATA_PATH: &str = "/home/jakob/dev/hkss/other/maptools/map-data.json";
-const SCENE_SIZES_PATH: &str = "/home/jakob/dev/hkss/mods/MapWarp/data/mapwarp_scene_sizes.json";
+/// Both written by map-export from the game files.
+const MAP_DATA_PATH: &str = "data/game/map-entries.json";
+const SCENES_PATH: &str = "data/game/scenes.json";
 const OUT_DIR: &str = "data";
 
 fn read(path: &str) -> Result<String> {
@@ -82,7 +83,7 @@ fn main() -> Result<()> {
     let mut args = std::env::args().skip(1);
     let strats_path = args.next().unwrap_or_else(|| STRATS_PATH.to_string());
     let map_path = args.next().unwrap_or_else(|| MAP_DATA_PATH.to_string());
-    let scene_sizes_path = args.next().unwrap_or_else(|| SCENE_SIZES_PATH.to_string());
+    let scenes_path = args.next().unwrap_or_else(|| SCENES_PATH.to_string());
     let out_dir = args.next().unwrap_or_else(|| OUT_DIR.to_string());
 
     let export: Export = serde_json::from_str(&read(&strats_path)?)
@@ -90,12 +91,11 @@ fn main() -> Result<()> {
     let messages = &export.messages;
     let entries: Vec<map::MapEntry> =
         serde_json::from_str(&read(&map_path)?).with_context(|| format!("parsing {map_path}"))?;
-    let loadable: HashSet<String> =
-        serde_json::from_str::<HashMap<String, serde_json::Value>>(&read(&scene_sizes_path)?)
-            .with_context(|| format!("parsing {scene_sizes_path}"))?
-            .into_keys()
-            .map(|scene| scene.to_lowercase())
-            .collect();
+    let loadable: HashSet<String> = serde_json::from_str::<Vec<String>>(&read(&scenes_path)?)
+        .with_context(|| format!("parsing {scenes_path}"))?
+        .into_iter()
+        .map(|scene| scene.to_lowercase())
+        .collect();
     let canonical = map::lookup(entries.iter().map(|e| e.name.clone()), &loadable);
     let (rooms, orphans) = map::group(entries, &loadable);
 

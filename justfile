@@ -34,6 +34,10 @@ update: && data
 export-all: && data
     {{exporter}} export -c {{channel}} -f Json -o {{strats}}
 
+# room layout, loadable scenes and map sprites from the installed game (pass its directory if not the default Steam one)
+map *game_dir:
+    cargo run --release -p map-export -- data {{game_dir}}
+
 # strats.json, map.json and media previews
 data:
     cargo run --release
