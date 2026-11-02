@@ -42,6 +42,17 @@ for (const type of ["play", "pointerdown", "focusin"]) {
   );
 }
 
+// `play` doesn't bubble, hence the capture phase.
+document.addEventListener(
+  "play",
+  (e) => {
+    for (const video of document.querySelectorAll("video")) {
+      if (video !== e.target) video.pause();
+    }
+  },
+  true,
+);
+
 // Capture phase with preventDefault, so the native controls' own 5s seek doesn't also fire.
 window.addEventListener(
   "keydown",
