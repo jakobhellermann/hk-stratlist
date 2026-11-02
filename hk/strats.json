@@ -343,6 +343,9 @@
     "vengefly king": [
       "vfk"
     ],
+    "vs": [
+      "vs route"
+    ],
     "wall cling storage": [
       "wallcling storage"
     ],
@@ -29920,7 +29923,7 @@
         "lp",
         "false knight",
         "rollback cancel",
-        "vs route",
+        "vs",
         "every non ibaldur category"
       ],
       "prose": "Another improvement for small jumpback rng, if you're fast you can just do it damageless, saves a clean 0.3 in no freezeframes.\n\n2nd vid is showing off a bit of tech that helped me get extremely consistent at the correct knockback direction: *If you're holding up while damage tanking, you can buffer the upslash out of the damage tank*. I pretty much am never too slow anymore (1st clip is old lmao) so I never have to do the crazy pogos and ntas and just get to save a full second on small jumpback rng for relatively easy execution",
