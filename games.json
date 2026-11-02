@@ -33,7 +33,7 @@
           "true ending": ["te", "hk true ending"],
           "vengefly king": ["vfk"],
           "vs": ["vs route"],
-          "watcher knights": ["wk"]
+          "watcher knights": ["watcher knight", "watchers", "wk"]
         },
         "roomTypos": {
           "croassroads_": "crossroads_",
