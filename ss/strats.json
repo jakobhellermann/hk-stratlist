@@ -6089,12 +6089,13 @@
       "link": "https://discord.com/channels/772964112908156938/1365521515356885032/1421636937231634462",
       "author": "238476142003093505",
       "date": "2025-09-28T01:17:38.573+02:00",
-      "rooms": [],
+      "rooms": [
+        "Greymoor_15b"
+      ],
       "tags": [
-        "greymoor_15b (craw lake)",
         "any%"
       ],
-      "prose": "(maybe) Thread Storm without Craw Arena\nSome people seemed to think that this was impossible so I wanted to give it a try.\nI doubt this is actually useful for a real run but maybe a TAS would make it faster than doing the arena.\nhttps://youtu.be/GR9WpG75sQs",
+      "prose": "(craw lake) (maybe) Thread Storm without Craw Arena\nSome people seemed to think that this was impossible so I wanted to give it a try.\nI doubt this is actually useful for a real run but maybe a TAS would make it faster than doing the arena.\nhttps://youtu.be/GR9WpG75sQs",
       "attachments": [],
       "reactions": [
         {
@@ -9817,9 +9818,9 @@
       ],
       "tags": [
         "bell fly dmg tank",
-        "low% (forwarded above)"
+        "low%"
       ],
-      "prose": "Can be a good back up for other categories or a good beginner strat",
+      "prose": "(forwarded above)\nCan be a good back up for other categories or a good beginner strat",
       "attachments": [],
       "reactions": []
     },
@@ -21339,9 +21340,9 @@
         "Library_06"
       ],
       "tags": [
-        "cwj (cloakwalljump)"
+        "cwj"
       ],
-      "prose": "avoids using box for entering right side whispering vaults (path to garmond fight or bilewater)\ndone on 60fps to show that it should work for everyone (assuming 60fps is baseline)\nThis can be done without wings, wings just make it easier",
+      "prose": "(cloakwalljump)\navoids using box for entering right side whispering vaults (path to garmond fight or bilewater)\ndone on 60fps to show that it should work for everyone (assuming 60fps is baseline)\nThis can be done without wings, wings just make it easier",
       "attachments": [
         {
           "url": "https://cdn.discordapp.com/attachments/1365521515356885032/1466905080904286309/library_06_cwj.mp4?ex=6ae70391&is=6ae5b211&hm=2e4a46d9166f993af1643e971a2d7c84f228220d99450c2bb27f126b3e775c2a&",

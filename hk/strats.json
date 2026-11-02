@@ -217,6 +217,9 @@
     "dung defender": [
       "dungdefender"
     ],
+    "early control": [
+      "earlycontrol"
+    ],
     "fk skip": [
       "fkskip"
     ],
@@ -9938,9 +9941,9 @@
         "hk-any-percent-glitched",
         "nmms",
         "oob",
-        "early control (?)"
+        "early control"
       ],
-      "prose": "Soob into thk's room. There's ground oob.\nDo a late soob optimally, early soob doesn't save time.\nBest i could get is .5s to no soob, realistically on average .3s.",
+      "prose": "(?)\nSoob into thk's room. There's ground oob.\nDo a late soob optimally, early soob doesn't save time.\nBest i could get is .5s to no soob, realistically on average .3s.",
       "attachments": [
         {
           "url": "https://cdn.discordapp.com/attachments/822611544231772170/947805624463409152/Room_final_boss_core.mp4?ex=6ae9ba46&is=6ae868c6&hm=6bf225372a391bfcb667e22b166649dc41adc0ec2e5323cff80c74f3bb060c8d&",
@@ -11961,7 +11964,7 @@
         "shade cloak",
         "1.4+",
         "lp",
-        "earlycontrol",
+        "early control",
         "cdash",
         "true ending",
         "all skills",
@@ -27436,10 +27439,10 @@
       "tags": [
         "ancestral mound",
         "every category",
-        "1221 (probably doesnt work on lp)",
+        "1221",
         "nailboost"
       ],
-      "prose": "This nailboost saves 2-3 frames and if you don't greed it you pretty much always break even at minimum. \nSaw it in Peeka's tas here but it's actually rta viable https://discord.com/channels/772964112908156938/822611690871980092/1339511295480692777",
+      "prose": "(probably doesnt work on lp)\nThis nailboost saves 2-3 frames and if you don't greed it you pretty much always break even at minimum. \nSaw it in Peeka's tas here but it's actually rta viable https://discord.com/channels/772964112908156938/822611690871980092/1339511295480692777",
       "attachments": [
         {
           "url": "https://cdn.discordapp.com/attachments/822611544231772170/1339535412707983380/2025-02-13_04-49-28.mp4?ex=6aea5851&is=6ae906d1&hm=cf87c785f959704daa4701ea1173be88684b16ad87aa6a1f00e3c91d917a0a0e&",
