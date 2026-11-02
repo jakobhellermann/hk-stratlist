@@ -33,7 +33,8 @@
           "true ending": ["te", "hk true ending"],
           "vengefly king": ["vfk"],
           "vs": ["vs route"],
-          "watcher knights": ["watcher knight", "watchers", "wk"]
+          "watcher knights": ["watcher knight", "watchers", "wk"],
+          "white palace": ["wp"]
         },
         "roomTypos": {
           "croassroads_": "crossroads_",
