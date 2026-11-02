@@ -296,6 +296,9 @@
     "pop": [
       "path of pain"
     ],
+    "qg": [
+      "qgarena"
+    ],
     "quick kill": [
       "quickkill"
     ],
@@ -315,6 +318,9 @@
       "shadesoul"
     ],
     "shaman stone": [
+      "shaman",
+      "shaman's stone",
+      "shamans",
       "shamanstone"
     ],
     "soul collection": [
@@ -3665,7 +3671,7 @@
       "rooms": [],
       "tags": [
         "vs",
-        "shaman",
+        "shaman stone",
         "vengefulspirit",
         "trigger",
         "mound"
@@ -8287,7 +8293,7 @@
         "dung defender",
         "glowing womb",
         "failedchamp",
-        "qgarena",
+        "qg",
         "marmu",
         "traitor lord",
         "nosk",
@@ -13557,7 +13563,7 @@
         "nmg",
         "fungal core",
         "mop",
-        "shaman's stone",
+        "shaman stone",
         "stall ball"
       ],
       "prose": "May uploaded the version of the stallball with more items, just wanted to put this here in case anyone wants to know how to do the fungal core stallball skip with only MoP and shamans.",
@@ -27199,7 +27205,7 @@
         "slopeball",
         "basin",
         "wings",
-        "shamans"
+        "shaman stone"
       ],
       "prose": "I really didnt find the existing set up for the slopeball easy at all, and from my understanding, neither do many ppl, esp for shamans. Thats the reason why i've been looking for a more consistent (and hopefully faster) way of setting it up.\n\nTo begin with, you are going to line yourself up with the edge of the platform (or run up to it), then you are going to dash making sure you still have your aerial dash, then you dash again once you reach that line (1st image). Afterwards, you need to pogo as high as possible (you can use the horizontal line (2nd picture) as a reference, but you have 4f to pogo). To finish it up, you need to dash as high as you can (this roughly lines up with the beginning of the root, but i found it more comfortable to just dash at the peak of the pogo) and then shortly after the dash ends you need to fb.\n\nThe most common mistakes i've found are not dashing close enough to the edge of the platform, pogoing too late / too early, delaying too much the dash (its not super precise, but it can happen), fbing too late (this also isnt too precise) and doing the final dash up to the platform too low (the wiggle room for this will obs depend on how well you did the rest). Most of this will either cause you to not reach the platform or to simply not get the slopeball, depending on how well you perform the rest.\n\nIts also worth mentioning that you can try to back it up by replicating the skip starting from the pogo.",
       "attachments": [
@@ -28247,7 +28253,7 @@
       ],
       "tags": [
         "devout kill",
-        "shamans",
+        "shaman stone",
         "1 hp",
         "back up"
       ],
