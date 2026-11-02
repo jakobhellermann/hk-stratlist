@@ -356,6 +356,7 @@
       "watcherknights"
     ],
     "white palace": [
+      "wp",
       "whitepalace"
     ],
     "wrong warp": [
@@ -8491,7 +8492,7 @@
       "date": "2022-01-18T17:13:57.129+01:00",
       "rooms": [],
       "tags": [
-        "wp",
+        "white palace",
         "cp",
         "white_palace_14",
         "cyclone",
@@ -8518,7 +8519,7 @@
       "date": "2022-01-18T17:51:34.498+01:00",
       "rooms": [],
       "tags": [
-        "wp",
+        "white palace",
         "white_palace_07",
         "true ending",
         "1xx"
@@ -9803,7 +9804,7 @@
       "date": "2022-02-27T06:15:07.774+01:00",
       "rooms": [],
       "tags": [
-        "wp",
+        "white palace",
         "leftatrium",
         "white_palace_14"
       ],
@@ -17178,7 +17179,7 @@
       "date": "2022-11-18T04:22:46.303+01:00",
       "rooms": [],
       "tags": [
-        "wp",
+        "white palace",
         "112%",
         "sharpshadow",
         "white_palace_14"
@@ -19094,7 +19095,7 @@
         "white_palace_12",
         "true ending",
         "1xx",
-        "wp",
+        "white palace",
         "balcony 2"
       ],
       "prose": "A much easier method to catch the fastest cycle in WP Balcony 3 (aka Top Lever). The current most common strat is to dash to the wall under the breakable arch; pogoing the sawblade instead makes this cycle significantly more lenient.\nConfirmed to work on 1.2.2.1 and 1.4.3.2; assumed to work on 1.5.",
@@ -19568,7 +19569,6 @@
       "tags": [
         "white_palace_11",
         "107%",
-        "wp",
         "white palace",
         "1xx",
         "kingsoul",
@@ -22590,7 +22590,7 @@
       "rooms": [],
       "tags": [
         "106%",
-        "wp"
+        "white palace"
       ],
       "prose": "doing a normal dash for gate wcs lines up the dashes for the rest of the room better",
       "attachments": [
