@@ -1,4 +1,4 @@
-import data from "../../../data/strats.json";
+import data from "@strats";
 import mapRooms from "../../../data/map.json";
 import { url } from "./url.js";
 

@@ -5,6 +5,9 @@ strats := "data/export/strats.json"
 # AUR and nixpkgs name the binary differently
 exporter := `command -v discord-chat-exporter-cli || echo discordchatexporter-cli`
 
+_default:
+	just --list
+
 # check out the data branch as a separate workspace in data/
 setup-workspace:
     jj bookmark track data@origin
@@ -35,8 +38,8 @@ export-all: && data
 data:
     cargo run --release
 
-# re-sign all attachment links in data/strats.json (they expire after ~24h); needs DISCORD_BOT_TOKEN
-refresh:
+# re-sign all attachment links of data/strats.json into out (they expire after ~24h); needs DISCORD_BOT_TOKEN
+refresh out="data/strats.json":
     #!/usr/bin/env bash
     set -euo pipefail
     data=data/strats.json
@@ -56,7 +59,8 @@ refresh:
         ($r[0] | map({key: (.original | sub("\\?.*"; "")), value: .refreshed}) | from_entries) as $fresh
         | .posts[].attachments[] |= (.url = ($fresh[.url | sub("\\?.*"; "")]
             // error("not refreshed: \(.url)")))' "$data" > "$tmp/data.json"
-    mv "$tmp/data.json" "$data"
+    mkdir -p "$(dirname "{{out}}")"
+    mv "$tmp/data.json" "{{out}}"
     echo "refreshed $(jq length "$tmp/refreshed.json") attachment links"
 
 # push the data branch and rebuild the site
@@ -64,9 +68,9 @@ publish:
     jj -R data git push -b data
     gh workflow run pages.yml
 
-# dev server
-dev:
-    cd web && pnpm dev
+# dev server, on a copy of the data with fresh links so the data workspace stays untouched
+dev: (refresh "web/.dev-data/strats.json")
+    cd web && STRATS_JSON=.dev-data/strats.json pnpm dev
 
 # final export
 build: data
