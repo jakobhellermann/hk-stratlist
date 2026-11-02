@@ -79,16 +79,16 @@ publish:
 
 # refresh the attachment links of every game
 refresh-all:
-    for game in {{games}}; do just refresh "$game"; done
+    for game in {{games}}; do just refresh "$game" || exit; done
 
 # dev server, on a copy of the data with fresh links so the data workspace stays untouched
 dev:
-    for game in {{games}}; do just refresh "$game" "web/.dev-data/$game/strats.json"; done
+    for game in {{games}}; do just refresh "$game" "web/.dev-data/$game/strats.json" || exit; done
     cd web && STRATS_DIR=.dev-data pnpm dev
 
 # final export
 build:
-    for game in {{games}}; do just data "$game"; done
+    for game in {{games}}; do just data "$game" || exit; done
     cd web && pnpm build
 
 preview: build
