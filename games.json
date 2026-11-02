@@ -2,6 +2,26 @@
   "default": "ss",
   "games": [
     {
+      "slug": "hk",
+      "label": "Hollow Knight",
+      "channel": "822611544231772170",
+      "steamDir": "Hollow Knight",
+      "tags": {
+        "synonyms": {
+          "all skills": ["as", "hk-all-skills"],
+          "any%": ["any", "any percent", "hk-any-percent"],
+          "low%": ["low percent", "hk-low-percent"],
+          "true ending": ["te", "hk-true-ending"],
+          "watcher knights": ["wk"]
+        },
+        "roomTypos": {
+          "croassroads_": "crossroads_",
+          "resting_grounds_": "restinggrounds_",
+          "restingground_": "restinggrounds_"
+        }
+      }
+    },
+    {
       "slug": "ss",
       "label": "Silksong",
       "channel": "1365521515356885032",
