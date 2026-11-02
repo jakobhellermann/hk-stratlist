@@ -1,6 +1,10 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { byRoom, mapRooms, publicUrl, roomHref } from "../lib/data.js";
+import Layout from "../../layouts/Layout.astro";
+import { gameData, games } from "../../lib/data.js";
+
+export const getStaticPaths = () => games.map(({ slug }) => ({ params: { game: slug } }));
+
+const { byRoom, mapRooms, gameUrl, roomHref } = gameData(Astro.params.game);
 
 const boxArea = ([, , w, h]) => w * h;
 // Rooms without a map sprite only have a position; they are drawn as a dot of this radius.
@@ -56,11 +60,11 @@ const viewBox = `${minX - PAD} ${-maxY - PAD} ${maxX - minX + 2 * PAD} ${maxY - 
 ---
 
 <Layout wide>
-  <svg class="map" viewBox={viewBox}>
+  <svg class="map" viewBox={viewBox} data-game={Astro.params.game}>
     <g class="sprites">
       {rooms.flatMap((room) =>
         room.sprites.map((s) => (
-          <image href={publicUrl(`map/${s.file}`)} x={s.x} y={-(s.y + s.h)} width={s.w} height={s.h} preserveAspectRatio="none" class:list={["sprite", { "has-strats": room.count }]} />
+          <image href={gameUrl(`map/${s.file}`)} x={s.x} y={-(s.y + s.h)} width={s.w} height={s.h} preserveAspectRatio="none" class:list={["sprite", { "has-strats": room.count }]} />
         )),
       )}
     </g>
@@ -86,7 +90,7 @@ const viewBox = `${minX - PAD} ${-maxY - PAD} ${maxX - minX + 2 * PAD} ${maxY - 
     </g>
   </svg>
   <script>
-    import { initMap } from "../scripts/map.js";
+    import { initMap } from "../../scripts/map.js";
 
     function init() {
       const map = document.querySelector("svg.map");

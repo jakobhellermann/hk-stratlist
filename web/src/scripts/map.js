@@ -2,10 +2,10 @@ const MIN_W = 5;
 const LABEL_PX = 11;
 // Rough average glyph width relative to font size.
 const CHAR_EM = 0.6;
-const STORAGE_KEY = "map-view";
 
 export function initMap(map) {
   const view = map.viewBox.baseVal;
+  const storageKey = `map-view:${map.dataset.game}`;
   const maxW = view.width * 2;
   const labels = [...map.querySelectorAll("text.label")].map((text) => ({
     text,
@@ -14,7 +14,7 @@ export function initMap(map) {
     h: Number(text.dataset.h),
   }));
 
-  const saved = sessionStorage.getItem(STORAGE_KEY);
+  const saved = sessionStorage.getItem(storageKey);
   if (saved) [view.x, view.y, view.width, view.height] = JSON.parse(saved);
 
   function toWorld(clientX, clientY) {
@@ -44,10 +44,7 @@ export function initMap(map) {
     requestAnimationFrame(() => {
       pending = false;
       updateLabels();
-      sessionStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify([view.x, view.y, view.width, view.height]),
-      );
+      sessionStorage.setItem(storageKey, JSON.stringify([view.x, view.y, view.width, view.height]));
     });
   }
 

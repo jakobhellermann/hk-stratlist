@@ -1,10 +1,11 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
-import { url } from "../lib/url.js";
-import { updated } from "../lib/data.js";
+import { gameData, games } from "../lib/data.js";
 
 const { title, wide = false } = Astro.props;
+const { game } = Astro.params;
+const { gameUrl, updated } = gameData(game);
 ---
 
 <!doctype html>
@@ -17,9 +18,16 @@ const { title, wide = false } = Astro.props;
   </head>
   <body class:list={{ wide }}>
     <header>
-      <a href={url("")}>#strats</a>
-      <nav><a href={url("list/")}>List</a> <a href={url("tags/")}>Tags</a></nav>
+      <a href={gameUrl("")}>#strats</a>
+      <nav><a href={gameUrl("list/")}>List</a> <a href={gameUrl("tags/")}>Tags</a></nav>
       <time class="updated" datetime={updated}>Updated {updated.slice(0, 10)}</time>
+      <nav class="games">
+        {games.map(({ slug, label }) => (
+          <a href={gameData(slug).gameUrl("")} title={label} aria-current={slug === game ? "page" : undefined}>
+            <span class="long">{label}</span><span class="short">{slug.toUpperCase()}</span>
+          </a>
+        ))}
+      </nav>
     </header>
     <main><slot /></main>
     <script>

@@ -1,6 +1,10 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { UNSORTED, areas, byRoom, roomHref, roomTitle } from "../lib/data.js";
+import Layout from "../../layouts/Layout.astro";
+import { UNSORTED, gameData, games, roomTitle } from "../../lib/data.js";
+
+export const getStaticPaths = () => games.map(({ slug }) => ({ params: { game: slug } }));
+
+const { areas, byRoom, roomHref } = gameData(Astro.params.game);
 
 const collator = new Intl.Collator(undefined, { numeric: true });
 const roomsByArea = new Map();

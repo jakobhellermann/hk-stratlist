@@ -1,9 +1,10 @@
 ---
 import Attachment from "./Attachment.astro";
-import { authors, roomHref, tagHref } from "../lib/data.js";
+import { gameData } from "../lib/data.js";
 import { renderMarkdown } from "../lib/markdown.js";
 
 const { post, currentRoom } = Astro.props;
+const { authors, roomHref, tagHref } = gameData(Astro.params.game);
 const otherRooms = post.rooms.filter((r) => r !== currentRoom);
 ---
 

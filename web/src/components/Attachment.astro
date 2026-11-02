@@ -1,7 +1,8 @@
 ---
-import { publicUrl } from "../lib/data.js";
+import { gameData } from "../lib/data.js";
 
 const { attachment: a } = Astro.props;
+const { gameUrl } = gameData(Astro.params.game);
 
 // Fits the media into MAX_W x MAX_H (rem) by its known aspect ratio, so its box never changes size while loading.
 // The width sits on the figure, since a percentage width on the media counts as 0 while the figure sizes to content.
@@ -15,7 +16,7 @@ const style = a.width && `aspect-ratio: ${a.width} / ${a.height}`;
   {a.kind === "video" && (
     <video
       src={a.url}
-      data-poster={publicUrl(a.preview)}
+      data-poster={gameUrl(a.preview)}
       width={a.width}
       height={a.height}
       style={style}
@@ -27,7 +28,7 @@ const style = a.width && `aspect-ratio: ${a.width} / ${a.height}`;
   )}
   {a.kind === "image" && (
     <a href={a.url} target="_blank">
-      <img src={publicUrl(a.preview)} width={a.width} height={a.height} style={style} alt={a.name} title={a.name} loading="lazy" decoding="async" />
+      <img src={gameUrl(a.preview)} width={a.width} height={a.height} style={style} alt={a.name} title={a.name} loading="lazy" decoding="async" />
     </a>
   )}
 </figure>

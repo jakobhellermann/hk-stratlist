@@ -1,0 +1,19 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Post from "../../../components/Post.astro";
+import { gameData, games, roomTitle } from "../../../lib/data.js";
+
+export function getStaticPaths() {
+  return games.flatMap(({ slug: game }) =>
+    [...gameData(game).byRoom.keys()].map((room) => ({ params: { game, room } })),
+  );
+}
+
+const { game, room } = Astro.params;
+const posts = gameData(game).byRoom.get(room);
+---
+
+<Layout title={roomTitle(room)}>
+  <h1>{roomTitle(room)}</h1>
+  {posts.map((post) => <Post post={post} currentRoom={room} />)}
+</Layout>

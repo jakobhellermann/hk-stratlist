@@ -1,6 +1,10 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { byTag, tagAliases, tagHref } from "../lib/data.js";
+import Layout from "../../layouts/Layout.astro";
+import { gameData, games } from "../../lib/data.js";
+
+export const getStaticPaths = () => games.map(({ slug }) => ({ params: { game: slug } }));
+
+const { byTag, tagAliases, tagHref } = gameData(Astro.params.game);
 
 const tags = [...byTag].map(([tag, posts]) => ({ tag, count: posts.length, aliases: tagAliases.get(tag) ?? [] }));
 tags.sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));

@@ -173,6 +173,39 @@ header nav {
   font-size: 1rem;
   font-weight: 400;
 }
+header nav.games {
+  gap: 0;
+  align-self: center;
+  border: 1px solid var(--muted);
+  border-radius: 4px;
+  overflow: hidden;
+}
+header nav.games a {
+  color: var(--fg);
+  padding: 0.2rem 0.6rem;
+  white-space: nowrap;
+}
+header nav.games a + a {
+  border-left: 1px solid var(--muted);
+}
+header nav.games a:hover {
+  color: var(--accent-hover);
+}
+header nav.games a[aria-current] {
+  color: var(--accent);
+}
+/* Full game names don't fit next to the rest of the header on phones. */
+header nav.games .short {
+  display: none;
+}
+@media (max-width: 480px) {
+  header nav.games .long {
+    display: none;
+  }
+  header nav.games .short {
+    display: inline;
+  }
+}
 header,
 main {
   max-width: 60rem;

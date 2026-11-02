@@ -1,0 +1,19 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Post from "../../../components/Post.astro";
+import { gameData, games } from "../../../lib/data.js";
+
+export function getStaticPaths() {
+  return games.flatMap(({ slug: game }) =>
+    [...gameData(game).tagSlugs].map(([tag, slug]) => ({ params: { game, slug }, props: { tag } })),
+  );
+}
+
+const { tag } = Astro.props;
+const posts = gameData(Astro.params.game).byTag.get(tag);
+---
+
+<Layout title={`#${tag}`}>
+  <h1>#{tag} <span class="count">{posts.length}</span></h1>
+  {posts.map((post) => <Post post={post} />)}
+</Layout>
