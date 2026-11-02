@@ -14,6 +14,7 @@
           "all skills": ["as", "hk-all-skills"],
           "any%": ["any", "any percent", "hk-any-percent"],
           "cp": ["current-patch", "current patch", "currentpatch"],
+          "grubsong": ["grubsong%"],
           "low%": ["low percent", "hk-low-percent"],
           "lp": ["latest-patch", "latest patch", "latestpatch"],
           "true ending": ["te", "hk-true-ending"],
