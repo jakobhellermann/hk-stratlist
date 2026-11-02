@@ -1,6 +1,7 @@
 use std::collections::{BTreeMap, HashMap, HashSet};
 use std::path::Path;
 
+use anyhow::{Context, Result, bail};
 use serde::{Deserialize, Serialize};
 
 mod map;
@@ -73,22 +74,28 @@ const MAP_DATA_PATH: &str = "/home/jakob/dev/hkss/other/maptools/map-data.json";
 const SCENE_SIZES_PATH: &str = "/home/jakob/dev/hkss/mods/MapWarp/data/mapwarp_scene_sizes.json";
 const OUT_DIR: &str = "data";
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+fn read(path: &str) -> Result<String> {
+    std::fs::read_to_string(path).with_context(|| format!("reading {path}"))
+}
+
+fn main() -> Result<()> {
     let mut args = std::env::args().skip(1);
     let strats_path = args.next().unwrap_or_else(|| STRATS_PATH.to_string());
     let map_path = args.next().unwrap_or_else(|| MAP_DATA_PATH.to_string());
     let scene_sizes_path = args.next().unwrap_or_else(|| SCENE_SIZES_PATH.to_string());
     let out_dir = args.next().unwrap_or_else(|| OUT_DIR.to_string());
 
-    let export: Export = serde_json::from_str(&std::fs::read_to_string(&strats_path)?)?;
+    let export: Export = serde_json::from_str(&read(&strats_path)?)
+        .with_context(|| format!("parsing {strats_path}"))?;
     let messages = &export.messages;
-    let entries: Vec<map::MapEntry> = serde_json::from_str(&std::fs::read_to_string(&map_path)?)?;
-    let loadable: HashSet<String> = serde_json::from_str::<HashMap<String, serde_json::Value>>(
-        &std::fs::read_to_string(&scene_sizes_path)?,
-    )?
-    .into_keys()
-    .map(|scene| scene.to_lowercase())
-    .collect();
+    let entries: Vec<map::MapEntry> =
+        serde_json::from_str(&read(&map_path)?).with_context(|| format!("parsing {map_path}"))?;
+    let loadable: HashSet<String> =
+        serde_json::from_str::<HashMap<String, serde_json::Value>>(&read(&scene_sizes_path)?)
+            .with_context(|| format!("parsing {scene_sizes_path}"))?
+            .into_keys()
+            .map(|scene| scene.to_lowercase())
+            .collect();
     let canonical = map::lookup(entries.iter().map(|e| e.name.clone()), &loadable);
     let (rooms, orphans) = map::group(entries, &loadable);
 
@@ -113,9 +120,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     if let Err(errors) = media_cache.fill(tagged.iter().flat_map(|(m, _)| &m.attachments).collect())
     {
         for e in &errors {
-            eprintln!("preview failed: {e}");
+            eprintln!("preview failed: {e:#}");
         }
-        return Err(format!("{} previews failed", errors.len()).into());
+        bail!("{} previews failed", errors.len());
     }
 
     let total = messages.len();
@@ -223,11 +230,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         aliases,
         posts,
     };
-    std::fs::write(
-        out_dir.join("strats.json"),
-        serde_json::to_string_pretty(&strats)?,
-    )?;
-    std::fs::write(out_dir.join("map.json"), serde_json::to_string(&rooms)?)?;
+    let write = |name: &str, contents: String| {
+        let path = out_dir.join(name);
+        std::fs::write(&path, contents).with_context(|| format!("writing {}", path.display()))
+    };
+    write("strats.json", serde_json::to_string_pretty(&strats)?)?;
+    write("map.json", serde_json::to_string(&rooms)?)?;
     println!("\nwrote {}/{{strats,map}}.json", out_dir.display());
 
     Ok(())

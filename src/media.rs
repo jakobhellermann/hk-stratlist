@@ -10,6 +10,7 @@ use std::process::Command;
 use std::sync::Mutex;
 use std::time::Duration;
 
+use anyhow::{Context, Error, Result, bail};
 use rayon::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -78,13 +79,18 @@ pub struct Cache {
 }
 
 impl Cache {
-    pub fn open(meta_path: &Path, public_dir: &Path) -> Result<Self, Box<dyn std::error::Error>> {
+    pub fn open(meta_path: &Path, public_dir: &Path) -> Result<Self> {
         let entries = match std::fs::read_to_string(meta_path) {
-            Ok(s) => serde_json::from_str(&s)?,
+            Ok(s) => serde_json::from_str(&s)
+                .with_context(|| format!("parsing {}", meta_path.display()))?,
             Err(e) if e.kind() == std::io::ErrorKind::NotFound => BTreeMap::new(),
-            Err(e) => return Err(e.into()),
+            Err(e) => {
+                return Err(e).with_context(|| format!("reading {}", meta_path.display()));
+            }
         };
-        std::fs::create_dir_all(public_dir.join("media"))?;
+        let media_dir = public_dir.join("media");
+        std::fs::create_dir_all(&media_dir)
+            .with_context(|| format!("creating {}", media_dir.display()))?;
         Ok(Self {
             meta_path: meta_path.to_owned(),
             public_dir: public_dir.to_owned(),
@@ -102,7 +108,7 @@ impl Cache {
 
     /// Generates previews for all uncached attachments. Every attachment is attempted; failures are
     /// returned together after the successful ones have been saved to the cache.
-    pub fn fill(&mut self, sources: Vec<&Source>) -> Result<(), Vec<String>> {
+    pub fn fill(&mut self, sources: Vec<&Source>) -> Result<(), Vec<Error>> {
         let mut todo: Vec<&Source> = sources
             .into_iter()
             .filter(|a| a.kind() != Kind::File && !self.is_cached(&a.id))
@@ -119,12 +125,12 @@ impl Cache {
             .num_threads(PARALLEL_DOWNLOADS)
             .build()
             .expect("thread pool");
-        let results: Vec<(&str, Result<Meta, String>)> = pool.install(|| {
+        let results: Vec<(&str, Result<Meta>)> = pool.install(|| {
             todo.par_iter()
                 .map(|a| {
                     let out = self.public_dir.join(Self::preview_rel(&a.id));
                     let result =
-                        generate(a, &out).map_err(|e| format!("{} ({}): {e}", a.name, a.id));
+                        generate(a, &out).with_context(|| format!("{} ({})", a.name, a.id));
                     let mut done = done.lock().expect("progress lock");
                     *done += 1;
                     if *done % 50 == 0 {
@@ -145,7 +151,7 @@ impl Cache {
             }
         }
         if let Err(e) = self.save() {
-            errors.push(format!("saving {}: {e}", self.meta_path.display()));
+            errors.push(e);
         }
         if errors.is_empty() {
             Ok(())
@@ -154,11 +160,12 @@ impl Cache {
         }
     }
 
-    fn save(&self) -> std::io::Result<()> {
+    fn save(&self) -> Result<()> {
         std::fs::write(
             &self.meta_path,
             serde_json::to_string_pretty(&self.entries).expect("meta serializes"),
         )
+        .with_context(|| format!("saving {}", self.meta_path.display()))
     }
 
     pub fn attachment<'a>(&self, a: &'a Source) -> Attachment<'a> {
@@ -179,7 +186,7 @@ impl Cache {
     }
 }
 
-fn generate(a: &Source, out: &Path) -> Result<Meta, String> {
+fn generate(a: &Source, out: &Path) -> Result<Meta> {
     let scale = format!(
         "scale='if(gt(iw,ih),min({PREVIEW_MAX},iw),-2)':'if(gt(iw,ih),-2,min({PREVIEW_MAX},ih))'"
     );
@@ -191,14 +198,14 @@ fn generate(a: &Source, out: &Path) -> Result<Meta, String> {
         .arg(out))?;
 
     // Probing the preview gives the displayed size, with rotation metadata already applied.
-    let preview = probe(out.to_str().ok_or("non-utf8 path")?)?;
+    let preview = probe(out.to_str().context("non-utf8 path")?)?;
     let (width, height) = (
-        preview.width.ok_or("preview has no width")?,
-        preview.height.ok_or("preview has no height")?,
+        preview.width.context("preview has no width")?,
+        preview.height.context("preview has no height")?,
     );
     let fps = match a.kind() {
         Kind::Video => Some(parse_rate(
-            &probe(&a.url)?.avg_frame_rate.ok_or("no frame rate")?,
+            &probe(&a.url)?.avg_frame_rate.context("no frame rate")?,
         )?),
         _ => None,
     };
@@ -212,7 +219,7 @@ struct Stream {
     avg_frame_rate: Option<String>,
 }
 
-fn probe(input: &str) -> Result<Stream, String> {
+fn probe(input: &str) -> Result<Stream> {
     #[derive(Deserialize)]
     struct Probe {
         streams: Vec<Stream>,
@@ -227,39 +234,37 @@ fn probe(input: &str) -> Result<Stream, String> {
             "json",
         ])
         .arg(input))?;
-    let probe: Probe = serde_json::from_slice(&out).map_err(|e| format!("ffprobe json: {e}"))?;
-    probe
-        .streams
-        .into_iter()
-        .next()
-        .ok_or_else(|| "no video stream".to_owned())
+    let probe: Probe = serde_json::from_slice(&out).context("parsing ffprobe json")?;
+    probe.streams.into_iter().next().context("no video stream")
 }
 
-fn parse_rate(rate: &str) -> Result<f64, String> {
+fn parse_rate(rate: &str) -> Result<f64> {
     let (num, den) = rate
         .split_once('/')
-        .ok_or_else(|| format!("bad frame rate {rate}"))?;
+        .with_context(|| format!("bad frame rate {rate}"))?;
     let (num, den): (f64, f64) = (
-        num.parse().map_err(|_| format!("bad frame rate {rate}"))?,
-        den.parse().map_err(|_| format!("bad frame rate {rate}"))?,
+        num.parse()
+            .with_context(|| format!("bad frame rate {rate}"))?,
+        den.parse()
+            .with_context(|| format!("bad frame rate {rate}"))?,
     );
     if den == 0.0 || num == 0.0 {
-        return Err(format!("bad frame rate {rate}"));
+        bail!("bad frame rate {rate}");
     }
     Ok(num / den)
 }
 
-fn run(cmd: &mut Command) -> Result<Vec<u8>, String> {
+fn run(cmd: &mut Command) -> Result<Vec<u8>> {
     let output = cmd
         .output()
-        .map_err(|e| format!("spawning {:?}: {e}", cmd.get_program()))?;
+        .with_context(|| format!("spawning {:?}", cmd.get_program()))?;
     if !output.status.success() {
-        return Err(format!(
+        bail!(
             "{:?} failed ({}): {}",
             cmd.get_program(),
             output.status,
             String::from_utf8_lossy(&output.stderr).trim()
-        ));
+        );
     }
     Ok(output.stdout)
 }
@@ -283,8 +288,8 @@ mod tests {
 
     #[test]
     fn parses_frame_rate() {
-        assert_eq!(parse_rate("60/1"), Ok(60.0));
-        assert_eq!(parse_rate("30000/1001"), Ok(30000.0 / 1001.0));
+        assert_eq!(parse_rate("60/1").unwrap(), 60.0);
+        assert_eq!(parse_rate("30000/1001").unwrap(), 30000.0 / 1001.0);
         assert!(parse_rate("0/0").is_err());
     }
 }
