@@ -57,10 +57,19 @@ refresh game out=("data/" + game + "/strats.json"):
     echo '[]' > "$tmp/refreshed.json"
     jq -c '[.posts[].attachments[].url | sub("\\?.*"; "")] | unique | [range(0; length; 50) as $i | .[$i:$i + 50]][]' "$data" |
     while read -r batch; do
-        curl -sS --fail-with-body -X POST https://discord.com/api/v10/attachments/refresh-urls \
+        attempt=0
+        until curl -sS --fail-with-body -X POST https://discord.com/api/v10/attachments/refresh-urls \
             -H "Authorization: Bot $DISCORD_BOT_TOKEN" -H "Content-Type: application/json" \
             -H "User-Agent: DiscordBot (hk-stratlist, 0.1)" \
-            --data "{\"attachment_urls\": $batch}" > "$tmp/batch.json"
+            --data "{\"attachment_urls\": $batch}" > "$tmp/batch.json"; do
+            attempt=$((attempt + 1))
+            if [ "$attempt" -ge 10 ]; then
+                echo "refresh-urls keeps failing after $attempt retries" >&2
+                exit 1
+            fi
+            # on 429 the body says how long to wait, in seconds
+            sleep "$(jq -r '.retry_after // 2' "$tmp/batch.json" 2>/dev/null || echo 2)"
+        done
         jq -s '.[0] + .[1].refreshed_urls' "$tmp/refreshed.json" "$tmp/batch.json" > "$tmp/merged.json"
         mv "$tmp/merged.json" "$tmp/refreshed.json"
     done
