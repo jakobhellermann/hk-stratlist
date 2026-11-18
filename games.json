@@ -59,12 +59,19 @@
           "awoo%": ["awoo"],
           "bell route": ["bells route", "bells", "bell", "bell route any%"],
           "fourth chorus": ["4c", "4cs", "fourth", "fourthchorus"],
-          "hha": ["hhg"],
+          "hha": [
+            "hhg",
+            "high halls gauntlet",
+            "high halls guantlet",
+            "high halls arena",
+            "high halls arena gauntlet"
+          ],
           "high halls gauntlet": ["high halls guantlet"],
           "lace 1": ["lace_1"],
           "lace 2": ["lace_2"],
           "mount fay": ["fay", "mtfay"],
-          "true ending": ["te", "true"]
+          "true ending": ["te", "true"],
+          "vaults arena": ["whispering vaults arena", "vaults arena", "library arena", "wva"]
         },
         "roomTypos": {
           "bone_ease_": "bone_east_",
