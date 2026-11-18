@@ -267,7 +267,11 @@
       "groalskip"
     ],
     "hha": [
-      "hhg"
+      "hhg",
+      "high halls gauntlet",
+      "high halls guantlet",
+      "high halls arena",
+      "high halls arena gauntlet"
     ],
     "high halls gauntlet": [
       "high halls guantlet"
@@ -312,6 +316,12 @@
     ],
     "upper cog": [
       "uppercog"
+    ],
+    "vaults arena": [
+      "whispering vaults arena",
+      "vaults arena",
+      "library arena",
+      "wva"
     ],
     "wave 1": [
       "wave1"
@@ -2583,7 +2593,6 @@
       ],
       "tags": [
         "hha",
-        "high halls arena gauntlet",
         "any%",
         "nail 1"
       ],
@@ -3185,7 +3194,7 @@
         "Library_02"
       ],
       "tags": [
-        "library arena"
+        "vaults arena"
       ],
       "prose": "Best strats I could find for this arena so far. Not really sure if there's a consistent way to do the 3rd/4th waves, but this should be a good place to start.",
       "attachments": [
@@ -4684,7 +4693,7 @@
         "Library_02"
       ],
       "tags": [
-        "library arena"
+        "vaults arena"
       ],
       "prose": "library arena in 37s, pretty consistent\nsaves about 15s on current wr",
       "attachments": [
@@ -6176,7 +6185,6 @@
       "rooms": [],
       "tags": [
         "hha",
-        "high halls gauntlet",
         "high"
       ],
       "prose": "halls arena consistent way to kill the maestros in wave 5. You'll take dmg sometimes though",
@@ -10743,7 +10751,7 @@
         "Library_02"
       ],
       "tags": [
-        "library arena",
+        "vaults arena",
         "any%"
       ],
       "prose": "Not the perfect execution but here are some strats for the library arena starting with no silk :\n\nThe idea is to intentionally miss the last enemy with the spear on wave **1 or 2** to get enough silk to double spear on wave 3. The goal is to have at least every wave 3 enemy at 1 hp (2 spears for the needle one and 1 for the others). In the video, I somehow missed the first spear on the needle guy but the idea is here.\n\nMoreover, on wave 1, I sometimes manage to hit both bugs with the 4th attack so I don't need the extra attack on the flying one.\nI also found wave 4 and 5 kind of cool, hope it can help.\nhttps://youtu.be/KlCbO8BWwjg",
@@ -10849,7 +10857,7 @@
         "Library_02"
       ],
       "tags": [
-        "library arena"
+        "vaults arena"
       ],
       "prose": "Another iteration on this arena, I copied a lot of what nebula did in the 54:50 run\nWave 3 may need some improv and last bell thrower can be annoying, otherwise this is pretty consistent\n\nAlso small detail I didn't notice until practicing is you can tell where the last enemy spawns in the middle by their position in the background",
       "attachments": [
@@ -11572,7 +11580,7 @@
         "Library_02"
       ],
       "tags": [
-        "whispering vaults arena",
+        "vaults arena",
         "any%"
       ],
       "prose": "Strats for waves 1-4 of the arena. This is 6,5-8 sec faster than WR and 3,5-5 sec faster than comsob. Times below are compared to WR or comsob - whichever was faster.\n\nWave 1: faster than wr by 2 sec.\n- sometimes the middle guy doesn't get to attack (like in the 2nd video) which means you don't have to wait for them to line up, which saves time\n\nWave 2: Pretty much the same time, so choose whichever one you like. I like this because the movement and the last spear are satisfying\n- sometimes you need to do a little hop on the last needle hit\n\nWave 3: faster than comsob by 1 sec\n- stay exactly in the middle and wait a little before you jump to make the reed follow you\n- can get a little inconsistent if spawns are desynced too much, which can make you miss one of them\n- you can trade a bit of time for safety if you don't want to do the last turnaround\n\nWave 4: faster than comsob by 2 sec\n- the upslash before the spear won't always hit the bell thrower (like in the 3rd video)\n- but it makes you turn around faster, so do it anyway\n- alternatively, if you know it won't hit, you can instead needle right to hit the guy you pogo through, to get 1 more silk\n- you can omit the last spear if you want to save silk for the spider",
@@ -11703,7 +11711,7 @@
         "Library_02"
       ],
       "tags": [
-        "whispering vaults arena"
+        "vaults arena"
       ],
       "prose": "easy and consistent way to hit all 3 enemies in wave 1 with silk spear and kill them\n\nyou can also pogo through the flying enemy to be faster but nail and jump over is significantly easier. last pogo through the big guy is vital otherwise the flying one will be too high. go for nail turnaround here or you will not have a fun time like 0.5% of the time",
       "attachments": [
@@ -12607,7 +12615,7 @@
         "Library_02"
       ],
       "tags": [
-        "library arena"
+        "vaults arena"
       ],
       "prose": "I combined all the different strats I've seen into this\nWave 1: https://discord.com/channels/772964112908156938/1365521515356885032/1431415372942413940\nWave 2: seeing yujene do it in runs\nWave 3: https://discord.com/channels/772964112908156938/1365521515356885032/1431102130906861589\nWave 4: https://discord.com/channels/772964112908156938/1365521515356885032/1431102130906861589\nyou can do the above instead but if you do it like I did the nail swing after dash attacking the left enemy is nice because it can avoid running into the enemy and potentially hit the bell thrower\nuh, except last bell thrower, you can spear it if you want, I just like killing the last guy like this",
       "attachments": [
@@ -13073,8 +13081,7 @@
       "date": "2025-11-02T02:25:47.462+01:00",
       "rooms": [],
       "tags": [
-        "hha",
-        "high halls arena"
+        "hha"
       ],
       "prose": "Newest ep of the bell route guide is up, however the main reason i'm posting here in strats, is from the new setups and openings i discovered from my time playing around in HHA - it should be noted some of these opening are not the  \"most efficient\" but more beginner friendly, easy to learn, strategies for each wave - taking advantage of enemy spawn position, some of which even take adavantage manipulating their spawns! (timestamped link here, each wave timestamped in description)\nhttps://youtu.be/2jfVxdrjMjo?list=PL4aX24rbBNH3ccDaEfLqfxIVlGoH53Ukz&t=752",
       "attachments": [],
@@ -14011,8 +14018,6 @@
       "date": "2025-11-07T06:23:35.803+01:00",
       "rooms": [],
       "tags": [
-        "high halls arena",
-        "high halls gauntlet",
         "hha",
         "hhg wave 1"
       ],
@@ -14553,7 +14558,6 @@
         "Library_02"
       ],
       "tags": [
-        "library arena",
         "vaults arena"
       ],
       "prose": "damage tank strat on wave 2 saves 0.7s on the next fastest thing i saw (in key route comsob), however it might be more like a second because i am not sure the key comsob strat is consistent\n\nthe last slash looks hard but the timing is actually pretty easy\n\ni tried for a while to make this work without the tank but it wasn't working, maybe someone else can figure out something",
@@ -23310,8 +23314,7 @@
       ],
       "tags": [
         "wave 1 left side",
-        "wva",
-        "whispering vaults arena"
+        "vaults arena"
       ],
       "prose": "Consistent leftside, first saw Xena do it. Have to be fast and stay low to not agro the flying guy, and you have to react to how fast he spawns. If he's slow you have to backstep, if fast then nodelays. 1st vid is fast spawn, 2nd is slow, and 3rd is Ivy's variation where you jump a bit earlier before the 3rd nail, which helps deal with fast spawns a bit but it's not really mandatory. Should save like 0.6ish on best rng.",
       "attachments": [
@@ -23775,7 +23778,7 @@
       "date": "2026-04-22T20:25:57.182+02:00",
       "rooms": [],
       "tags": [
-        "wva",
+        "vaults arena",
         "any%"
       ],
       "prose": "wave 3 strat that seems a lot more consistent than upslashing either the bell bearer or the reed. not sure if anyone was doing this before me but i figured out this is very very consistent",
